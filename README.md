@@ -3,6 +3,8 @@ team09 project repo
 
 #buysellsfsu directory file permissions
 
+http://sfsuse.com/~sp17g09/buysellsfsu/
+
 logs permissions: 777
 
 tmp  permissions: -R 777
