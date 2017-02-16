@@ -16,7 +16,7 @@
 <h3> Team 9</h3>
 <ul style="list-style-type:none">
 <li><a href="/~sp17g09/buysellsfsu/pages//charlesaboutme" class="button" target="_blank">Charles Williams</a>  </li>
-<li><a href="/~sp17g09/buysellsfsu/pages/jamesaboutme" class="button" target="_blank">Jason Huang</a>  </li>
+<li><a href="/~sp17g09/buysellsfsu/pages/jasonsaboutme" class="button" target="_blank">Jason Huang</a>  </li>
 <li><a href="/~sp17g09/buysellsfsu/pages//wilsonaboutme" class="button" target="_blank">Wilson Le</a>  </li>
 <li><a href="/~sp17g09/buysellsfsu/pages/myataboutme" class="button" target="_blank">Myat Min Maung</a> </li>
 <li><a href="/~sp17g09/buysellsfsu/pages/grantaboutme" class="button" target="_blank">Grant Gaviglio</a>  </li>
