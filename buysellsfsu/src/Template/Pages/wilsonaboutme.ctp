@@ -2,7 +2,7 @@
         <h1>Wilson Le</h1>
    
 <div style="float:left; width:30%;">
-<img src="http://sfsuse.com/~sp17g09/buysellsfsu/img/wilson.jpg" alt="grant"
+<img src="http://sfsuse.com/~sp17g09/buysellsfsu/img/wilson.jpg" alt="wilson"
 height="300" width="300" />
 </div>
 <div style="float:left; width:70%;">
