@@ -1,4 +1,8 @@
+<?php $this->start('title'); ?>
+Grant Gaviglio
+<?php $this->end(); ?>
 <div class="container clearfix">
+   <br><br>
    <h1>Grant Gaviglio</h1> 
 
    <div style="float:left; width:30%;">
