@@ -1210,6 +1210,7 @@ Stack Trace:
 2017-02-21 20:33:57 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
 2017-02-21 20:36:30 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
 2017-02-21 20:36:33 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+<<<<<<< HEAD
 2017-02-25 02:25:17 Error: [Cake\Routing\Exception\MissingControllerException] Controller class Src could not be found.
 Exception Attributes: array (
   'class' => 'Src',
@@ -3193,3 +3194,12 @@ Stack Trace:
 #17 {main}
 
 
+=======
+2017-02-28 05:31:52 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2017-02-28 05:31:53 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2017-02-28 05:31:54 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2017-02-28 05:31:54 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2017-02-28 05:31:57 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2017-02-28 05:31:58 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2017-02-28 05:32:04 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+>>>>>>> 6cfd3142c598e872a7d85e8d91cfb0e6cc21180b
