@@ -1,9 +1,0 @@
-Name: Myat Min Maung
-Role: Front-End Developer
-Description: I am an international student studying Computer Science
-             at SFSU. I like to play computer games, like Dota 2,
-             Starcraft and AOE. Also, interested in making music with
-             guitar. Beside from entertainment, i love to code and 
-             design UI in mobile and web application. Finally, pizza is
-             my favourite. 
-Image Link: http://i.imgur.com/5hQVPfv.jpg
