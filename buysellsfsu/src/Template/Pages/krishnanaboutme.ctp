@@ -6,7 +6,7 @@ Krishnan Ramakrishnan
    <h1>Krishnan Ramakrishnan</h1>
    
    <div style="float:left; width:30%;">
-      <img src="http://sfsuse.com/~sp17g09/buysellsfsu/img/krishnan.jpg" alt="krishnan"
+      <img src="<?php echo $this->request->webroot; ?>img/krishnan.jpg" alt="krishnan"
                 height="300" width="300" />
    </div>
 

@@ -6,7 +6,7 @@ Leopoldo Rodriguez
    <h1>Leopoldo Rodriguez</h1>
    
    <div style="float:left; width:30%;">
-      <img src="http://sfsuse.com/~sp17g09/buysellsfsu/img/leo.jpg" alt="leo"
+      <img src="<?php echo $this->request->webroot; ?>img/leo.jpg" alt="leo"
                 height="300" width="300" />
    </div>
 
