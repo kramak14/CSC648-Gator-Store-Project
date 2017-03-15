@@ -56,7 +56,7 @@ $cakeDescription = 'BuySellSFSU';
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li>
-                        <a href="/~sp17g09/dev/buysellsfsu/pages/home">About</a>
+                        <?php echo $this->Html->link('About', array('controller'=>'pages', 'action'=>'home', 'full_base'=>true)); ?>
                     </li>
                     <li>
                         <a href="#">Services</a>

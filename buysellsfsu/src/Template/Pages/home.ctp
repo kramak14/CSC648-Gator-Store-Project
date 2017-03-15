@@ -23,9 +23,8 @@ About us
                <!-- MEMBERS -->
                <!-- Charles -->
                <div class="col-lg-4 col-sm-6 text-center">
-                   <!-- <img class="img-circle img-responsive img-center" src="/img/charles.jpg" alt="">-->
-                   <?php echo $this->Html->image('charles.jpg')?>
-                   <h2><a href="/~sp17g09/dev/buysellsfsu/pages/charlesaboutme" class="button" target="_blank">Charles Williams </a>
+                   <img class="img-circle img-responsive img-center" src="<?php echo $this->request->webroot; ?>img/charles.jpg">
+                   <h2><?php echo $this->Html->link('Charles Williams', array('controller'=>'pages', 'action'=>'charlesaboutme', 'full_base'=>true)); ?>
                        <br><small>CEO</small>
                    </h2>
                    <p>What does this team member to? Keep it short! This is also a great spot for social links!</p>
@@ -33,8 +32,8 @@ About us
 
                <!-- Jason -->
                <div class="col-lg-4 col-sm-6 text-center">
-                   <img class="img-circle img-responsive img-center" src="http://sfsuse.com/~sp17g09/dev/buysellsfsu/img/jason.jpg" alt="">
-                   <h2><a href="/~sp17g09/dev/buysellsfsu/pages/jasonaboutme" class="button" target="_blank">Jason Huang </a>
+                   <img class="img-circle img-responsive img-center" src="<?php echo $this->request->webroot; ?>img/jason.jpg">
+                   <h2><?php echo $this->Html->link('Jason Huang', array('controller'=>'pages', 'action'=>'jasonaboutme', 'full_base'=>true)); ?>
                        <br><small>CTO</small>
                    </h2>
                    <p>What does this team member to? Keep it short! This is also a great spot for social links!</p>
@@ -42,8 +41,8 @@ About us
 
                <!-- Wilson -->
                   <div class="col-lg-4 col-sm-6 text-center">
-                      <img class="img-circle img-responsive img-center" src="http://sfsuse.com/~sp17g09/dev/buysellsfsu/img/wilson.jpg" alt="">
-                      <h2><a href="/~sp17g09/dev/buysellsfsu/pages/wilsonaboutme" class="button" target="_blank">Wilson Le</a>
+                      <img class="img-circle img-responsive img-center" src="<?php echo $this->request->webroot; ?>img/wilson.jpg">
+                      <h2><?php echo $this->Html->link('Wilson Le', array('controller'=>'pages', 'action'=>'wilsonaboutme', 'full_base'=>true)); ?>
                           <br><small>Front-End Developer</small>
                       </h2>
                       <p>What does this team member to? Keep it short! This is also a great spot for social links!</p>
@@ -51,8 +50,8 @@ About us
 
                <!-- Myat -->
                   <div class="col-lg-4 col-sm-6 text-center">
-                      <img class="img-circle img-responsive img-center" src="http://sfsuse.com/~sp17g09/dev/buysellsfsu/img/myat.jpg" alt="">
-                      <h2><a href="/~sp17g09/dev/buysellsfsu/pages/myataboutme" class="button" target="_blank">Myat Min Maung</a>
+                      <img class="img-circle img-responsive img-center" src="<?php echo $this->request->webroot; ?>img/myat.jpg" alt="">
+                      <h2><?php echo $this->Html->link('Myat Min Maung', array('controller'=>'pages', 'action'=>'myataboutme', 'full_base'=>true)); ?>
                           <br><small>Front-End Developer</small>
                       </h2>
                       <p>What does this team member to? Keep it short! This is also a great spot for social links!</p>
@@ -60,8 +59,8 @@ About us
 
                <!-- Grant -->
                   <div class="col-lg-4 col-sm-6 text-center">
-                      <img class="img-circle img-responsive img-center" src="http://sfsuse.com/~sp17g09/dev/buysellsfsu/img/grant.jpg" alt="">
-                      <h2><a href="/~sp17g09/dev/buysellsfsu/pages/grantaboutme" class="button" target="_blank">Grant Gaviglio</a>
+                      <img class="img-circle img-responsive img-center" src="<?php echo $this->request->webroot; ?>img/grant.jpg" alt="">
+                      <h2><?php echo $this->Html->link('Grant Gaviglio', array('controller'=>'pages', 'action'=>'grantaboutme', 'full_base'=>true)); ?>
                           <br><small>Front-End Developer</small>
                       </h2>
                       <p>What does this team member to? Keep it short! This is also a great spot for social links!</p>
@@ -69,8 +68,8 @@ About us
 
                <!-- Leopoldo -->
                   <div class="col-lg-4 col-sm-6 text-center">
-                      <img class="img-circle img-responsive img-center" src="http://sfsuse.com/~sp17g09/dev/buysellsfsu/img/leo.jpg" alt="">
-                      <h2><a href="/~sp17g09/dev/buysellsfsu/pages/leopoldoaboutme" class="button" target="_blank">Leopoldo Rodriguez</a>
+                      <img class="img-circle img-responsive img-center" src="<?php echo $this->request->webroot; ?>img/leo.jpg" alt="">
+                      <h2><?php echo $this->Html->link('Leopoldo Rodriguez', array('controller'=>'pages', 'action'=>'leopoldoaboutme', 'full_base'=>true)); ?>
                           <br><small>Back-End Developer</small>
                       </h2>
                       <p>What does this team member to? Keep it short! This is also a great spot for social links!</p>
@@ -82,8 +81,8 @@ About us
 
                <!-- Krishnan -->
                   <div class="col-lg-4 col-sm-6 text-center">
-                      <img class="img-circle img-responsive img-center" src="http://sfsuse.com/~sp17g09/dev/buysellsfsu/img/krishnan.jpg" alt="">
-                      <h2><a href="/~sp17g09/dev/buysellsfsu/pages/krishnanaboutme" class="button" target="_blank">Krishnan Ramakrishnan</a>
+                      <img class="img-circle img-responsive img-center" src="<?php echo $this->request->webroot; ?>img/krishnan.jpg" alt="">
+                      <h2><?php echo $this->Html->link('Krishnan Ramakrishnan', array('controller'=>'pages', 'action'=>'krishnanaboutme', 'full_base'=>true)); ?>
                           <small>Back-End Developer</small>
                       </h2>
                       <p>What does this team member to? Keep it short! This is also a great spot for social links!</p>

@@ -6,7 +6,7 @@ Myat Min Muang
    <h1>Myat Min Muang</h1>
    
    <div style="float:left; width:30%;">
-      <img src="http://sfsuse.com/~sp17g09/buysellsfsu/img/myat.jpg" alt="myat"
+      <img src="<?php echo $this->request->webroot; ?>img/myat.jpg" alt="myat"
                 height="300" width="300" />
    </div>
 
