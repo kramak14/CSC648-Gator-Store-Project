@@ -1,3 +1,6 @@
+[![Build Status](https://travis-ci.com/jasonh9/csc648-team09.svg?token=hNscJNVeeoVT1qpqHfi2&branch=master)](https://travis-ci.com/jasonh9/csc648-team09)
+
+
 # csc648-team09
 
 team09 project repo
