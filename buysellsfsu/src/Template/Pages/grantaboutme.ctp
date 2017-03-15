@@ -6,7 +6,7 @@ Grant Gaviglio
    <h1>Grant Gaviglio</h1> 
 
    <div style="float:left; width:30%;">
-   <img src="http://sfsuse.com/~sp17g09/buysellsfsu/img/grant.jpg" alt="grant"
+   <img src="<?php echo $this->request->webroot; ?>img/grant.jpg" alt="grant"
              height="300" width="300" />
    </div>
 
