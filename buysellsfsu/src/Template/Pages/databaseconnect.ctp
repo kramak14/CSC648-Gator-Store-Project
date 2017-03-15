@@ -1,3 +1,5 @@
+<!DOCTYPE HTML>  
+<html>
 <?php
 use Cake\Datasource\ConnectionManager;
 
@@ -10,37 +12,10 @@ use Cake\Datasource\ConnectionManager;
 	echo('connection failed');
     }
 
-/*
-$connection->insert('items', [
-    'iditems' => 2321,
-    'category' => 'A New Article',
-    'name'=> 'some article'
-]);
+echo $this->Form->create('post');
 
-*/
+echo $this->Form->input('name');
+
+echo $this->Form->end('Add');
 ?>
-
-
-<html>
-<!--
-<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">  
-  Name: <input type="text" name="name" value="<?php echo $name;?>">
-  <span class="error">* <?php echo $nameErr;?></span>
-  <br><br>
-  E-mail: <input type="text" name="email" value="<?php echo $email;?>">
-  <span class="error">* <?php echo $emailErr;?></span>
-  <br><br>
-  Website: <input type="text" name="website" value="<?php echo $website;?>">
-  <span class="error"><?php echo $websiteErr;?></span>
-  <br><br>
-  Comment: <textarea name="comment" rows="5" cols="40"><?php echo $comment;?></textarea>
-  <br><br>
-  Gender:
-  <input type="radio" name="gender" <?php if (isset($gender) && $gender=="female") echo "checked";?> value="female">Female
-  <input type="radio" name="gender" <?php if (isset($gender) && $gender=="male") echo "checked";?> value="male">Male
-  <span class="error">* <?php echo $genderErr;?></span>
-  <br><br>
-  <input type="submit" name="submit" value="Submit">  
-</form>
--->
 </html>
