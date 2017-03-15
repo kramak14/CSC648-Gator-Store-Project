@@ -74,7 +74,7 @@ $cakeDescription = 'BuySellSFSU';
     <div class="container">
 
        <?= $this->fetch('content') ?>
-
+       <?= $this->Flash->render() ?>
        <hr>
 
             <!-- Footer -->
