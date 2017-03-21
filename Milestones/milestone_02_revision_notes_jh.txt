@@ -1,0 +1,15 @@
+1. Database Schema
+2. need spec for searching/filtering
+3. Describe: how is search done and categories filter; blobs or files
+
+
+
+2. spec for searching/filtering
+	- Search specs: Buyer will have the ability to search a database of items via search bar, a simple search function such as LIKE % will be used.
+	- Filtering specs: Items will be sorted via by category, price, location, etc. The buyer will have the option of narrowing down their search queries by selecting the desired item filters.
+
+
+3. searchItemByID(product_id int)
+	- returns all item's specs in JSON format, the data will then go through an HTML/CSS parser and list all item details.
+   searchItembyName(String product)
+        - returns all item's specs "
