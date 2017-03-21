@@ -1,16 +1,19 @@
 <?php $this->start('title'); ?>
 Myat Min Muang
 <?php $this->end(); ?>
-<div class="container clearfix">
-   <br><br>
-   <h1>Myat Min Muang</h1>
-   
-   <div style="float:left; width:30%;">
+<div class="row">
+   <div class="col-md-4">
+      <!-- Name and Image -->
+      <br><br>
+      <h1>Myat Min Muang</h1>
+
       <img src="<?php echo $this->request->webroot; ?>img/myat.jpg" alt="myat"
                 height="300" width="300" />
    </div>
 
-   <div style="float:left; width:70%;">
+   <!-- About Self -->
+   <div class="col-md-8">
+      <br><br><br><br><br>
       <font size='5'>Computer Science SFSU<br></font>
       <font size='4'><strong>About Me</strong></p>
       <font size= '3'>I am an international student studying Computer Science
