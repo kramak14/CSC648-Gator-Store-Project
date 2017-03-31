@@ -1,6 +1,15 @@
 <?php $this->start('title'); ?>
 Charles Williams
 <?php $this->end(); ?>
+<<<<<<< HEAD
+<div class="container clearfix">
+   <br><br>
+   <h1>Charles Williams</h1>
+   
+   <div style="float:left; width:30%;">
+   <img src="<?php echo $this->request->webroot; ?>img/charles.jpg" alt="charles"
+             height="300" width="300" />
+=======
 <div class="row">
    <!-- Name & Image -->
    <div class="col-md-4">
@@ -9,6 +18,7 @@ Charles Williams
 
          <img src="<?php echo $this->request->webroot; ?>img/charles.jpg" alt="charles"
                 height="300" width="300" />
+>>>>>>> origin
    </div>
 
    <!-- About Self -->

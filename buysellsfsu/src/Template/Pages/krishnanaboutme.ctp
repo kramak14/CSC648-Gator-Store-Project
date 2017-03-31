@@ -1,12 +1,20 @@
 <?php $this->start('title'); ?>
 Krishnan Ramakrishnan
 <?php $this->end(); ?>
+<<<<<<< HEAD
+<div class="container clearfix">
+   <br><br>
+   <h1>Krishnan Ramakrishnan</h1>
+   
+   <div style="float:left; width:30%;">
+=======
 <div class="row">
    <!-- Name and Image -->
    <div class="col-md-4">
       <br><br>
       <h1>Krishnan Ramakrishnan</h1>
 
+>>>>>>> origin
       <img src="<?php echo $this->request->webroot; ?>img/krishnan.jpg" alt="krishnan"
                 height="300" width="300" />
    </div>

@@ -7,7 +7,12 @@ Grant Gaviglio
       <br><br>
       <h1>Grant Gaviglio</h1>
 
+<<<<<<< HEAD
+   <div style="float:left; width:30%;">
+   <img src="<?php echo $this->request->webroot; ?>img/grant.jpg" alt="grant"
+=======
       <img src="<?php echo $this->request->webroot; ?>img/grant.jpg" alt="grant"
+>>>>>>> origin
              height="300" width="300" />
    </div>
    <!-- About Self -->
