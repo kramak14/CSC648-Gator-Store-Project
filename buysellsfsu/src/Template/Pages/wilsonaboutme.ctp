@@ -1,16 +1,27 @@
 <?php $this->start('title'); ?>
 Wilson Le
 <?php $this->end(); ?>
+<<<<<<< HEAD
 <div class="container clearfix">
    <br><br>
    <h1>Wilson Le</h1>
    
    <div style="float:left; width:30%;">
+=======
+<div class="row">
+   <div class="col-md-4">
+   <!-- Name and Image -->
+      <br><br>
+      <h1>Wilson Le</h1>
+
+>>>>>>> origin
       <img src="<?php echo $this->request->webroot; ?>img/wilson.jpg" alt="wilson"
                 height="300" width="300" />
    </div>
 
-   <div style="float:left; width:70%;">
+   <!-- About Self -->
+   <div class="col-md-4">
+      <br><br><br><br><br>
       <font size='5'>Computer Science SFSU<br></font>
       <font size='4'><strong>My Quote</strong></p>
       <font size= '3'>"Change One number, and the entire game changes"</font>
