@@ -64,6 +64,7 @@ Stack Trace:
 #1 /home/sp17g09/csc648-team09/gatorstore/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(ProductsController), Object(CakeRequest))
 #2 /home/sp17g09/csc648-team09/gatorstore/app/webroot/index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #3 {main}
+<<<<<<< HEAD
 2017-04-05 00:57:31 Error: [MissingActionException] Action UsersController::index() could not be found.
 Exception Attributes: array (
   'controller' => 'UsersController',
@@ -155,3 +156,5 @@ Request URL: /~sp17g09/gatorstore/customer/logout
 Stack Trace:
 #0 /home/sp17g09/csc648-team09/gatorstore/app/webroot/index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #1 {main}
+=======
+>>>>>>> d70e0ffcd3afe68d25ac41d01e7012964bb790f4
