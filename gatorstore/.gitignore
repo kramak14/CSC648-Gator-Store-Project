@@ -1,0 +1,19 @@
+# ================== #
+# PHPstorm Generated #
+# ================== #
+
+.idea/*
+buysellsfsu/logs/*
+buysellsfsu/tmp/*
+
+# CakePHP 2
+
+app/tmp/cache/models/*
+app/tmp/cache/persistent/*
+app/tmp/cache/views/*
+app/tmp/logs/*
+app/tmp/sessions/*
+app/tmp/tests/*
+app/Config/core.php
+app/Config/database.php
+vendors/*
