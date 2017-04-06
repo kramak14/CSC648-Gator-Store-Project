@@ -10,7 +10,7 @@ buysellsfsu/tmp/*
 # ignore all logs
 
 gatorstore/vendors/*
-gatorstore/tmp/cache/*
-gatorstore/tmp/logs/*
-gatorstore/tmp/sessions/*
-gatorstore/tmp/tests/*
+gatorstore/app/tmp/cache/models/shopping_*
+gatorstore/app/tmp/cache/persistent/shopping_*
+gatorstore/app/tmp/cache/cake_toolbar_*
+gatorstore/app/tmp/logs/*.log
