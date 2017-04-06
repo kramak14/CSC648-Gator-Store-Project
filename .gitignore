@@ -9,10 +9,8 @@ buysellsfsu/tmp/*
 # CakePHP 2
 # ignore all logs
 
-/gatorstore/app/tmp/cache/*
-/gatorstore/app/tmp/logs/*
-/gatorstore/app/tmp/sessions/*
-/gatorstore/app/tmp/tests/*
-/gatorstore/app/Config/core.php
-/gatorstore/app/Config/database.php
 /gatorstore/vendors/*
+/gatorstore/tmp/cache/*
+/gatorstore/tmp/logs/*
+/gatorstore/tmp/sessions/*
+/gatorstore/tmp/tests/*
