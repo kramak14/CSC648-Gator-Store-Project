@@ -8,7 +8,6 @@ buysellsfsu/tmp/*
 
 # CakePHP 2
 # ignore all logs
-*.log
 
 /gatorstore/app/tmp/cache/*
 /gatorstore/app/tmp/logs/*
