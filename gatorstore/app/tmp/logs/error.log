@@ -158,3 +158,21 @@ Stack Trace:
 #1 {main}
 =======
 >>>>>>> d70e0ffcd3afe68d25ac41d01e7012964bb790f4
+2017-04-06 05:21:10 Error: [MissingControllerException] Controller class LoginController could not be found.
+Exception Attributes: array (
+  'class' => 'LoginController',
+  'plugin' => NULL,
+)
+Request URL: /~sp17g09/gatorstore/login
+Stack Trace:
+#0 /home/sp17g09/csc648-team09/gatorstore/app/webroot/index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2017-04-06 05:21:17 Error: [MissingControllerException] Controller class LoginController could not be found.
+Exception Attributes: array (
+  'class' => 'LoginController',
+  'plugin' => NULL,
+)
+Request URL: /~sp17g09/gatorstore/login
+Stack Trace:
+#0 /home/sp17g09/csc648-team09/gatorstore/app/webroot/index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}

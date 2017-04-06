@@ -59,13 +59,14 @@
     <div class="navbar navbar-inverse navbar-static-top" role="navigation">
         <div class="container">
             <div class="navbar-header">
+	
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="<?php echo $this->Html->url('/'); ?>">CakePHP Cart</a>
+                <a class="navbar-brand" href="<?php echo $this->Html->url('/'); ?>">GatoreStore</a>
             </div>
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav">
@@ -94,6 +95,11 @@
     <div class="content">
         <div class="container">
 
+	<div class="alert alert-danger">
+        	<span class="glyphicon glyphicon-info-sign">  This is a test shopping cart for csc648 SFSU</span> 
+        </div>
+
+
             <?php echo $this->Flash->render(); ?>
             <br />
             <ul class="breadcrumb">
@@ -105,9 +111,7 @@
             <div id="msg"></div>
             <br />
 
-            <div class="alert alert-danger">
-                <span class="glyphicon glyphicon-info-sign"></span> THIS IS A DEMO CAKEPHP SHOPPING CART !
-            </div>
+            
 
         </div>
     </div>
