@@ -28,7 +28,7 @@ buysellsfsu/tmp/*
 
 # CakePHP 2
 
-/gatorstore/app/tmp/*
-/gatorstore/app/Config/core.php
-/gatorstore/app/Config/database.php
-/gatorstore/vendors/*
+gatorstore/app/tmp/*
+gatorstore/app/Config/core.php
+gatorstore/app/Config/database.php
+gatorstore/vendors/*
