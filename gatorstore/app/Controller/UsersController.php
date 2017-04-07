@@ -8,7 +8,10 @@ class UsersController extends AppController {
         parent::beforeFilter();
         $this->Auth->allow('login');
     }
-
+////////////////////////////////////////////////////////////
+	public function register() {
+		
+	}
 ////////////////////////////////////////////////////////////
 
     public function login() {
@@ -171,3 +174,4 @@ class UsersController extends AppController {
 ////////////////////////////////////////////////////////////
 
 }
+

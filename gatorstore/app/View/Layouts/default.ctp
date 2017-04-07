@@ -25,12 +25,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" type="text/css" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css" />
-    <?php echo $this->Html->css(array('bootstrap.min.css', 'bootstrap-theme.min.css', 'https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css', 'css.css')); ?>
+    <?php echo $this->Html->css(array('bootstrap.min.css', 'bootstrap-theme.min.css', 'https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css', 'css.css','login.css')); ?>
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <?php echo $this->Html->script(array('bootstrap.min.js')); ?>
     <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
-    <?php echo $this->Html->script(array('js.js')); ?>
+
     <?php echo $this->App->js(); ?>
     <?php echo $this->fetch('meta'); ?>
     <?php echo $this->fetch('css'); ?>
@@ -59,14 +58,13 @@
     <div class="navbar navbar-inverse navbar-static-top" role="navigation">
         <div class="container">
             <div class="navbar-header">
-	
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="<?php echo $this->Html->url('/'); ?>">GatoreStore</a>
+                <a class="navbar-brand" href="<?php echo $this->Html->url('/'); ?>">CakePHP Cart</a>
             </div>
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav">
@@ -82,7 +80,8 @@
 
                     <?php echo $this->Form->input('search', array('label' => false, 'div' => false, 'id' => 's', 'class' => 'input-sm s', 'autocomplete' => 'off')); ?>
                     <?php echo $this->Form->button('Search', array('div' => false, 'class' => 'btn btn-sm btn-primary')); ?>
-                    &nbsp;
+					&nbsp;
+					<?php echo $this->Form->button('login', array('class' => 'btn btn-sm btn-primary', 'id' => 'loginbutton')); ?>
                     <span id="cartbutton" style="display:none;">
                         <?php echo $this->Html->link('<i class="fa fa-cart-plus"></i> &nbsp; Shopping Cart', array('controller' => 'shop', 'action' => 'cart'), array('class' => 'btn btn-sm btn-success', 'escape' => false)); ?>
                     </span>
@@ -94,12 +93,53 @@
 
     <div class="content">
         <div class="container">
+			<?php 
+			/**
+			This is the modal content
+			**/
+			?>
+			<div id="myModal" class="modallogin">
 
-	<div class="alert alert-danger">
-        	<span class="glyphicon glyphicon-info-sign">  This is a test shopping cart for csc648 SFSU</span> 
-        </div>
+				<!-- Modal content -->
+				<div class="modal-contentlogin">
+				<span class="closelogin">&times;</span>
+				<?php echo $this->Form->create('User', ['url' => ['action' => 'login']]); ?>
+				<?php echo $this->Form->input('username', ['class' => 'form-control', 'autofocus' => 'autofocus']); ?>
+				<br />
+				<?php echo $this->Form->input('password', ['class' => 'form-control']); ?>
+				<br />
+				<?php echo $this->Form->button('Login', ['class' => 'btn btn-primary']); ?>
+				<?php echo $this->Form->end(); ?>
+				<br />
+			</div>
+			</div>
+			<script>
+			// Get the modal
+			var loginmodal = document.getElementById('myModal');
 
+			// Get the button that opens the modal
+			var btn = document.getElementById("loginbutton");
 
+			// Get the <span> element that closes the modal
+			var span = document.getElementsByClassName("closelogin")[0];
+
+			// When the user clicks the button, open the modal 
+			btn.onclick = function() {
+				loginmodal.style.display = "block";
+			}
+
+			// When the user clicks on <span> (x), close the modal
+			span.onclick = function() {
+				loginmodal.style.display = "none";
+			}
+
+			// When the user clicks anywhere outside of the modal, close it
+			window.onclick = function(event) {
+				if (event.target == loginmodal) {
+					loginmodal.style.display = "none";
+				}
+			}
+			</script>
             <?php echo $this->Flash->render(); ?>
             <br />
             <ul class="breadcrumb">
@@ -111,8 +151,10 @@
             <div id="msg"></div>
             <br />
 
-            
-
+            <div class="alert alert-danger">
+                <span class="glyphicon glyphicon-info-sign"></span> THIS IS A DEMO CAKEPHP SHOPPING CART !
+            </div>
+		
         </div>
     </div>
 
@@ -129,6 +171,9 @@
     <div class="sqldump">
         <?php echo $this->element('sql_dump'); ?>
     </div>
+	
 
 </body>
 </html>
+
+
