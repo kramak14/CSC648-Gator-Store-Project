@@ -9,3 +9,84 @@ Stack Trace:
 #1 /home/jhuang9/shopping/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(ShopController), Object(CakeRequest))
 #2 /home/jhuang9/shopping/app/webroot/index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #3 {main}
+2017-04-09 23:30:25 Error: [MissingControllerException] Controller class ImagesController could not be found.
+Exception Attributes: array (
+  'class' => 'ImagesController',
+  'plugin' => NULL,
+)
+Request URL: /~mmaung/gatorstore/images/small/test.jpg
+Stack Trace:
+#0 /home/mmaung/csc648-team09/gatorstore/app/webroot/index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2017-04-09 23:35:48 Error: [MissingControllerException] Controller class ImagesController could not be found.
+Exception Attributes: array (
+  'class' => 'ImagesController',
+  'plugin' => NULL,
+)
+Request URL: /~mmaung/gatorstore/images/small/test.jpg
+Stack Trace:
+#0 /home/mmaung/csc648-team09/gatorstore/app/webroot/index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2017-04-09 23:35:55 Error: [MissingControllerException] Controller class ImagesController could not be found.
+Exception Attributes: array (
+  'class' => 'ImagesController',
+  'plugin' => NULL,
+)
+Request URL: /~mmaung/gatorstore/images/small/test.jpg
+Stack Trace:
+#0 /home/mmaung/csc648-team09/gatorstore/app/webroot/index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2017-04-09 23:35:57 Error: [MissingControllerException] Controller class ImagesController could not be found.
+Exception Attributes: array (
+  'class' => 'ImagesController',
+  'plugin' => NULL,
+)
+Request URL: /~mmaung/gatorstore/images/small/test.jpg
+Stack Trace:
+#0 /home/mmaung/csc648-team09/gatorstore/app/webroot/index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2017-04-09 23:35:58 Error: [MissingControllerException] Controller class ImagesController could not be found.
+Exception Attributes: array (
+  'class' => 'ImagesController',
+  'plugin' => NULL,
+)
+Request URL: /~mmaung/gatorstore/images/small/test.jpg
+Stack Trace:
+#0 /home/mmaung/csc648-team09/gatorstore/app/webroot/index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2017-04-09 23:36:04 Error: [MissingControllerException] Controller class ImagesController could not be found.
+Exception Attributes: array (
+  'class' => 'ImagesController',
+  'plugin' => NULL,
+)
+Request URL: /~mmaung/gatorstore/images/small/test.jpg
+Stack Trace:
+#0 /home/mmaung/csc648-team09/gatorstore/app/webroot/index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2017-04-09 23:38:03 Error: [MissingControllerException] Controller class ImagesController could not be found.
+Exception Attributes: array (
+  'class' => 'ImagesController',
+  'plugin' => NULL,
+)
+Request URL: /~mmaung/gatorstore/images/small/test.jpg
+Stack Trace:
+#0 /home/mmaung/csc648-team09/gatorstore/app/webroot/index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2017-04-09 23:38:05 Error: [MissingControllerException] Controller class ImagesController could not be found.
+Exception Attributes: array (
+  'class' => 'ImagesController',
+  'plugin' => NULL,
+)
+Request URL: /~mmaung/gatorstore/images/small/test.jpg
+Stack Trace:
+#0 /home/mmaung/csc648-team09/gatorstore/app/webroot/index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2017-04-09 23:41:42 Error: [MissingControllerException] Controller class ImagesController could not be found.
+Exception Attributes: array (
+  'class' => 'ImagesController',
+  'plugin' => NULL,
+)
+Request URL: /~mmaung/gatorstore/images/small/test.jpg
+Stack Trace:
+#0 /home/mmaung/csc648-team09/gatorstore/app/webroot/index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}

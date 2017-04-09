@@ -25,7 +25,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" type="text/css" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css" />
-    <?php echo $this->Html->css(array('bootstrap.min.css', 'bootstrap-theme.min.css', 'https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css', 'css.css')); ?>
+    <?php echo $this->Html->css(array('bootstrap.min.css', 'bootstrap-theme.min.css', 'https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css', 'css.css',)); ?>
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <?php echo $this->Html->script(array('bootstrap.min.js')); ?>
@@ -73,7 +73,9 @@
                     <li><?php echo $this->Html->link('Products', array('controller' => 'products', 'action' => 'products')); ?></li>
                     <li><?php echo $this->Html->link('Brands', array('controller' => 'brands', 'action' => 'index')); ?></li>
                     <li><?php echo $this->Html->link('Categories', array('controller' => 'categories', 'action' => 'index')); ?></li>
+                    <li><?php echo $this->Html->link('About us', array('controller'=>'pages', 'action'=>'aboutus')); ?></li>
                     <li><?php echo $this->Html->link('Search', array('controller' => 'products', 'action' => 'search')); ?></li>
+                    <li><?php echo $this->Html->link('Carosel Test', array('controller'=>'pages', 'action'=>'caroselmultipage')); ?></li>
                 </ul>
                 <ul class="navbar-form form-inline navbar-right">
 
