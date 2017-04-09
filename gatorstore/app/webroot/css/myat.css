@@ -1,0 +1,9 @@
+.col-lg-4>h2>a{
+    color:red;
+}
+
+/* Multi-Item Carousel */
+.carousel-control {
+    padding-top:10%;
+    width:5%;
+}
