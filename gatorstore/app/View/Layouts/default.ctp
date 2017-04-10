@@ -81,11 +81,13 @@
                     <?php echo $this->Form->input('search', array('label' => false, 'div' => false, 'id' => 's', 'class' => 'input-sm s', 'autocomplete' => 'off')); ?>
                     <?php echo $this->Form->button('Search', array('div' => false, 'class' => 'btn btn-sm btn-primary')); ?>
 					&nbsp;
+					<?php echo $this->Form->button('login', array('class' => 'btn btn-sm btn-primary', 'id' => 'loginbutton', 'type' => 'button')); ?>
+					<?php echo $this->Form->end(); ?>
+					
                     <span id="cartbutton" style="display:none;">
                         <?php echo $this->Html->link('<i class="fa fa-cart-plus"></i> &nbsp; Shopping Cart', array('controller' => 'shop', 'action' => 'cart'), array('class' => 'btn btn-sm btn-success', 'escape' => false)); ?>
-                    </span>
-                    <?php echo $this->Form->end(); ?>
-					<?php echo $this->Form->button('login', array('class' => 'btn btn-sm btn-primary', 'id' => 'loginbutton')); ?>
+					</span>
+					
                 </ul>
             </div>
         </div>
@@ -103,6 +105,7 @@
 				<!-- Modal content -->
 				<div class="modal-contentlogin">
 				<span class="closelogin">&times;</span>
+				<h2><center><?php echo "Welcome to GatorStore! Please Log in"; ?></h2></center>
 				<?php echo $this->Form->create('User', ['url' => ['action' => 'login']]); ?>
 				<?php echo $this->Form->input('username', ['class' => 'form-control', 'autofocus' => 'autofocus']); ?>
 				<br />
@@ -111,6 +114,11 @@
 				<?php echo $this->Form->button('Login', ['class' => 'btn btn-primary']); ?>
 				<?php echo $this->Form->end(); ?>
 				<br />
+				<br />
+				
+				<?php echo "Dont have an account? click "; ?>
+				<?php echo $this->Html->link('here', array('controller' => 'users', 'action' => 'register')); ?>
+				<?php echo " to register"; ?>
 			</div>
 			</div>
 			<script>
@@ -175,5 +183,6 @@
 
 </body>
 </html>
+
 
 

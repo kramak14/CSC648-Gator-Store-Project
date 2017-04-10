@@ -9,9 +9,19 @@ class UsersController extends AppController {
         $this->Auth->allow('login');
     }
 ////////////////////////////////////////////////////////////
-	public function register() {
-		
-	}
+
+    public function register() {
+        if ($this->request->is('post')) {
+            $this->User->create();
+            if ($this->User->save($this->request->data)) {
+                $this->Flash->flash('Registration Successful!');
+                return $this->redirect(array('action' => 'customer_dashboard'));
+            } else {
+                $this->Flash->flash('We are unable to make your account at this moment.  Please try again');
+            }
+        }
+    }
+	
 ////////////////////////////////////////////////////////////
 
     public function login() {
@@ -174,4 +184,5 @@ class UsersController extends AppController {
 ////////////////////////////////////////////////////////////
 
 }
+
 
