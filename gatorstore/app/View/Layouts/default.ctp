@@ -73,6 +73,7 @@
                     <li><?php echo $this->Html->link('Brands', array('controller' => 'brands', 'action' => 'index')); ?></li>
                     <li><?php echo $this->Html->link('Categories', array('controller' => 'categories', 'action' => 'index')); ?></li>
                     <li><?php echo $this->Html->link('Search', array('controller' => 'products', 'action' => 'search')); ?></li>
+                    <li><?php echo $this->Html->link('Sell', array('controller' => 'products', 'action' => 'sell')); ?></li>
                 </ul>
                 <ul class="navbar-form form-inline navbar-right">
 
