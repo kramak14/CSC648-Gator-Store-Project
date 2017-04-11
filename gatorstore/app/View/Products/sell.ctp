@@ -13,8 +13,8 @@
         <br />
         <?php echo $this->Form->input('Category', ['class' => 'form-control']); ?>
         <br />
-        <?php echo $this->Form->input('image', ['class' => 'form-control']); ?>
-        <?php echo $this->Form->button('Browse', ['class' => 'btn btn-default', 'type' => 'button']); ?>
+        <?php echo $this->Form->input('image', ['type' => 'file']); ?>
+        <!--<?php echo $this->Form->button('Browse', ['class' => 'btn btn-default', 'type' => 'button']); ?>-->
         <br /><br />
         <?php echo $this->Form->button('Post Item', ['class' => 'btn btn-primary']); ?>
         <?php echo $this->Form->end(); ?>
