@@ -502,11 +502,13 @@ class ProductsController extends AppController {
 ////////////////////////////////////////////////////////////
 
     public function sell() {
-
+        $categories = $this->Product->Category->find('list');
+        array_push($categories, 'furniture', 'electronics', 'misc');
+        $this->set(compact('categories'));
+        $brands = $this->Product->Brand->find('list');
+        $this->set(compact('brands'));
 
     }
-
-////////////////////////////////////////////////////////////
 
 ////////////////////////////////////////////////////////////
 
