@@ -64,7 +64,9 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="<?php echo $this->Html->url('/'); ?>">CakePHP Cart</a>
+               <!--<a class="navbar-brand" href="<?php echo $this->Html->url('/'); ?>">GatorStore</a>-->
+		<?php echo $this->Html->link($this->Html->image('logo.png', array('alt' => 'CakePHP', 'border' => 0)), '/', array('target' => '_blank', 'escape' => false)); ?>
+
             </div>
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav">
