@@ -65,7 +65,7 @@
                     <span class="icon-bar"></span>
                 </button>
                <!--<a class="navbar-brand" href="<?php echo $this->Html->url('/'); ?>">GatorStore</a>-->
-		<?php echo $this->Html->link($this->Html->image('logo.png', array('alt' => 'CakePHP', 'border' => 0)), '/', array('target' => '_blank', 'escape' => false)); ?>
+		<?php echo $this->Html->link($this->Html->image('logo.png', array('alt' => 'CakePHP', 'border' => 0)), '/', array('target' => '', 'escape' => false)); ?>
 
             </div>
             <div class="collapse navbar-collapse navbar-ex1-collapse">
@@ -74,7 +74,6 @@
                     <li><?php echo $this->Html->link('Products', array('controller' => 'products', 'action' => 'products')); ?></li>
                     <li><?php echo $this->Html->link('Brands', array('controller' => 'brands', 'action' => 'index')); ?></li>
                     <li><?php echo $this->Html->link('Categories', array('controller' => 'categories', 'action' => 'index')); ?></li>
-                    <li><?php echo $this->Html->link('Search', array('controller' => 'products', 'action' => 'search')); ?></li>
                     <li><?php echo $this->Html->link('Sell', array('controller' => 'products', 'action' => 'sell')); ?></li>
                 </ul>
                 <ul class="navbar-form form-inline navbar-right">
