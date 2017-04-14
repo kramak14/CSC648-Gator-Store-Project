@@ -1,10 +1,9 @@
-d>
-</head>
-<body>
+<h2><?php echo "Welcome to Gator Store!"; ?></h2>
+<br />
 <div class="row">
     <div class="col-sm-4">
 		<?php echo "Please fill in the fields to register"; ?>
-        <?php echo $this->Form->create('User', array('name' => 'registrationform'));?>
+        <?php echo $this->Form->create('User');?>
         <?php echo $this->Form->input('role', array('class' => 'form-control', 'value' => 'customer', 'type' => 'hidden')); ?>
         <br />
         <?php echo $this->Form->input('name', array('class' => 'form-control')); ?>
@@ -12,8 +11,6 @@ d>
         <?php echo $this->Form->input('username', array('class' => 'form-control')); ?>
         <br />
         <?php echo $this->Form->input('password', array('class' => 'form-control')); ?>
-		<br />
-		<?php echo $this->Form->input('passwordconfirm', array('class' => 'form-control', 'label' => 'Please enter your password again', 'type' => 'password')); ?>
 		<br />
         <?php echo $this->Form->input('active', array('type' => 'hidden', 'value' => '1')); ?>
         <br />
@@ -25,5 +22,4 @@ d>
 
     </div>
 </div>
-</body>
 

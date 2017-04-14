@@ -8,7 +8,7 @@ class User extends AppModel {
         'name' => array(
             'rule1' => array(
                 'rule' => array('notBlank'),
-                'message' => 'name is required',
+                'message' => 'mame is required',
                 //'allowEmpty' => false,
                 //'required' => false,
             ),
@@ -33,12 +33,6 @@ class User extends AppModel {
                 'message' => 'password is required'
             ),
         ),
-		'passwordconfirm' => array(
-			'identical' => array(
-				'rule' => array('identicalFieldValues', 'password'),
-				'message' => 'Password confirmation does not match password. Please try again'
-			),
-		),
 
     );
 
@@ -53,20 +47,4 @@ class User extends AppModel {
 
 ////////////////////////////////////////////////////////////
 
-    function identicalFieldValues( $field=array(), $compare_field=null )  
-    { 
-        foreach( $field as $key => $value ){ 
-            $v1 = $value; 
-            $v2 = $this->data[$this->name][ $compare_field ];                  
-            if($v1 !== $v2) { 
-                return FALSE; 
-            } else { 
-                continue; 
-            } 
-        } 
-        return TRUE; 
-    } 
-
-////////////////////////////////////////////////////////////
 }
-
