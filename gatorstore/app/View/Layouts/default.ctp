@@ -69,14 +69,7 @@
 
             </div>
             <div class="collapse navbar-collapse navbar-ex1-collapse">
-                <ul class="nav navbar-nav">
-                    <li><?php echo $this->Html->link('Home', array('controller' => 'products', 'action' => 'view')); ?></li>
-                    <li><?php echo $this->Html->link('Products', array('controller' => 'products', 'action' => 'products')); ?></li>
-                    <li><?php echo $this->Html->link('Brands', array('controller' => 'brands', 'action' => 'index')); ?></li>
-                    <li><?php echo $this->Html->link('Categories', array('controller' => 'categories', 'action' => 'index')); ?></li>
-                    <li><?php echo $this->Html->link('Sell', array('controller' => 'products', 'action' => 'sell')); ?></li>
-                </ul>
-                <ul class="navbar-form form-inline navbar-right">
+                                <ul class="navbar-form form-inline navbar-right">
 
                     <?php echo $this->Form->create('Product', array('type' => 'GET', 'url' => array('controller' => 'products', 'action' => 'search'))); ?>
 
@@ -92,6 +85,15 @@
 					
                 </ul>
             </div>
+<ul class="nav navbar-nav">
+                    <li><?php echo $this->Html->link('Home', array('controller' => 'products', 'action' => 'view')); ?></li>
+                    <li><?php echo $this->Html->link('Products', array('controller' => 'products', 'action' => 'products')); ?></li>
+                    <li><?php echo $this->Html->link('Brands', array('controller' => 'brands', 'action' => 'index')); ?></li>
+                    <li><?php echo $this->Html->link('Categories', array('controller' => 'categories', 'action' => 'index')); ?></li>
+                    <li><?php echo $this->Html->link('Sell', array('controller' => 'products', 'action' => 'sell')); ?></li>
+                </ul>
+
+
         </div>
     </div>
 
