@@ -2,6 +2,26 @@
 App::uses('AppController', 'Controller');
 class CategoriesController extends AppController {
 
+
+
+////////////////////////////////////////////////////////////
+
+    public function treeList() {
+        $this->helpers[] = 'Tree';
+        $categories = $this->Category->find('all', array(
+            'recursive' => -1,
+            'order' => array(
+                'Category.lft' => 'ASC'
+            ),
+            'conditions' => array(
+            ),
+        ));
+        $this->set(compact('categories'));
+    }
+
+////////////////////////////////////////////////////////////
+
+
 ////////////////////////////////////////////////////////////
 
     public function index() {

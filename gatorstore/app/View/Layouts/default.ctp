@@ -20,8 +20,7 @@
 <!doctype html>
 <html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title><?php echo $title_for_layout; ?></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /> <title><?php echo $title_for_layout; ?></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" type="text/css" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css" />
@@ -59,18 +58,22 @@
 
 </head>
 <body>
-
 <div class="wrap">
 
 <div class="header_top">
     <div class="logo">
-        <a href="index.html"><?php echo $this->Html->image('logo.png'); ?> </a>
+        <a href="."><?php echo $this->Html->image('logo.png'); ?></a>
     </div>
     <div class="header_top_right">
 
 
 <!--  start of category filter -->
- 	<?php echo $this->Form->input('category', array('options' => array('' => 'All', 'Textbooks'=> 'Textbooks', 'PhysicsTextbooks'=>' -> Physics Textbooks','BiologyTextBooks' => ' -> Biology', 'Travel'=> 'Travel', 'Clothes' => 'Clothes', 'TShirts' => ' ->T-Shirts', 'Electronics' => 'Electrionics', 'ElectronicsAudtio' => ' -> Audio'))); ?>
+ 	<?php echo $this->Form->input('category', array(
+		'options' => array('Textbooks'=> 'Textbooks', 'PhysicsTextbooks'=>' -> Physics Textbooks','BiologyTextBooks' => ' -> Biology', 'Travel'=> 'Travel', 'Clothes' => 'Clothes', 'TShirts' => ' ->T-Shirts', 'Electronics' => 'Electrionics', 'ElectronicsAudtio' => ' -> Audio'),
+		'empty' => array('All' => 'All')
+	)); ?>
+
+<?php /* echo $this->Category->generateTreeList(); */?>
 <!-- end of category filter -->
 
 
@@ -129,6 +132,7 @@
 
 
     <div class="content">
+
         <div class="container">
 			<?php 
 			/**
@@ -185,6 +189,7 @@
 			</script>
             <?php echo $this->Flash->render(); ?>
             <br />
+
             <ul class="breadcrumb">
                 <?php echo $this->Html->link('Home', array('controller' => 'products', 'action' => 'index')); ?> / <?php echo $this->Html->getCrumbs(' / '); ?>
             </ul>
