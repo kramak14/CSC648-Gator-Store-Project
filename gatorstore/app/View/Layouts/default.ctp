@@ -44,6 +44,7 @@
             });
         </script>
     <?php endif; ?>
+
     <script>
         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
             (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -54,6 +55,8 @@
         ga('send', 'pageview');
 
     </script>
+
+
 </head>
 <body>
 
@@ -64,11 +67,26 @@
         <a href="index.html"><?php echo $this->Html->image('logo.png'); ?> </a>
     </div>
     <div class="header_top_right">
-        <div class="search_box">
-            <form>
-                <input type="text" value="Search for Products" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search for Products';}"><input type="submit" value="SEARCH">
-            </form>
-        </div>
+
+
+<!--  start of category filter -->
+ 	<?php echo $this->Form->input('category', array('options' => array('' => 'All', 'Textbooks'=> 'Textbooks', 'PhysicsTextbooks'=>' -> Physics Textbooks','BiologyTextBooks' => ' -> Biology', 'Travel'=> 'Travel', 'Clothes' => 'Clothes', 'TShirts' => ' ->T-Shirts', 'Electronics' => 'Electrionics', 'ElectronicsAudtio' => ' -> Audio'))); ?>
+<!-- end of category filter -->
+
+
+
+
+<!-- start of search bar -->
+	<div class="search_box">
+		<?php echo $this->Form->create('Product', array('type' => 'GET', 'url' => array('controller' => 'products', 'action' => 'search'))); ?>
+		<?php echo $this->Form->input('search', array('label' => false, 'div' => false, 'autocomplete' => 'off')); ?>
+		<?php echo $this->Form->input('Search', array('div' => false, 'type' => 'submit', 'label' => false)); ?>
+		<?php echo $this->Form->end(); ?>
+	</div>
+<!-- end of search bar -->
+
+
+
         <div class="shopping_cart">
             <div class="cart">
                 <a href="#" title="View my shopping cart" rel="nofollow">
@@ -78,12 +96,14 @@
                 </a>
             </div>
         </div>
+
+<!-- start of login button -->
         <div class="login">
-            <span><?php echo $this->Html->image("login.png", array(
-    "alt" => "Login",
-    'url' => array('controller' => 'users', 'action' => 'login'))); ?></span>
-            <!--<span><?php echo $this->Html->link($this->Html->image('login.png'), array('controller' => 'users', 'action' => 'login')); ?></span>-->
+		<?php echo $this->Form->button('login', array('class' => 'btn btn-sm btn-primary', 'id' => 'loginbutton', 'type' => 'button')); ?>
         </div>
+<!-- end of login button -->
+
+
         <div class="clear"></div>
     </div>
     <div class="clear"></div>
@@ -100,13 +120,6 @@
     </div>
     <ul class="navbar-form form-inline navbar-right">
 
-        <?php echo $this->Form->create('Product', array('type' => 'GET', 'url' => array('controller' => 'products', 'action' => 'search'))); ?>
-		<?php echo $this->Form->input('category', array('options' => array('' => 'All', 'Textbooks'=> 'Textbooks', 'PhysicsTextbooks'=>' -> Physics Textbooks','BiologyTextBooks' => ' -> Biology', 'Travel'=> 'Travel', 'Clothes' => 'Clothes', 'TShirts' => ' ->T-Shirts', 'Electronics' => 'Electrionics', 'ElectronicsAudtio' => ' -> Audio'))); ?>
-        <?php echo $this->Form->input('search', array('label' => false, 'div' => false, 'id' => 's', 'class' => 'input-sm s', 'autocomplete' => 'off')); ?>
-        <?php echo $this->Form->button('Search', array('div' => false, 'class' => 'btn btn-sm btn-primary')); ?>
-        &nbsp;
-        <?php echo $this->Form->button('login', array('class' => 'btn btn-sm btn-primary', 'id' => 'loginbutton', 'type' => 'button')); ?>
-        <?php echo $this->Form->end(); ?>
 
         <span id="cartbutton" style="display:none;">
                         <?php echo $this->Html->link('<i class="fa fa-cart-plus"></i> &nbsp; Shopping Cart', array('controller' => 'shop', 'action' => 'cart'), array('class' => 'btn btn-sm btn-success', 'escape' => false)); ?>
