@@ -65,14 +65,22 @@
                     <span class="icon-bar"></span>
                 </button>
                <!--<a class="navbar-brand" href="<?php echo $this->Html->url('/'); ?>">GatorStore</a>-->
-		<?php echo $this->Html->link($this->Html->image('logo.png', array('alt' => 'CakePHP', 'border' => 0)), '/', array('target' => '', 'escape' => false)); ?>
+		<?php echo $this->Html->link($this->Html->image('logo.png', array('alt' => 'CakePHP', 'border' => 0)), '/', array('target' => '_blank', 'escape' => false)); ?>
 
             </div>
             <div class="collapse navbar-collapse navbar-ex1-collapse">
-                                <ul class="navbar-form form-inline navbar-right">
+                <ul class="nav navbar-nav">
+                    <li><?php echo $this->Html->link('Home', array('controller' => 'products', 'action' => 'view')); ?></li>
+                    <li><?php echo $this->Html->link('Products', array('controller' => 'products', 'action' => 'products')); ?></li>
+                    <li><?php echo $this->Html->link('Brands', array('controller' => 'brands', 'action' => 'index')); ?></li>
+                    <li><?php echo $this->Html->link('Categories', array('controller' => 'categories', 'action' => 'index')); ?></li>
+                    <li><?php echo $this->Html->link('Search', array('controller' => 'products', 'action' => 'search')); ?></li>
+                    <li><?php echo $this->Html->link('Sell', array('controller' => 'products', 'action' => 'sell')); ?></li>
+                </ul>
+                <ul class="navbar-form form-inline navbar-right">
 
                     <?php echo $this->Form->create('Product', array('type' => 'GET', 'url' => array('controller' => 'products', 'action' => 'search'))); ?>
-
+					<?php echo $this->Form->input('Category', array('options' => array(test123,test234,test345))); ?>
                     <?php echo $this->Form->input('search', array('label' => false, 'div' => false, 'id' => 's', 'class' => 'input-sm s', 'autocomplete' => 'off')); ?>
                     <?php echo $this->Form->button('Search', array('div' => false, 'class' => 'btn btn-sm btn-primary')); ?>
 					&nbsp;
@@ -85,15 +93,6 @@
 					
                 </ul>
             </div>
-<ul class="nav navbar-nav">
-                    <li><?php echo $this->Html->link('Home', array('controller' => 'products', 'action' => 'view')); ?></li>
-                    <li><?php echo $this->Html->link('Products', array('controller' => 'products', 'action' => 'products')); ?></li>
-                    <li><?php echo $this->Html->link('Brands', array('controller' => 'brands', 'action' => 'index')); ?></li>
-                    <li><?php echo $this->Html->link('Categories', array('controller' => 'categories', 'action' => 'index')); ?></li>
-                    <li><?php echo $this->Html->link('Sell', array('controller' => 'products', 'action' => 'sell')); ?></li>
-                </ul>
-
-
         </div>
     </div>
 
@@ -187,6 +186,7 @@
 
 </body>
 </html>
+
 
 
 
