@@ -25,7 +25,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" type="text/css" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css" />
-    <?php echo $this->Html->css(array('bootstrap.min.css', 'bootstrap-theme.min.css', 'https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css', 'css.css','login.css')); ?>
+    <?php echo $this->Html->css(array('bootstrap.min.css', 'bootstrap-theme.min.css', 'https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css', 'css.css', 'login.css', 'flexslider.css', 'menu.css', 'style.css')); ?>
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
@@ -34,6 +34,8 @@
     <?php echo $this->fetch('meta'); ?>
     <?php echo $this->fetch('css'); ?>
     <?php echo $this->fetch('script'); ?>
+
+    <?php echo $this->Html->script(array('easing.js', 'jquery.easing.js', 'jquery.flexslider.js', 'jquery.min.js', 'jquery-1.7.2.min.js', 'menu-2.js', 'move-top.js', 'nav.js', 'nav-hover.js', 'script.js')); ?>
 
     <?php if($this->Session->check('Shop')) : ?>
         <script type="text/javascript">
@@ -55,46 +57,63 @@
 </head>
 <body>
 
-    <div class="navbar navbar-inverse navbar-static-top" role="navigation">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-               <!--<a class="navbar-brand" href="<?php echo $this->Html->url('/'); ?>">GatorStore</a>-->
-		<?php echo $this->Html->link($this->Html->image('logo.png', array('alt' => 'CakePHP', 'border' => 0)), '/', array('target' => '_blank', 'escape' => false)); ?>
+<div class="wrap">
 
-            </div>
-            <div class="collapse navbar-collapse navbar-ex1-collapse">
-                <ul class="nav navbar-nav">
-                    <li><?php echo $this->Html->link('Home', array('controller' => 'products', 'action' => 'view')); ?></li>
-                    <li><?php echo $this->Html->link('Products', array('controller' => 'products', 'action' => 'products')); ?></li>
-                    <li><?php echo $this->Html->link('Brands', array('controller' => 'brands', 'action' => 'index')); ?></li>
-                    <li><?php echo $this->Html->link('Categories', array('controller' => 'categories', 'action' => 'index')); ?></li>
-                    <li><?php echo $this->Html->link('Search', array('controller' => 'products', 'action' => 'search')); ?></li>
-                    <li><?php echo $this->Html->link('Sell', array('controller' => 'products', 'action' => 'sell')); ?></li>
-                </ul>
-                <ul class="navbar-form form-inline navbar-right">
-
-                    <?php echo $this->Form->create('Product', array('type' => 'GET', 'url' => array('controller' => 'products', 'action' => 'search'))); ?>
-
-                    <?php echo $this->Form->input('search', array('label' => false, 'div' => false, 'id' => 's', 'class' => 'input-sm s', 'autocomplete' => 'off')); ?>
-                    <?php echo $this->Form->button('Search', array('div' => false, 'class' => 'btn btn-sm btn-primary')); ?>
-					&nbsp;
-					<?php echo $this->Form->button('login', array('class' => 'btn btn-sm btn-primary', 'id' => 'loginbutton', 'type' => 'button')); ?>
-					<?php echo $this->Form->end(); ?>
-					
-                    <span id="cartbutton" style="display:none;">
-                        <?php echo $this->Html->link('<i class="fa fa-cart-plus"></i> &nbsp; Shopping Cart', array('controller' => 'shop', 'action' => 'cart'), array('class' => 'btn btn-sm btn-success', 'escape' => false)); ?>
-					</span>
-					
-                </ul>
+<div class="header_top">
+    <div class="logo">
+        <a href="index.html"><?php echo $this->Html->image('logo.png'); ?> </a>
+    </div>
+    <div class="header_top_right">
+        <div class="search_box">
+            <form>
+                <input type="text" value="Search for Products" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search for Products';}"><input type="submit" value="SEARCH">
+            </form>
+        </div>
+        <div class="shopping_cart">
+            <div class="cart">
+                <a href="#" title="View my shopping cart" rel="nofollow">
+                    <strong class="opencart"> </strong>
+                    <span class="cart_title">Cart</span>
+                    <span class="no_product">(empty)</span>
+                </a>
             </div>
         </div>
+        <div class="login">
+            <span><?php echo $this->Html->image("login.png", array(
+    "alt" => "Login",
+    'url' => array('controller' => 'users', 'action' => 'login'))); ?></span>
+            <!--<span><?php echo $this->Html->link($this->Html->image('login.png'), array('controller' => 'users', 'action' => 'login')); ?></span>-->
+        </div>
+        <div class="clear"></div>
     </div>
+    <div class="clear"></div>
+</div>
+
+    <div class="menu">
+        <ul id="dc_mega-menu-orange" class="dc_mm-orange">
+            <li><?php echo $this->Html->link('Home', array('controller' => 'products', 'action' => 'view')); ?></li>
+            <li><?php echo $this->Html->link('Products', array('controller' => 'products', 'action' => 'products')); ?></li>
+            <li><?php echo $this->Html->link('Sell', array('controller'=>'products', 'action'=>'sell')); ?></li>
+            <li><?php echo $this->Html->link('About', array('controller'=>'pages', 'action'=>'aboutus')); ?></li>
+            <div class="clear"></div>
+        </ul>
+    </div>
+    <ul class="navbar-form form-inline navbar-right">
+
+        <?php echo $this->Form->create('Product', array('type' => 'GET', 'url' => array('controller' => 'products', 'action' => 'search'))); ?>
+
+        <?php echo $this->Form->input('search', array('label' => false, 'div' => false, 'id' => 's', 'class' => 'input-sm s', 'autocomplete' => 'off')); ?>
+        <?php echo $this->Form->button('Search', array('div' => false, 'class' => 'btn btn-sm btn-primary')); ?>
+        &nbsp;
+        <?php echo $this->Form->button('login', array('class' => 'btn btn-sm btn-primary', 'id' => 'loginbutton', 'type' => 'button')); ?>
+        <?php echo $this->Form->end(); ?>
+
+        <span id="cartbutton" style="display:none;">
+                        <?php echo $this->Html->link('<i class="fa fa-cart-plus"></i> &nbsp; Shopping Cart', array('controller' => 'shop', 'action' => 'cart'), array('class' => 'btn btn-sm btn-success', 'escape' => false)); ?>
+					</span>
+
+    </ul>
+
 
     <div class="content">
         <div class="container">
@@ -182,8 +201,8 @@
     <div class="sqldump">
         <?php echo $this->element('sql_dump'); ?>
     </div>
-	
 
+</div>
 </body>
 </html>
 
