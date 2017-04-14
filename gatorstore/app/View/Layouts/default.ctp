@@ -101,7 +101,7 @@
     <ul class="navbar-form form-inline navbar-right">
 
         <?php echo $this->Form->create('Product', array('type' => 'GET', 'url' => array('controller' => 'products', 'action' => 'search'))); ?>
-
+		<?php echo $this->Form->input('category', array('options' => array('' => 'All', 'Textbooks'=> 'Textbooks', 'PhysicsTextbooks'=>' -> Physics Textbooks','BiologyTextBooks' => ' -> Biology', 'Travel'=> 'Travel', 'Clothes' => 'Clothes', 'TShirts' => ' ->T-Shirts', 'Electronics' => 'Electrionics', 'ElectronicsAudtio' => ' -> Audio'))); ?>
         <?php echo $this->Form->input('search', array('label' => false, 'div' => false, 'id' => 's', 'class' => 'input-sm s', 'autocomplete' => 'off')); ?>
         <?php echo $this->Form->button('Search', array('div' => false, 'class' => 'btn btn-sm btn-primary')); ?>
         &nbsp;
