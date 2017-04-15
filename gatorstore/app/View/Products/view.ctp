@@ -6,6 +6,13 @@ $this->Html->addCrumb($product['Category']['name'], array('controller' => 'categ
 $this->Html->addCrumb($product['Product']['name']);
 ?>
 
+<style>
+.col-sm-5 > font > a{
+   color:white;
+
+}
+</style>
+
 <script>
 $(document).ready(function() {
 
@@ -15,6 +22,16 @@ $(document).ready(function() {
     });
 
 });
+
+function popup(mylink, windowname) { 
+   if (! window.focus)return true; 
+
+   var href; 
+   if (typeof(mylink) == 'string') href=mylink; 
+   else href=mylink.href; window.open(href, windowname, 'width=500,height=500,scrollbars=yes'); 
+
+   return false; 
+}
 </script>
 
 <h1><?php echo $product['Product']['name']; ?></h1>
@@ -69,7 +86,11 @@ $(document).ready(function() {
         Category: <?php echo $this->Html->link($product['Category']['name'], array('controller' => 'categories', 'action' => 'view', 'slug' => $product['Category']['slug'])); ?>
 
         <br />
+        <br />
+
+        <font size= 3  style="background-color: purple; padding:10px; border-style: solid; border-width: medium; border-color: purple;  border-radius:25px;">
+           <?php echo $this->Html->link('Contact Seller', array('controller'=>'pages','action'=>'contactseller'),['onclick'=>'return popup(this,"mr_popup")']); ?>           
+        </font>
 
     </div>
-
 </div>
