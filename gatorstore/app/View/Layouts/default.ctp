@@ -20,6 +20,7 @@
 <!doctype html>
 <html>
 <head>
+
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /> <title><?php echo $title_for_layout; ?></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -66,46 +67,54 @@
     </div>
     <div class="header_top_right">
 
+<!-- Start of the table that organizes the top of the page -->
+<table>
+	<tr>
+	<td align= "center" valign="middle">
+		<!--  start of category filter -->
+			<?php echo $this->Form->input('category', array(
+				'options' => array('Textbooks'=> 'Textbooks', 'PhysicsTextbooks'=>' -> Physics Textbooks','BiologyTextBooks' => ' -> Biology', 'Travel'=> 'Travel', 'Clothes' => 'Clothes', 'TShirts' => ' ->T-Shirts', 'Electronics' => 'Electrionics', 'ElectronicsAudtio' => ' -> Audio'),
+				'empty' => array('All' => 'All'), 'label' => ''
+			)); ?>
 
-<!--  start of category filter -->
- 	<?php echo $this->Form->input('category', array(
-		'options' => array('Textbooks'=> 'Textbooks', 'PhysicsTextbooks'=>' -> Physics Textbooks','BiologyTextBooks' => ' -> Biology', 'Travel'=> 'Travel', 'Clothes' => 'Clothes', 'TShirts' => ' ->T-Shirts', 'Electronics' => 'Electrionics', 'ElectronicsAudtio' => ' -> Audio'),
-		'empty' => array('All' => 'All')
-	)); ?>
-
-<?php /* echo $this->Category->generateTreeList(); */?>
-<!-- end of category filter -->
-
-
-
-
-<!-- start of search bar -->
-	<div class="search_box">
-		<?php echo $this->Form->create('Product', array('type' => 'GET', 'url' => array('controller' => 'products', 'action' => 'search'))); ?>
-		<?php echo $this->Form->input('search', array('label' => false, 'div' => false, 'autocomplete' => 'off')); ?>
-		<?php echo $this->Form->input('Search', array('div' => false, 'type' => 'submit', 'label' => false)); ?>
-		<?php echo $this->Form->end(); ?>
-	</div>
-<!-- end of search bar -->
+		<?php /* echo $this->Category->generateTreeList(); */?>
+		<!-- end of category filter -->
+	</td>
 
 
+	<td>
+		<!-- start of search bar -->
+			<div class="search_box">
+				<?php echo $this->Form->create('Product', array('type' => 'GET', 'url' => array('controller' => 'products', 'action' => 'search'))); ?>
+				<?php echo $this->Form->input('search', array('label' => false, 'div' => false, 'autocomplete' => 'off', 'size' => '300')); ?>
+				
+				<?php echo $this->Form->input('Search', array('div' => false, 'type' => 'submit', 'label' => false)); ?>
+				<?php echo $this->Form->end(); ?>
+			</div>
+		<!-- end of search bar -->
+	</td>
 
-        <div class="shopping_cart">
-            <div class="cart">
-                <a href="#" title="View my shopping cart" rel="nofollow">
-                    <strong class="opencart"> </strong>
-                    <span class="cart_title">Cart</span>
-                    <span class="no_product">(empty)</span>
-                </a>
-            </div>
-        </div>
-
-<!-- start of login button -->
-        <div class="login">
-		<?php echo $this->Form->button('login', array('class' => 'btn btn-sm btn-primary', 'id' => 'loginbutton', 'type' => 'button')); ?>
-        </div>
-<!-- end of login button -->
-
+	<td>
+		<div class="shopping_cart">
+			<div class="cart">
+				<a href="#" title="View my shopping cart" rel="nofollow">
+					<strong class="opencart"> </strong>
+					<span class="cart_title">Cart</span>
+					<span class="no_product">(empty)</span>
+				</a>
+			</div>
+		</div>
+	</td>
+	<td>
+	<!-- start of login button -->
+			<div class="login">
+			<?php echo $this->Form->button('login', array('class' => 'btn btn-sm btn-primary', 'id' => 'loginbutton', 'type' => 'button')); ?>
+			</div>
+	<!-- end of login button -->
+	</td>
+	</tr>
+</table>
+<!-- end of the table that organizes the top of the page -->
 
         <div class="clear"></div>
     </div>
@@ -148,7 +157,7 @@
 				<?php echo $this->Form->create('User', ['url' => ['action' => 'login']]); ?>
 				<?php echo $this->Form->input('username', ['class' => 'form-control', 'autofocus' => 'autofocus']); ?>
 				<br />
-				<?php echo $this->Form->input('password', ['class' => 'form-control']); ?>
+				<?php echo $this->Form->input('password', ['class' => 'form-control', 'autofocus' => 'autofocus']); ?>
 				<br />
 				<?php echo $this->Form->button('Login', ['class' => 'btn btn-primary']); ?>
 				<?php echo $this->Form->end(); ?>
