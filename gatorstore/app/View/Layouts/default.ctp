@@ -64,18 +64,17 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="<?php echo $this->Html->url('/'); ?>">CakePHP Cart</a>
+	        <?php echo $this->Html->link($this->Html->image('logo.png', array('alt' => 'sfsu csc648 logo', 'border' => 0)), '/', array('escape' => false)); ?>
             </div>
             <div class="collapse navbar-collapse navbar-ex1-collapse">
-                <ul class="nav navbar-nav">
-                    <li><?php echo $this->Html->link('Home', array('controller' => 'products', 'action' => 'view')); ?></li>
+                <ul class="nav navbar-nav" style="padding-top: 65px">
                     <li><?php echo $this->Html->link('Products', array('controller' => 'products', 'action' => 'products')); ?></li>
                     <li><?php echo $this->Html->link('Brands', array('controller' => 'brands', 'action' => 'index')); ?></li>
                     <li><?php echo $this->Html->link('Categories', array('controller' => 'categories', 'action' => 'index')); ?></li>
-                    <li><?php echo $this->Html->link('Search', array('controller' => 'products', 'action' => 'search')); ?></li>
+                    <!-- <li><?php echo $this->Html->link('Search', array('controller' => 'products', 'action' => 'search')); ?></li> -->
                     <li><?php echo $this->Html->link('Sell', array('controller' => 'products', 'action' => 'sell')); ?></li>
                 </ul>
-                <ul class="navbar-form form-inline navbar-right">
+                <ul class="navbar-form form-inline navbar-right" style="padding-top:65px">
 
                     <?php echo $this->Form->create('Product', array('type' => 'GET', 'url' => array('controller' => 'products', 'action' => 'search'))); ?>
 
