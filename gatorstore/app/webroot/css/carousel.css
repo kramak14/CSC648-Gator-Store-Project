@@ -1,5 +1,8 @@
-.col-lg-4>h2>a{
-    color:black;
+/* Title */
+h2{
+    color:black !important;
+    font-weight: bold;
+    font-size: 40px !important;
 }
 
 /* multi-item carousel */
@@ -19,6 +22,7 @@
 }
 .row .col-xs-4 h3 {
     text-align: center;
+    font-size: 30px;
     position: absolute;
     bottom: 10px;
     left: 0;
