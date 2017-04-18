@@ -63,7 +63,9 @@
 
 <div class="header_top">
     <div class="logo">
-        <a href="."><?php echo $this->Html->image('logo.png'); ?></a>
+       <span>
+          <?php echo $this->Html->image("/images/logo.png", ["alt" => "login",'url' => ['controller' => 'Products', 'action' => 'view', 'view']]);?> 
+       </span>
     </div>
     <div class="header_top_right">
 
@@ -108,7 +110,8 @@
 	<td>
 	<!-- start of login button -->
 			<div class="login">
-			<?php echo $this->Form->button('login', array('class' => 'btn btn-sm btn-primary', 'id' => 'loginbutton', 'type' => 'button')); ?>
+			<span><?php echo $this->Html->image("/images/login.png", ["alt" => "login",'url' => ['controller' => 'Users', 'action' => 'login', 'login']]);?> </span>
+
 			</div>
 	<!-- end of login button -->
 	</td>
