@@ -54,7 +54,8 @@ $(document).ready(function() {
 
         <?php endif;?>
 
-        <?php echo $this->Form->button('<i class="fa fa-cart-plus"></i> &nbsp; Add to Cart', array('class' => 'btn btn-success addtocart', 'id' => 'addtocart', 'id' => $product['Product']['id']));?>
+        <!--<?php echo $this->Form->button('<i class="fa fa-cart-plus"></i> &nbsp; Add to Cart', array('class' => 'btn btn-success addtocart', 'id' => 'addtocart', 'id' => $product['Product']['id']));?>-->
+        <?php echo $this->Form->button('<i class="fa fa-usd"></i> Buy', array('class' => 'btn btn-success')); ?>
         <?php echo $this->Form->end(); ?>
 
         <br />

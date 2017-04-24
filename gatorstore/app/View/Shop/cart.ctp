@@ -1,10 +1,10 @@
-<?php echo $this->set('title_for_layout', 'Shopping Cart'); ?>
+<?php echo $this->set('title_for_layout', 'Order Total'); ?>
 
-<?php $this->Html->addCrumb('Shopping Cart'); ?>
+<?php $this->Html->addCrumb('Order'); ?>
 
 <?php echo $this->Html->script(array('cart.js'), array('inline' => false)); ?>
 
-<h1>Shopping Cart</h1>
+<h1>Order Total</h1>
 
 <?php if(empty($shop['OrderItem'])) : ?>
 
@@ -22,7 +22,7 @@ Shopping Cart is empty
     <div class="col col-sm-1">PRICE</div>
     <div class="col col-sm-1">QUANTITY</div>
     <div class="col col-sm-1">SUBTOTAL</div>
-    <div class="col col-sm-1">REMOVE</div>
+    <!--<div class="col col-sm-1">REMOVE</div>-->
 </div>
 
 <?php $tabindex = 1; ?>
@@ -44,7 +44,7 @@ Shopping Cart is empty
         <div class="col col-sm-1" id="price-<?php echo $key; ?>"><?php echo $item['Product']['price']; ?></div>
         <div class="col col-sm-1"><?php echo $this->Form->input('quantity-' . $key, array('div' => false, 'class' => 'numeric form-control input-small', 'label' => false, 'size' => 2, 'maxlength' => 2, 'tabindex' => $tabindex++, 'data-id' => $item['Product']['id'], 'data-mods' => $mods, 'value' => $item['quantity'])); ?></div>
         <div class="col col-sm-1" id="subtotal_<?php echo $key; ?>"><?php echo $item['subtotal']; ?></div>
-        <div class="col col-sm-1"><span class="remove" id="<?php echo $key; ?>"></span></div>
+        <!--<div class="col col-sm-1"><span class="remove" id="<?php echo $key; ?>"></span></div>-->
     </div>
 <?php endforeach; ?>
 
@@ -53,7 +53,7 @@ Shopping Cart is empty
 <div class="row">
     <div class="col col-sm-12">
         <div class="pull-right">
-        <?php echo $this->Html->link('<i class="fa fa-ban"></i> &nbsp; Clear Shopping Cart', array('controller' => 'shop', 'action' => 'clear'), array('class' => 'btn btn-sm btn-danger', 'escape' => false)); ?>
+        <!--<?php echo $this->Html->link('<i class="fa fa-ban"></i> &nbsp; Clear Shopping Cart', array('controller' => 'shop', 'action' => 'clear'), array('class' => 'btn btn-sm btn-danger', 'escape' => false)); ?>-->
         &nbsp; &nbsp;
         <?php echo $this->Form->button('<i class="fa fa-calculator"></i> &nbsp; Update', array('class' => 'btn btn-sm btn-default', 'escape' => false));?>
         <?php echo $this->Form->end(); ?>

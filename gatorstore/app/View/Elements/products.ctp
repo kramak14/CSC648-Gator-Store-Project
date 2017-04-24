@@ -1,3 +1,4 @@
+<?php echo $this->Html->script(array('addtocart.js'), array('inline' => false)); ?>
 <div class="row">
     <?php
     $i = 0;
@@ -5,6 +6,7 @@
         $i++;
     if (($i % 4) == 0) { echo "\n<div class=\"row\">\n\n";}
     ?>
+
     <div class="col col-sm-3">
         <?php echo $this->Html->image('/images/small/' . $product['Product']['image'], array('url' => array('controller' => 'products', 'action' => 'view', 'slug' => $product['Product']['slug']), 'alt' => $product['Product']['name'], 'width' => 150, 'height' => 150, 'class' => 'image')); ?>
         <br />
@@ -12,12 +14,19 @@
         <br />
         $<?php echo $product['Product']['price']; ?>
         <br />
+        <?php echo $this->Form->create(NULL, array('url' => array('controller' => 'shop', 'action' => 'add'))); ?>
+        <?php echo $this->Form->input('id', array('type' => 'hidden', 'value' => $product['Product']['id'])); ?>
+        <!--<?php echo $this->Form->button('<i class="fa fa-money"></i> Buy', array('class' => 'btn btn-success addtocart', 'id' => 'addtocart', 'id' => $product['Product']['id'])); ?>-->
+        <?php echo $this->Form->button('<i class="fa fa-usd"></i> Buy', array('class' => 'btn btn-success')); ?>
+        <?php echo $this->Form->end(); ?>
+        <br />
         <br />
     </div>
     <?php
     if (($i % 4) == 0) { echo "\n</div>\n\n";}
     endforeach;
     ?>
+
 
     <br />
     <br />

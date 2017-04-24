@@ -35,6 +35,8 @@ class ShopController extends AppController {
     public function add() {
         if ($this->request->is('post')) {
 
+            $this->Cart->clear();
+
             $id = $this->request->data['Product']['id'];
 
             $quantity = isset($this->request->data['Product']['quantity']) ? $this->request->data['Product']['quantity'] : null;
@@ -44,11 +46,10 @@ class ShopController extends AppController {
             $product = $this->Cart->add($id, $quantity, $productmodId);
         }
         if(!empty($product)) {
-            $this->Flash->success($product['Product']['name'] . ' was added to your shopping cart.');
+            $this->redirect(array('controller' => 'shop', 'action' => 'cart'));
         } else {
             $this->Flash->danger('Unable to add this product to your shopping cart.');
         }
-        $this->redirect($this->referer());
     }
 
 //////////////////////////////////////////////////

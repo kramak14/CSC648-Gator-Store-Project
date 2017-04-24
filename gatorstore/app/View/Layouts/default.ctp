@@ -85,7 +85,7 @@
 					<?php echo $this->Form->end(); ?>
 					
                     <span id="cartbutton" style="display:none;">
-                        <?php echo $this->Html->link('<i class="fa fa-cart-plus"></i> &nbsp; Shopping Cart', array('controller' => 'shop', 'action' => 'cart'), array('class' => 'btn btn-sm btn-success', 'escape' => false)); ?>
+                        <!--<?php echo $this->Html->link('<i class="fa fa-cart-plus"></i> &nbsp; Shopping Cart', array('controller' => 'shop', 'action' => 'cart'), array('class' => 'btn btn-sm btn-success', 'escape' => false)); ?>-->
 					</span>
 					
                 </ul>
@@ -164,7 +164,7 @@
             <div id="msg"></div>
             <br />
 
-            		
+
         </div>
     </div>
 
