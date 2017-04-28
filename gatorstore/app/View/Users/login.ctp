@@ -13,6 +13,9 @@
         <?php echo $this->Form->button('Login', ['class' => 'btn btn-primary']); ?>
         <?php echo $this->Form->end(); ?>
         <br />
+		<?php echo "Dont have an account? click "; ?>
+		<?php echo $this->Html->link('here', array('controller' => 'users', 'action' => 'register')); ?>
+		<?php echo " to register"; ?>
         <br />
         <br />
 

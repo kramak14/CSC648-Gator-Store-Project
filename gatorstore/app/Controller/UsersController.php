@@ -14,10 +14,38 @@ class UsersController extends AppController {
         if ($this->request->is('post')) {
             $this->User->create();
             if ($this->User->save($this->request->data)) {
-                $this->Flash->flash('Registration Successful!');
-                return $this->redirect(array('action' => 'customer_dashboard'));
+                $this->Flash->flash('Registration Successful! Please login again');
             } else {
                 $this->Flash->flash('We are unable to make your account at this moment.  Please try again');
+            }
+        }
+
+        if ($this->request->is('post')) {
+            if($this->Auth->login()) {
+
+                $this->User->id = $this->Auth->user('id');
+                $this->User->saveField('logins', $this->Auth->user('logins') + 1);
+                $this->User->saveField('last_login', date('Y-m-d H:i:s'));
+
+                if ($this->Auth->user('role') == 'customer') {
+                    return $this->redirect(array(
+                        'controller' => 'users',
+                        'action' => 'dashboard',
+                        'customer' => true,
+                        'admin' => false
+                    ));
+                } elseif ($this->Auth->user('role') == 'admin') {
+                    return $this->redirect(array(
+                        'controller' => 'users',
+                        'action' => 'dashboard',
+                        'manager' => false,
+                        'admin' => true
+                    ));
+                } else {
+                    $this->Flash->danger('Login is incorrect');
+                }
+            } else {
+                $this->Flash->danger('Login is incorrect');
             }
         }
     }
