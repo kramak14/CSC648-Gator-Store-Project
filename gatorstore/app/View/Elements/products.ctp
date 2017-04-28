@@ -1,4 +1,13 @@
 <?php echo $this->Html->script(array('addtocart.js'), array('inline' => false)); ?>
+
+<style>
+.row > .col > div > a > img{
+ 
+  width:100% !important;
+  padding:10px;
+}
+
+</style>
 <div class="row">
     <?php
     $i = 0;
@@ -8,8 +17,10 @@
     ?>
 
     <div class="col col-sm-3">
-        <?php echo $this->Html->image('/images/small/' . $product['Product']['image'], array('url' => array('controller' => 'products', 'action' => 'view', 'slug' => $product['Product']['slug']), 'alt' => $product['Product']['name'], 'width' => 150, 'height' => 150, 'class' => 'image')); ?>
+        <div style="border: 3px groove #DFDBDC;">
+           <?php echo $this->Html->image('/images/small/' . $product['Product']['image'], array('url' => array('controller' => 'products', 'action' => 'view', 'slug' => $product['Product']['slug']), 'alt' => $product['Product']['name'],'class' => 'image')); ?>
         <br />
+        </div>
         <?php echo $this->Html->link($product['Product']['name'], array('controller' => 'products', 'action' => 'view', 'slug' => $product['Product']['slug'])); ?>
         <br />
         $<?php echo $product['Product']['price']; ?>
