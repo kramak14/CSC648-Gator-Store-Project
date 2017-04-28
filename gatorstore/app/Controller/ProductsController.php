@@ -710,5 +710,57 @@ class ProductsController extends AppController {
     }
 
 
+////////////////////////////////////////////////////////////
+
+    public function customer_edit($id = null) {
+
+        $_SESSION['KCFINDER'] = array(
+            'disabled' => false,
+            'uploadURL' => '../images/products',
+            'uploadDir' => '',
+            'dirPerms' => 0777,
+            'filePerms' => 0777
+        );
+
+        if (!$this->Product->exists($id)) {
+            throw new NotFoundException('Invalid product');
+        }
+        if ($this->request->is('post') || $this->request->is('put')) {
+
+            if ($this->Product->save($this->request->data)) {
+                $this->Flash->flash('The product has been saved');
+                return $this->redirect(array('action' => 'index'));
+            } else {
+                $this->Flash->flash('The product could not be saved. Please, try again.');
+            }
+        } else {
+            $product = $this->Product->find('first', array(
+                'conditions' => array(
+                    'Product.id' => $id
+                )
+            ));
+            $this->request->data = $product;
+        }
+
+        $this->set(compact('id'));
+
+        $this->set(compact('product'));
+
+        $brands = $this->Product->Brand->find('list');
+        $this->set(compact('brands'));
+
+        $categories = $this->Product->Category->generateTreeList(null, null, null, '--');
+        $this->set(compact('categories'));
+
+        $productmods = $this->Product->Productmod->find('all', array(
+            'conditions' => array(
+                'Productmod.product_id' => $id
+            )
+        ));
+        $this->set(compact('productmods'));
+
+    }
+
+////////////////////////////////////////////////////////////
 
 }

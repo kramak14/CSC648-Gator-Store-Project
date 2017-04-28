@@ -55,24 +55,7 @@ $(document).ready(function() {
         placement: 'left',
     });
 
-    $('.tags').editable({
-        type: 'select2',
-        name: 'tags',
-        url: '<?php echo $this->webroot; ?>admin/products/tagschanger',
-        title: 'Tags',
-        placement: 'left',
-        source: [
-            <?php foreach ($tags as $tag): ?>
-            {id: '<?php echo $tag["Tag"]["name"]; ?>', text: '<?php echo $tag["Tag"]["name"]; ?>'},
-            <?php endforeach; ?>
-        ],
-        select2: {
-            multiple: true,
-            allowClear: true,
-            width: 300
-        }
-    });
-
+    
 });
 </script>
 <h2>Products</h2>
@@ -140,7 +123,6 @@ $(document).ready(function() {
         <th><?php echo $this->Paginator->sort('image'); ?></th>
         <th><?php echo $this->Paginator->sort('price'); ?></th>
         <th><?php echo $this->Paginator->sort('weight'); ?></th>
-        <th><?php echo $this->Paginator->sort('tags'); ?></th>
         <th><?php echo $this->Paginator->sort('views'); ?></th>
         <th><?php echo $this->Paginator->sort('active'); ?></th>
         <th><?php echo $this->Paginator->sort('created'); ?></th>
@@ -158,14 +140,12 @@ $(document).ready(function() {
         <td><?php echo h($product['Product']['image']); ?></td>
         <td><span class="price" data-value="<?php echo $product['Product']['price']; ?>" data-pk="<?php echo $product['Product']['id']; ?>"><?php echo $product['Product']['price']; ?></span></td>
         <td><span class="weight" data-value="<?php echo $product['Product']['weight']; ?>" data-pk="<?php echo $product['Product']['id']; ?>"><?php echo $product['Product']['weight']; ?></span></td>
-        <td><span class="tags" data-value="<?php echo $product['Product']['tags']; ?>" data-pk="<?php echo $product['Product']['id']; ?>"><?php echo $product['Product']['tags']; ?></span></td>
         <td><?php echo h($product['Product']['views']); ?></td>
         <td><?php echo $this->Html->link($this->Html->image('icon_' . $product['Product']['active'] . '.png'), array('controller' => 'products', 'action' => 'switch', 'active', $product['Product']['id']), array('class' => 'status', 'escape' => false)); ?></td>
         <td><?php echo h($product['Product']['created']); ?></td>
         <td><?php echo h($product['Product']['modified']); ?></td>
         <td class="actions">
             <?php echo $this->Html->link('View', array('action' => 'view', $product['Product']['id']), array('class' => 'btn btn-default btn-xs')); ?>
-            <?php echo $this->Html->link('Tags', array('action' => 'tags', $product['Product']['id']), array('class' => 'btn btn-default btn-xs')); ?>
             <?php echo $this->Html->link('Edit', array('action' => 'edit', $product['Product']['id']), array('class' => 'btn btn-default btn-xs')); ?>
         </td>
     </tr>
