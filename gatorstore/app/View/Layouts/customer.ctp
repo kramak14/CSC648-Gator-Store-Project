@@ -30,6 +30,9 @@
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav">
                 <li><?php echo $this->Html->link('Home', array('controller' => 'users', 'action' => 'dashboard')); ?></li>
+                <li><?php echo $this->Html->link('Products', array('controller' => 'products', 'action' => 'index', 'customer' => true)); ?></li>
+ 
+
 <li><?php echo $this->Html->link('Logout', array('controller' => 'users', 'action' => 'logout', 'customer' => false)); ?></li>
             </ul>
         </div>

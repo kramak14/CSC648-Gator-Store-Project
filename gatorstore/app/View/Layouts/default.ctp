@@ -20,6 +20,11 @@
 <!doctype html>
 <html>
 <head>
+<style>
+form-inline {
+    display: inline-block;
+}
+</style>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <title><?php echo $title_for_layout; ?></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -71,18 +76,21 @@
                     <li><?php echo $this->Html->link('Products', array('controller' => 'products', 'action' => 'products')); ?></li>
                     <li><?php echo $this->Html->link('Brands', array('controller' => 'brands', 'action' => 'index')); ?></li>
                     <li><?php echo $this->Html->link('Categories', array('controller' => 'categories', 'action' => 'index')); ?></li>
-                    <!-- <li><?php echo $this->Html->link('Search', array('controller' => 'products', 'action' => 'search')); ?></li> -->
                     <li><?php echo $this->Html->link('Sell', array('controller' => 'products', 'action' => 'sell')); ?></li>
-                </ul>
-                <ul class="navbar-form form-inline navbar-right" style="padding-top:65px">
-
-                    <?php echo $this->Form->create('Product', array('type' => 'GET', 'url' => array('controller' => 'products', 'action' => 'search'))); ?>
-
+					<li style= "padding-top: 10px">
+					<?php echo $this->Form->create('Product', array('class' => 'form-inline', 'div' =>  false, 'label' => false, 'type' => 'GET', 'url' => array('controller' => 'products', 'action' => 'search'))); ?>
+					<?php echo $this->Form->input('category', array('label'=> false, 'div' => false, 'style' => 'width: 100px', 'class' => 'form-control', 'options' => array('' => 'All','textbooks' => 'Textbooks', 'clothes' => 'Clothes', 'electronics' => 'Electronics', 'furniture' => 'Furniture', 'kitchen' => 'Kitchen'))); ?>
                     <?php echo $this->Form->input('search', array('label' => false, 'div' => false, 'id' => 's', 'class' => 'input-sm s', 'autocomplete' => 'off')); ?>
                     <?php echo $this->Form->button('Search', array('div' => false, 'class' => 'btn btn-sm btn-primary')); ?>
 					&nbsp;
-					<?php echo $this->Form->button('login', array('class' => 'btn btn-sm btn-primary', 'id' => 'loginbutton', 'type' => 'button')); ?>
 					<?php echo $this->Form->end(); ?>
+					</li>
+					
+                </ul>
+                <ul class="navbar-form form-inline navbar-right" style="padding-top:65px">
+					
+
+					<?php echo $this->Form->button('login', array('class' => 'btn btn-sm btn-primary', 'id' => 'loginbutton', 'type' => 'button')); ?>
 					
                     <span id="cartbutton" style="display:none;">
                         <!--<?php echo $this->Html->link('<i class="fa fa-cart-plus"></i> &nbsp; Shopping Cart', array('controller' => 'shop', 'action' => 'cart'), array('class' => 'btn btn-sm btn-success', 'escape' => false)); ?>-->
