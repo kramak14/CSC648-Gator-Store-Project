@@ -12,8 +12,6 @@
         <br />
         <?php echo $this->Form->input('category_id', array('class' => 'form-control')); ?>
         <br />
-        <?php echo $this->Form->input('brand_id', array('class' => 'form-control')); ?>
-        <br />
         <?php echo $this->Form->input('name', array('class' => 'form-control')); ?>
         <br />
         <?php echo $this->Form->input('slug', array('class' => 'form-control')); ?>

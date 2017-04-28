@@ -14,14 +14,6 @@ $(document).ready(function() {
         placement: 'right',
     });
 
-    $('.brand').editable({
-        type: 'select',
-        name: 'brand_id',
-        url: '<?php echo $this->webroot; ?>admin/products/editable',
-        title: 'Brand',
-        source: <?php echo json_encode($brandseditable); ?>,
-        placement: 'right',
-    });
 
     $('.name').editable({
         type: 'text',
@@ -70,10 +62,6 @@ $(document).ready(function() {
     </div>
 
     <div class="col-lg-1">
-        <?php echo $this->Form->input('brand_id', array('label' => false, 'class' => 'form-control', 'empty' => 'Brand', 'selected' => $all['brand_id'])); ?>
-    </div>
-
-    <div class="col-lg-1">
         <?php echo $this->Form->input('filter', array(
             'label' => false,
             'class' => 'form-control',
@@ -96,7 +84,7 @@ $(document).ready(function() {
     <div class="col-lg-4">
         <?php echo $this->Form->button('Search', array('class' => 'btn btn-default')); ?>
         &nbsp; &nbsp;
-        <?php echo $this->Html->link('Reset Search', array('controller' => 'products', 'action' => 'reset', 'admin' => true), array('class' => 'btn btn-danger')); ?>
+        <?php echo $this->Html->link('Reset Search', array('controller' => 'products', 'action' => 'reset', 'customer' => true), array('class' => 'btn btn-danger')); ?>
 
     </div>
 
@@ -116,7 +104,6 @@ $(document).ready(function() {
     <tr>
         <th><?php echo $this->Paginator->sort('image'); ?></th>
         <th><?php echo $this->Paginator->sort('category_id'); ?></th>
-        <th><?php echo $this->Paginator->sort('brand_id'); ?></th>
         <th><?php echo $this->Paginator->sort('name'); ?></th>
         <th><?php echo $this->Paginator->sort('slug'); ?></th>
         <th><?php echo $this->Paginator->sort('description'); ?></th>
@@ -130,10 +117,11 @@ $(document).ready(function() {
         <th class="actions">Actions</th>
     </tr>
     <?php foreach ($products as $product): ?>
+
     <tr>
         <td><?php echo $this->Html->Image('/images/small/' . $product['Product']['image'], array('width' => 100, 'height' => 100, 'alt' => $product['Product']['image'], 'class' => 'image')); ?></td>
         <td><span class="category" data-value="<?php echo $product['Category']['id']; ?>" data-pk="<?php echo $product['Product']['id']; ?>"><?php echo $product['Category']['name']; ?></span></td>
-        <td><span class="brand" data-value="<?php echo $product['Brand']['id']; ?>" data-pk="<?php echo $product['Product']['id']; ?>"><?php echo $product['Brand']['name']; ?></span></td>
+        
         <td><span class="name" data-value="<?php echo $product['Product']['name']; ?>" data-pk="<?php echo $product['Product']['id']; ?>"><?php echo $product['Product']['name']; ?></span></td>
         <td><?php echo h($product['Product']['slug']); ?></td>
         <td><span class="description" data-value="<?php echo $product['Product']['description']; ?>" data-pk="<?php echo $product['Product']['id']; ?>"><?php echo $product['Product']['description']; ?></span></td>
@@ -145,8 +133,10 @@ $(document).ready(function() {
         <td><?php echo h($product['Product']['created']); ?></td>
         <td><?php echo h($product['Product']['modified']); ?></td>
         <td class="actions">
-            <?php echo $this->Html->link('View', array('action' => 'view', $product['Product']['id']), array('class' => 'btn btn-default btn-xs')); ?>
-            <?php echo $this->Html->link('Edit', array('action' => 'edit', $product['Product']['id']), array('class' => 'btn btn-default btn-xs')); ?>
+         <?php echo $this->Html->link('View', array('action' => 'view', $product['Product']['id']), array('class' => 'btn btn-default btn-xs')); ?>
+         <?php echo $this->Html->link('Edit', array('action' => 'edit', $product['Product']['id']), array('class' => 'btn btn-default btn-xs')); ?>
+	<?php echo $this->Form->postLink('Delete', array('controller' => 'productmods', 'action' => 'delete', $productmod['Productmod']['id']), array('class' => 'btn btn-danger btn-xs'), __('Are you sure you want to delete # %s?', $productmod['Productmod']['id'])); ?>
+ 
         </td>
     </tr>
     <?php endforeach; ?>

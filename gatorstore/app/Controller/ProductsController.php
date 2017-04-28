@@ -762,5 +762,29 @@ class ProductsController extends AppController {
     }
 
 ////////////////////////////////////////////////////////////
+	public function customer_reset() {
+		$this->Session->delete('Product');
+		return $this->redirect(array('action' => 'index'));
+	}
+
+
+////////////////////////////////////////////////////////////
+
+
+    public function customer_delete($id = null) {
+        $this->Product->id = $id;
+        if (!$this->Product->exists()) {
+            throw new NotFoundException('Invalid product');
+        }
+        $this->request->onlyAllow('post', 'delete');
+        if ($this->Product->delete()) {
+            $this->Flash->flash('Product deleted');
+            return $this->redirect(array('action' => 'index'));
+        }
+        $this->Flash->flash('Product was not deleted');
+        return $this->redirect(array('action' => 'index'));
+    }
+
+////////////////////////////////////////////////////////////
 
 }

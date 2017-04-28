@@ -102,6 +102,22 @@ class ProductmodsController extends AppController {
         ));
         $this->set(compact('products'));
     }
+////////////////////////////////////////////////////////////
+
+    public function customer_delete($id = null) {
+        $this->Productmod->id = $id;
+        if (!$this->Productmod->exists()) {
+            throw new NotFoundException('Invalid productmod');
+        }
+        $this->request->onlyAllow('post', 'delete');
+        if ($this->Productmod->delete()) {
+            $this->Flash->flash('The productmod has been deleted.');
+        } else {
+            $this->Flash->flash('The productmod could not be deleted. Please, try again.');
+        }
+        return $this->redirect(array('action' => 'index'));
+    }
+
 
 
 }

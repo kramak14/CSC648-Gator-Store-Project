@@ -1,4 +1,4 @@
-<h2>Admin Add Product</h2>
+<h2>Customer Add Product</h2>
 
 <br />
 

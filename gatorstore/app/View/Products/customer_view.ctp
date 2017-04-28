@@ -29,11 +29,7 @@
         <td>Weight</td>
         <td><?php echo h($product['Product']['weight']); ?></td>
     </tr>
-    <tr>
-        <td>Brand</td>
-        <td><?php echo h($product['Brand']['name']); ?></td>
-    </tr>
-    <tr>
+   <tr>
         <td>Category</td>
         <td><?php echo h($product['Category']['name']); ?></td>
     </tr>
