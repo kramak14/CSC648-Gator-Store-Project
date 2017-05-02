@@ -69,16 +69,19 @@ form-inline {
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
+                <li style= "padding-bottom: 9px">
 	        <?php echo $this->Html->link($this->Html->image('logo.png', array('alt' => 'sfsu csc648 logo', 'border' => 0)), '/', array('escape' => false)); ?>
             </div>
             <div class="collapse navbar-collapse navbar-ex1-collapse">
-                <ul class="nav navbar-nav" style="padding-top: 65px">
+                <ul class="nav navbar-nav" style="padding-top: 70px">
                     <li><?php echo $this->Html->link('Products', array('controller' => 'products', 'action' => 'products')); ?></li>
                     <li><?php echo $this->Html->link('Categories', array('controller' => 'categories', 'action' => 'index')); ?></li>
                     <li><?php echo $this->Html->link('Sell', array('controller' => 'products', 'action' => 'sell')); ?></li>
-					<li style= "padding-top: 10px">
+					<li style= "padding-top: 9px">
 					<?php echo $this->Form->create('Product', array('class' => 'form-inline', 'div' =>  false, 'label' => false, 'type' => 'GET', 'url' => array('controller' => 'products', 'action' => 'search'))); ?>
+                        &nbsp;&nbsp;&nbsp;
 					<?php echo $this->Form->input('category', array('label'=> false, 'div' => false, 'style' => 'width: 100px', 'class' => 'form-control', 'options' => array('' => 'All','textbooks' => 'Textbooks', 'clothes' => 'Clothes', 'electronics' => 'Electronics', 'furniture' => 'Furniture', 'kitchen' => 'Kitchen'))); ?>
+                        &nbsp;
                     <?php echo $this->Form->input('search', array('label' => false, 'div' => false, 'id' => 's', 'class' => 'input-sm s', 'autocomplete' => 'off')); ?>
                     <?php echo $this->Form->button('Search', array('div' => false, 'class' => 'btn btn-sm btn-primary')); ?>
 					&nbsp;
@@ -86,7 +89,7 @@ form-inline {
 					</li>
 					
                 </ul>
-                <ul class="navbar-form form-inline navbar-right" style="padding-top:65px">
+                <ul class="navbar-form form-inline navbar-right" style="padding-top:73px">
 					
 
 					<?php echo $this->Form->button('login', array('class' => 'btn btn-sm btn-primary', 'id' => 'loginbutton', 'type' => 'button')); ?>
