@@ -37,8 +37,7 @@
 		alert("Your two passwords do not match, please try again");
 		return false;
 		}
-		alert("Passed all tests");
-		return true;
+
 		}
 		</script>
     </div>
