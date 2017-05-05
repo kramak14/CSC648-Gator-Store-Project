@@ -2,6 +2,7 @@
 App::uses('AppController', 'Controller');
 class ProductsController extends AppController {
 
+
 ////////////////////////////////////////////////////////////
 
     public $components = array(
@@ -17,6 +18,11 @@ class ProductsController extends AppController {
 ////////////////////////////////////////////////////////////
 
     public function index() {
+
+	$categories = $this->Product->Category->generateTreeList(null, null, null, '');
+	$this->set(compact('categories'));
+
+
         $products = $this->Product->find('all', array(
             'recursive' => -1,
             'contain' => array(
@@ -41,6 +47,11 @@ class ProductsController extends AppController {
 ////////////////////////////////////////////////////////////
 
     public function products() {
+
+	$categories = $this->Product->Category->generateTreeList(null, null, null, '--');
+	$this->set(compact('categories'));
+
+
 
         $this->Paginator = $this->Components->load('Paginator');
 
@@ -72,6 +83,11 @@ class ProductsController extends AppController {
 
     public function view($id = null) {
 
+	$categories = $this->Product->Category->generateTreeList(null, null, null, '--');
+	$this->set(compact('categories'));
+
+
+
         $product = $this->Product->find('first', array(
             'recursive' => -1,
             'contain' => array(
@@ -102,6 +118,9 @@ class ProductsController extends AppController {
 ////////////////////////////////////////////////////////////
 
     public function search() {
+
+	$categories = $this->Product->Category->generateTreeList(null, null, null, '--');
+	$this->set(compact('categories'));
 
         $search = null;
         if(!empty($this->request->query['search']) || !empty($this->request->data['name'])) {
