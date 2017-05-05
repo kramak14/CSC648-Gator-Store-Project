@@ -14,7 +14,7 @@ class UsersController extends AppController {
         if ($this->request->is('post')) {
             $this->User->create();
             if ($this->User->save($this->request->data)) {
-                $this->Flash->flash('Registration Successful! Please login again');
+                $this->Flash->flash('Registration Successful! Welcome to GatorStore!');
             } else {
                 $this->Flash->flash('We are unable to make your account at this moment.  Please try again');
             }
