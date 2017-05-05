@@ -3,14 +3,17 @@
 <div class="row">
     <div class="col-sm-4">
 		<?php echo "Please fill in the fields to register"; ?>
-        <?php echo $this->Form->create('User');?>
+        <?php echo $this->Form->create('User', array('name' => 'registrationForm','id' => 'registrationForm', 'onsubmit' => "return validate()"));?>
         <?php echo $this->Form->input('role', array('class' => 'form-control', 'value' => 'customer', 'type' => 'hidden')); ?>
         <br />
         <?php echo $this->Form->input('name', array('class' => 'form-control')); ?>
         <br />
-        <?php echo $this->Form->input('username', array('class' => 'form-control')); ?>
+        <?php echo $this->Form->input('username', array('class' => 'form-control', 'name' => 'username')); ?>
         <br />
-        <?php echo $this->Form->input('password', array('class' => 'form-control')); ?>
+        <?php echo $this->Form->input('password', array('class' => 'form-control', 'name' => 'password')); ?>
+		<br />
+		
+        <?php echo $this->Form->input('passwordConfirm', array('class' => 'form-control', 'name' => 'passwordConfirm', 'type' => 'password')); ?>
 		<br />
         <?php echo $this->Form->input('active', array('type' => 'hidden', 'value' => '1')); ?>
         <br />
@@ -20,6 +23,24 @@
         <?php echo $this->Form->button('Submit', array('class' => 'btn btn-primary')); ?>
         <?php echo $this->Form->end(); ?>
 
+		<script>
+		function validate() {
+		var x = document.forms["registrationForm"]["username"].value;
+		var y = x.match(/@mail.sfsu.edu/);
+		if(!y) {
+		alert("Input a valid SFSU email");
+		return false;
+		}
+		var pass = document.forms["registrationForm"]["password"].value;
+		var passConfirm = document.forms["registrationForm"]["passwordConfirm"].value;
+		if(pass != passConfirm) {
+		alert("Your two passwords do not match, please try again");
+		return false;
+		}
+		alert("Passed all tests");
+		return true;
+		}
+		</script>
     </div>
 </div>
 
