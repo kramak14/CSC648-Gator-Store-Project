@@ -502,8 +502,14 @@ class ProductsController extends AppController {
 ////////////////////////////////////////////////////////////
 
     public function sell() {
-
-
+		if ($this->request->is('post')) {
+			if (!$this->Auth->loggedIn()) {
+				return $this->redirect(array(
+					'controller' => 'users',
+					'action' => 'login'
+					));
+			}	
+		}
     }
 
 ////////////////////////////////////////////////////////////
