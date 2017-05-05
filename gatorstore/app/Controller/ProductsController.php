@@ -147,6 +147,7 @@ class ProductsController extends AppController {
 
         $keywords = 'search';
         $this->set(compact('keywords'));
+
     }
 
 ////////////////////////////////////////////////////////////

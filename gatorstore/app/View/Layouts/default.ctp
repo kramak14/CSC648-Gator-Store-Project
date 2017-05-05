@@ -80,6 +80,8 @@ form-inline {
 					<li style= "padding-top: 9px">
 					<?php echo $this->Form->create('Product', array('class' => 'form-inline', 'div' =>  false, 'label' => false, 'type' => 'GET', 'url' => array('controller' => 'products', 'action' => 'search'))); ?>
                         &nbsp;&nbsp;&nbsp;
+			<?php echo $this->Form->input('categories', array('label' => false, 'class' => 'form-control', '    empty' => 'Categories', 'selected' => $all['categories`'])); ?>
+
 					<?php echo $this->Form->input('category', array('label'=> false, 'div' => false, 'style' => 'width: 100px', 'class' => 'form-control', 'options' => array('' => 'All','textbooks' => 'Textbooks', 'clothes' => 'Clothes', 'electronics' => 'Electronics', 'furniture' => 'Furniture', 'kitchen' => 'Kitchen'))); ?>
                         &nbsp;
                     <?php echo $this->Form->input('search', array('label' => false, 'div' => false, 'id' => 's', 'class' => 'input-sm s', 'autocomplete' => 'off')); ?>
@@ -162,7 +164,7 @@ form-inline {
             <br />
 
   	    <div class="alert alert-danger">
-                <span class="glyphicon glyphicon-info-sign"></span> THIS IS A DEMO SFSU CSC648 DEMO SHOPPING CART !
+                <span class="glyphicon glyphicon-info-sign"></span>SFSU Software Engineering Project, Spring 2017 . For Demostration Only
             </div>
 	    <br />
             <ul class="breadcrumb">
