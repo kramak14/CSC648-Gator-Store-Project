@@ -22,7 +22,6 @@ $(document).ready(function() {
 <h1><?php echo $product['Product']['name']; ?></h1>
 
 <div class="row">
-
     <div class="col col-sm-7">
     <?php echo $this->Html->Image('/images/large/' . $product['Product']['image'], array('alt' => $product['Product']['name'], 'class' => 'img-thumbnail img-responsive')); ?>
     </div>

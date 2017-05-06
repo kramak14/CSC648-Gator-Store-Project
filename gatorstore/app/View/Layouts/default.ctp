@@ -20,6 +20,11 @@
 <!doctype html>
 <html>
 <head>
+<style>
+form-inline {
+    display: inline-block;
+}
+</style>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <title><?php echo $title_for_layout; ?></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -64,25 +69,30 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
+                <li style= "padding-bottom: 9px">
 	        <?php echo $this->Html->link($this->Html->image('logo.png', array('alt' => 'sfsu csc648 logo', 'border' => 0)), '/', array('escape' => false)); ?>
             </div>
             <div class="collapse navbar-collapse navbar-ex1-collapse">
-                <ul class="nav navbar-nav" style="padding-top: 65px">
+                <ul class="nav navbar-nav" style="padding-top: 70px">
                     <li><?php echo $this->Html->link('Products', array('controller' => 'products', 'action' => 'products')); ?></li>
-                    <li><?php echo $this->Html->link('Brands', array('controller' => 'brands', 'action' => 'index')); ?></li>
                     <li><?php echo $this->Html->link('Categories', array('controller' => 'categories', 'action' => 'index')); ?></li>
-                    <!-- <li><?php echo $this->Html->link('Search', array('controller' => 'products', 'action' => 'search')); ?></li> -->
                     <li><?php echo $this->Html->link('Sell', array('controller' => 'products', 'action' => 'sell')); ?></li>
-                </ul>
-                <ul class="navbar-form form-inline navbar-right" style="padding-top:65px">
-
-                    <?php echo $this->Form->create('Product', array('type' => 'GET', 'url' => array('controller' => 'products', 'action' => 'search'))); ?>
-
+					<li style= "padding-top: 9px">
+					<?php echo $this->Form->create('Product', array('class' => 'form-inline', 'div' =>  false, 'label' => false, 'type' => 'GET', 'url' => array('controller' => 'products', 'action' => 'search'))); ?>
+                        &nbsp;&nbsp;&nbsp;
+			<?php echo $this->Form->input('category_id', array('class' => 'form-control', 'label' => false)); ?>
+                       &nbsp;
                     <?php echo $this->Form->input('search', array('label' => false, 'div' => false, 'id' => 's', 'class' => 'input-sm s', 'autocomplete' => 'off')); ?>
                     <?php echo $this->Form->button('Search', array('div' => false, 'class' => 'btn btn-sm btn-primary')); ?>
 					&nbsp;
-					<?php echo $this->Form->button('login', array('class' => 'btn btn-sm btn-primary', 'id' => 'loginbutton', 'type' => 'button')); ?>
 					<?php echo $this->Form->end(); ?>
+					</li>
+					
+                </ul>
+                <ul class="navbar-form form-inline navbar-right" style="padding-top:73px">
+					
+
+					<?php echo $this->Form->button('login', array('class' => 'btn btn-sm btn-primary', 'id' => 'loginbutton', 'type' => 'button')); ?>
 					
                     <span id="cartbutton" style="display:none;">
                         <!--<?php echo $this->Html->link('<i class="fa fa-cart-plus"></i> &nbsp; Shopping Cart', array('controller' => 'shop', 'action' => 'cart'), array('class' => 'btn btn-sm btn-success', 'escape' => false)); ?>-->
@@ -152,7 +162,7 @@
             <br />
 
   	    <div class="alert alert-danger">
-                <span class="glyphicon glyphicon-info-sign"></span> THIS IS A DEMO SFSU CSC648 DEMO SHOPPING CART !
+                <span class="glyphicon glyphicon-info-sign"></span>SFSU Software Engineering Project, Spring 2017 . For Demostration Only
             </div>
 	    <br />
             <ul class="breadcrumb">

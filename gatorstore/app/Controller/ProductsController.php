@@ -2,6 +2,7 @@
 App::uses('AppController', 'Controller');
 class ProductsController extends AppController {
 
+
 ////////////////////////////////////////////////////////////
 
     public $components = array(
@@ -17,6 +18,11 @@ class ProductsController extends AppController {
 ////////////////////////////////////////////////////////////
 
     public function index() {
+
+	$categories = $this->Product->Category->generateTreeList(null, null, null, '');
+	$this->set(compact('categories'));
+
+
         $products = $this->Product->find('all', array(
             'recursive' => -1,
             'contain' => array(
@@ -41,6 +47,11 @@ class ProductsController extends AppController {
 ////////////////////////////////////////////////////////////
 
     public function products() {
+
+	$categories = $this->Product->Category->generateTreeList(null, null, null, '--');
+	$this->set(compact('categories'));
+
+
 
         $this->Paginator = $this->Components->load('Paginator');
 
@@ -72,6 +83,11 @@ class ProductsController extends AppController {
 
     public function view($id = null) {
 
+	$categories = $this->Product->Category->generateTreeList(null, null, null, '--');
+	$this->set(compact('categories'));
+
+
+
         $product = $this->Product->find('first', array(
             'recursive' => -1,
             'contain' => array(
@@ -102,6 +118,9 @@ class ProductsController extends AppController {
 ////////////////////////////////////////////////////////////
 
     public function search() {
+
+	$categories = $this->Product->Category->generateTreeList(null, null, null, '--');
+	$this->set(compact('categories'));
 
         $search = null;
         if(!empty($this->request->query['search']) || !empty($this->request->data['name'])) {
@@ -147,6 +166,7 @@ class ProductsController extends AppController {
 
         $keywords = 'search';
         $this->set(compact('keywords'));
+
     }
 
 ////////////////////////////////////////////////////////////
@@ -502,8 +522,25 @@ class ProductsController extends AppController {
 ////////////////////////////////////////////////////////////
 
     public function sell() {
+		if ($this->request->is('post')) {
+			if (!$this->Auth->loggedIn()) {
+				return $this->redirect(array(
+					'controller' => 'users',
+					'action' => 'login'
+					));
+			}	
+		}
+        if ($this->request->is('post')) {
+            $this->Product->create();
+            if ($this->Product->save($this->request->data)) {
+                $this->Flash->flash('The product has been saved');
+                return $this->redirect(array('action' => 'index'));
+            } else {
+                $this->Flash->flash('The product could not be saved. Please, try again.');
+            }
+        }
 
-
+		
     }
 
 ////////////////////////////////////////////////////////////
@@ -536,5 +573,255 @@ class ProductsController extends AppController {
 
 ////////////////////////////////////////////////////////////
 
+    public function customer_index() {
+
+        if ($this->request->is('post')) {
+
+            if($this->request->data['Product']['active'] == '1' || $this->request->data['Product']['active'] == '0') {
+                $conditions[] = array(
+                    'Product.active' => $this->request->data['Product']['active']
+                );
+                $this->Session->write('Product.active', $this->request->data['Product']['active']);
+            } else {
+                $this->Session->write('Product.active', '');
+            }
+
+            if(!empty($this->request->data['Product']['brand_id'])) {
+                $conditions[] = array(
+                    'Product.brand_id' => $this->request->data['Product']['brand_id']
+                );
+                $this->Session->write('Product.brand_id', $this->request->data['Product']['brand_id']);
+            } else {
+                $this->Session->write('Product.brand_id', '');
+            }
+
+            if(!empty($this->request->data['Product']['name'])) {
+                $filter = $this->request->data['Product']['filter'];
+                $this->Session->write('Product.filter', $filter);
+                $name = $this->request->data['Product']['name'];
+                $this->Session->write('Product.name', $name);
+                $conditions[] = array(
+                    'Product.' . $filter . ' LIKE' => '%' . $name . '%'
+                );
+            } else {
+                $this->Session->write('Product.filter', '');
+                $this->Session->write('Product.name', '');
+            }
+
+            $this->Session->write('Product.conditions', $conditions);
+            return $this->redirect(array('action' => 'index'));
+
+        }
+
+        if($this->Session->check('Product')) {
+            $all = $this->Session->read('Product');
+        } else {
+            $all = array(
+                'active' => '',
+                'brand_id' => '',
+                'name' => '',
+                'filter' => '',
+                'conditions' => ''
+            );
+        }
+        $this->set(compact('all'));
+
+        $this->Paginator = $this->Components->load('Paginator');
+
+        $this->Paginator->settings = array(
+            'Product' => array(
+                'contain' => array(
+                    'Category',
+                    'Brand',
+                ),
+                'recursive' => -1,
+                'limit' => 50,
+                'conditions' => $all['conditions'],
+                'order' => array(
+                    'Product.name' => 'ASC'
+                ),
+                'paramType' => 'querystring',
+            )
+        );
+        $products = $this->Paginator->paginate();
+
+        $brands = $this->Product->Brand->findList();
+
+        $brandseditable = array();
+        foreach ($brands as $key => $value) {
+            $brandseditable[] = array(
+                'value' => $key,
+                'text' => $value,
+            );
+        }
+
+        $categories = $this->Product->Category->generateTreeList(null, null, null, '--');
+
+        $categorieseditable = array();
+        foreach ($categories as $key => $value) {
+            $categorieseditable[] = array(
+                'value' => $key,
+                'text' => $value,
+            );
+        }
+
+        $tags = ClassRegistry::init('Tag')->find('all', array(
+            'order' => array(
+                'Tag.name' => 'ASC'
+            ),
+        ));
+
+        $this->set(compact('products', 'brands', 'brandseditable', 'categorieseditable', 'tags'));
+
+    }
+
+////////////////////////////////////////////////////////////
+
+    public function customer_view($id = null) {
+
+        if (($this->request->is('post') || $this->request->is('put')) && !empty($this->request->data['Product']['image']['name'])) {
+
+            $this->Img = $this->Components->load('Img');
+
+            $newName = $this->request->data['Product']['slug'];
+
+            $ext = $this->Img->ext($this->request->data['Product']['image']['name']);
+
+            $origFile = $newName . '.' . $ext;
+            $dst = $newName . '.jpg';
+
+            $targetdir = WWW_ROOT . 'images/original';
+
+            $upload = $this->Img->upload($this->request->data['Product']['image']['tmp_name'], $targetdir, $origFile);
+
+            if($upload == 'Success') {
+                $this->Img->resampleGD($targetdir . DS . $origFile, WWW_ROOT . 'images/large/', $dst, 800, 800, 1, 0);
+                $this->Img->resampleGD($targetdir . DS . $origFile, WWW_ROOT . 'images/small/', $dst, 180, 180, 1, 0);
+                $this->request->data['Product']['image'] = $dst;
+            } else {
+                $this->request->data['Product']['image'] = '';
+            }
+
+            if ($this->Product->save($this->request->data)) {
+                $this->Flash->flash($upload);
+                return $this->redirect($this->referer());
+            } else {
+                $this->Flash->flash('The Product could not be saved. Please, try again.');
+            }
+        }
+
+        if (!$this->Product->exists($id)) {
+            throw new NotFoundException('Invalid product');
+        }
+        $product = $this->Product->find('first', array(
+            'recursive' => -1,
+            'contain' => array(
+                'Category',
+                'Brand',
+            ),
+            'conditions' => array(
+                'Product.id' => $id
+            )
+        ));
+        $this->set(compact('product'));
+    }
+
+////////////////////////////////////////////////////////////
+
+
+    public function customer_add() {
+        if ($this->request->is('post')) {
+            $this->Product->create();
+            if ($this->Product->save($this->request->data)) {
+                $this->Flash->flash('The product has been saved');
+                return $this->redirect(array('action' => 'index'));
+            } else {
+                $this->Flash->flash('The product could not be saved. Please, try again.');
+            }
+        }
+        $brands = $this->Product->Brand->find('list');
+        $this->set(compact('brands'));
+
+        $categories = $this->Product->Category->generateTreeList(null, null, null, '--');
+        $this->set(compact('categories'));
+    }
+
+
+////////////////////////////////////////////////////////////
+
+    public function customer_edit($id = null) {
+
+        $_SESSION['KCFINDER'] = array(
+            'disabled' => false,
+            'uploadURL' => '../images/products',
+            'uploadDir' => '',
+            'dirPerms' => 0777,
+            'filePerms' => 0777
+        );
+
+        if (!$this->Product->exists($id)) {
+            throw new NotFoundException('Invalid product');
+        }
+        if ($this->request->is('post') || $this->request->is('put')) {
+
+            if ($this->Product->save($this->request->data)) {
+                $this->Flash->flash('The product has been saved');
+                return $this->redirect(array('action' => 'index'));
+            } else {
+                $this->Flash->flash('The product could not be saved. Please, try again.');
+            }
+        } else {
+            $product = $this->Product->find('first', array(
+                'conditions' => array(
+                    'Product.id' => $id
+                )
+            ));
+            $this->request->data = $product;
+        }
+
+        $this->set(compact('id'));
+
+        $this->set(compact('product'));
+
+        $brands = $this->Product->Brand->find('list');
+        $this->set(compact('brands'));
+
+        $categories = $this->Product->Category->generateTreeList(null, null, null, '--');
+        $this->set(compact('categories'));
+
+        $productmods = $this->Product->Productmod->find('all', array(
+            'conditions' => array(
+                'Productmod.product_id' => $id
+            )
+        ));
+        $this->set(compact('productmods'));
+
+    }
+
+////////////////////////////////////////////////////////////
+	public function customer_reset() {
+		$this->Session->delete('Product');
+		return $this->redirect(array('action' => 'index'));
+	}
+
+
+////////////////////////////////////////////////////////////
+
+
+    public function customer_delete($id = null) {
+        $this->Product->id = $id;
+        if (!$this->Product->exists()) {
+            throw new NotFoundException('Invalid product');
+        }
+        $this->request->onlyAllow('post', 'delete');
+        if ($this->Product->delete()) {
+            $this->Flash->flash('Product deleted');
+            return $this->redirect(array('action' => 'index'));
+        }
+        $this->Flash->flash('Product was not deleted');
+        return $this->redirect(array('action' => 'index'));
+    }
+
+////////////////////////////////////////////////////////////
 
 }

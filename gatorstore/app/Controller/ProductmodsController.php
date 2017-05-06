@@ -85,4 +85,39 @@ class ProductmodsController extends AppController {
 
 ////////////////////////////////////////////////////////////
 
+    public function customer_add($id) {
+        if ($this->request->is('post')) {
+            $this->Productmod->create();
+            if ($this->Productmod->save($this->request->data)) {
+                $this->Flash->flash('The productmod has been saved.');
+                return $this->redirect(array('controller' => 'products', 'action' => 'edit', $id));
+            } else {
+                $this->Flash->flash('The productmod could not be saved. Please, try again.');
+            }
+        }
+        $products = $this->Productmod->Product->find('list', array(
+            'conditions' => array(
+                'Product.id' => $id
+            )
+        ));
+        $this->set(compact('products'));
+    }
+////////////////////////////////////////////////////////////
+
+    public function customer_delete($id = null) {
+        $this->Productmod->id = $id;
+        if (!$this->Productmod->exists()) {
+            throw new NotFoundException('Invalid productmod');
+        }
+        $this->request->onlyAllow('post', 'delete');
+        if ($this->Productmod->delete()) {
+            $this->Flash->flash('The productmod has been deleted.');
+        } else {
+            $this->Flash->flash('The productmod could not be deleted. Please, try again.');
+        }
+        return $this->redirect(array('action' => 'index'));
+    }
+
+
+
 }
