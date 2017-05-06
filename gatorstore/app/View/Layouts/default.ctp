@@ -174,6 +174,7 @@
             <br />
             <?php echo date('Y'); ?> <?php echo env('HTTP_HOST'); ?>
             <br />
+            <?php include_once("analyticstracking.php") ?>
             <br />
         </div>
     </div>
