@@ -32,9 +32,7 @@ $(document).ready(function() {
 
         <br />
         <br />
-
         $ <span id="productprice"><?php echo $product['Product']['price']; ?></span>
-
         <br />
         <br />
 

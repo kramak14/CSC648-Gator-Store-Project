@@ -20,13 +20,12 @@ class ProductsController extends AppController {
     public function index() {
 
 	$categories = $this->Product->Category->generateTreeList(null, null, null, '');
-	$this->set(compact('categories'));
-
 
         $products = $this->Product->find('all', array(
             'recursive' => -1,
             'contain' => array(
-                'Brand'
+                'Brand',
+		'Category'
             ),
             'limit' => 20,
             'conditions' => array(
@@ -37,7 +36,7 @@ class ProductsController extends AppController {
                 'Product.views' => 'ASC'
             )
         ));
-        $this->set(compact('products'));
+        $this->set(compact('products','categories'));
 
         $this->Product->updateViews($products);
 
@@ -84,7 +83,7 @@ class ProductsController extends AppController {
     public function view($id = null) {
 
 	$categories = $this->Product->Category->generateTreeList(null, null, null, '--');
-	$this->set(compact('categories'));
+	$this->set(compact('Category'));
 
 
 
@@ -120,17 +119,16 @@ class ProductsController extends AppController {
     public function search() {
 
 	$categories = $this->Product->Category->generateTreeList(null, null, null, '--');
-	$this->set(compact('categories'));
-
+ 	$this->set(compact('categories'));
         $search = null;
         if(!empty($this->request->query['search']) || !empty($this->request->data['name'])) {
-            $search = empty($this->request->query['search']) ? $this->request->data['name'] : $this->request->query['search'];
+	    $search = empty($this->request->query['search']) ? $this->request->data['name'] : $this->request->query['search'];
             $search = preg_replace('/[^a-zA-Z0-9 ]/', '', $search);
             $terms = explode(' ', trim($search));
             $terms = array_diff($terms, array(''));
             $conditions = array(
                 'Brand.active' => 1,
-                'Product.active' => 1,
+                'Product.active' => 1
             );
             foreach($terms as $term) {
                 $terms1[] = preg_replace('/[^a-zA-Z0-9]/', '', $term);
@@ -171,40 +169,40 @@ class ProductsController extends AppController {
 
 ////////////////////////////////////////////////////////////
 
-    public function searchjson() {
-
-        $term = null;
-        if(!empty($this->request->query['term'])) {
-            $term = $this->request->query['term'];
-            $terms = explode(' ', trim($term));
-            $terms = array_diff($terms, array(''));
-            $conditions = array(
-                // 'Brand.active' => 1,
-                'Product.active' => 1
-            );
-            foreach($terms as $term) {
-                $conditions[] = array('Product.name LIKE' => '%' . $term . '%');
-            }
-            $products = $this->Product->find('all', array(
-                'recursive' => -1,
-                'contain' => array(
-                    // 'Brand'
-                ),
-                'fields' => array(
-                    'Product.id',
-                    'Product.name',
-                    'Product.image'
-                ),
-                'conditions' => $conditions,
-                'limit' => 20,
-            ));
-        }
-        // $products = Hash::extract($products, '{n}.Product.name');
-        echo json_encode($products);
-        $this->autoRender = false;
-
-    }
-
+//    public function searchjson() {
+//
+//        $term = null;
+//        if(!empty($this->request->query['term'])) {
+//            $term = $this->request->query['term'];
+//            $terms = explode(' ', trim($term));
+//            $terms = array_diff($terms, array(''));
+//            $conditions = array(
+//                // 'Brand.active' => 1,
+//                'Product.active' => 1
+//            );
+//            foreach($terms as $term) {
+//                $conditions[] = array('Product.name LIKE' => '%' . $term . '%');
+//            }
+//            $products = $this->Product->find('all', array(
+//                'recursive' => -1,
+//                'contain' => array(
+//                    // 'Brand'
+//                ),
+//                'fields' => array(
+//                    'Product.id',
+//                    'Product.name',
+//                    'Product.image'
+//                ),
+//                'conditions' => $conditions,
+//                'limit' => 20,
+//            ));
+//        }
+//        // $products = Hash::extract($products, '{n}.Product.name');
+//        echo json_encode($products);
+//        $this->autoRender = false;
+//
+//    }
+//
 ////////////////////////////////////////////////////////////
 
     public function sitemap() {
