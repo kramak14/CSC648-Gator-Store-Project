@@ -17,12 +17,8 @@ class ProductsController extends AppController {
 ////////////////////////////////////////////////////////////
 
     public function index() {
-<<<<<<< HEAD
 
 	$categories = $this->Product->Category->generateTreeList(null, null, null, '');
-
-=======
->>>>>>> b93264bf7bf995b2bab75f7e2beedd454ba0ea23
         $products = $this->Product->find('all', array(
             'recursive' => -1,
             'contain' => array(
@@ -79,14 +75,8 @@ class ProductsController extends AppController {
 
     public function view($id = null) {
 
-<<<<<<< HEAD
 	$categories = $this->Product->Category->generateTreeList(null, null, null, '--');
-	$this->set(compact('Category'));
 
-
-
-=======
->>>>>>> b93264bf7bf995b2bab75f7e2beedd454ba0ea23
         $product = $this->Product->find('first', array(
             'recursive' => -1,
             'contain' => array(
@@ -105,7 +95,7 @@ class ProductsController extends AppController {
 
         $this->Product->updateViews($product);
 
-        $this->set(compact('product'));
+        $this->set(compact('product', 'categories'));
 
         $productmods = $this->Product->Productmod->getAllProductMods($product['Product']['id'], $product['Product']['price']);
         $this->set('productmodshtml', $productmods['productmodshtml']);
@@ -118,11 +108,9 @@ class ProductsController extends AppController {
 
     public function search() {
 
-<<<<<<< HEAD
 	$categories = $this->Product->Category->generateTreeList(null, null, null, '--');
  	$this->set(compact('categories'));
-=======
->>>>>>> b93264bf7bf995b2bab75f7e2beedd454ba0ea23
+
         $search = null;
         if(!empty($this->request->query['search']) || !empty($this->request->data['name'])) {
 	    $search = empty($this->request->query['search']) ? $this->request->data['name'] : $this->request->query['search'];
