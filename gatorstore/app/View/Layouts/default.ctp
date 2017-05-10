@@ -24,6 +24,7 @@
 form-inline {
     display: inline-block;
 }
+
 </style>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <title><?php echo $title_for_layout; ?></title>
@@ -69,7 +70,7 @@ form-inline {
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <li style= "padding-bottom: 9px">
+                
 	        <?php echo $this->Html->link($this->Html->image('logo.png', array('alt' => 'sfsu csc648 logo', 'border' => 0)), '/', array('escape' => false)); ?>
             </div>
             <div class="collapse navbar-collapse navbar-ex1-collapse">
@@ -77,13 +78,16 @@ form-inline {
                     <li><?php echo $this->Html->link('Products', array('controller' => 'products', 'action' => 'products')); ?></li>
                     <li><?php echo $this->Html->link('Categories', array('controller' => 'categories', 'action' => 'index')); ?></li>
                     <li><?php echo $this->Html->link('Sell', array('controller' => 'products', 'action' => 'sell')); ?></li>
-					<li style= "padding-top: 9px">
+					<li>
 					<?php echo $this->Form->create('Product', array('class' => 'form-inline', 'div' =>  false, 'label' => false, 'type' => 'GET', 'url' => array('controller' => 'products', 'action' => 'search'))); ?>
                         &nbsp;&nbsp;&nbsp;
-			<?php echo $this->Form->input('category_id', array('class' => 'form-control', 'label' => false)); ?>
+					<?php echo $this->Form->input('category_id', array('class' => 'form-control', 'label' => false)); ?>
                        &nbsp;
+					</li>
+					<li style = "padding-top: 20px">
                     <?php echo $this->Form->input('search', array('label' => false, 'div' => false, 'id' => 's', 'class' => 'input-sm s', 'autocomplete' => 'off')); ?>
-                    <?php echo $this->Form->button('Search', array('div' => false, 'class' => 'btn btn-sm btn-primary')); ?>
+                    
+					<?php echo $this->Form->button('Search', array('div' => false, 'class' => 'btn btn-sm btn-primary')); ?>
 					&nbsp;
 					<?php echo $this->Form->end(); ?>
 					</li>
