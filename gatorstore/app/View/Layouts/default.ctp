@@ -77,7 +77,9 @@ form-inline {
                     <li><?php echo $this->Html->link('Products', array('controller' => 'products', 'action' => 'products')); ?></li>
                     <li><?php echo $this->Html->link('Categories', array('controller' => 'categories', 'action' => 'index')); ?></li>
                     <li><?php echo $this->Html->link('Sell', array('controller' => 'products', 'action' => 'sell')); ?></li>
-					<li style= "padding-top: 9px">
+                    <li><?php echo $this->Html->link('Contact Us', array('controller' => 'pages', 'action' => 'contactseller')); ?></li>
+                    <li><?php echo $this->Html->link('Privacy Policy', array('controller' => 'pages', 'action' => 'privacypolicy')); ?></li>		
+			<li style= "padding-top: 9px">
 					<?php echo $this->Form->create('Product', array('class' => 'form-inline', 'div' =>  false, 'label' => false, 'type' => 'GET', 'url' => array('controller' => 'products', 'action' => 'search'))); ?>
                         &nbsp;&nbsp;&nbsp;
 			<?php echo $this->Form->input('category_id', array('class' => 'form-control', 'label' => false)); ?>
