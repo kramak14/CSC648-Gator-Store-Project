@@ -17,7 +17,7 @@
     ?>
 
     <div class="col col-sm-3">
-        <div style="border: 3px groove #DFDBDC">
+        <div style="border: 2px solid #DFDBDC">
            <?php echo $this->Html->image('/images/small/' . $product['Product']['image'], array('url' => array('controller' => 'products', 'action' => 'view', 'slug' => $product['Product']['slug']), 'alt' => $product['Product']['name'],'class' => 'image')); ?>
         <!--<br />-->
         </div>
