@@ -6,7 +6,7 @@
     <div class="col-sm-3">
 
         <?php echo $this->Form->create('User', ['url' => ['action' => 'login']]); ?>
-        <?php echo $this->Form->input('username', ['class' => 'form-control', 'autofocus' => 'autofocus']); ?>
+        <?php echo $this->Form->input('username', ['label' => 'SFSU E-Mail', 'class' => 'form-control', 'autofocus' => 'autofocus']); ?>
         <br />
         <?php echo $this->Form->input('password', ['class' => 'form-control']); ?>
         <br />

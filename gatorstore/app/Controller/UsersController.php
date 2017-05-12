@@ -30,10 +30,7 @@ class UsersController extends AppController {
 
                 if ($this->Auth->user('role') == 'customer') {
                     return $this->redirect(array(
-                        'controller' => 'users',
-                        'action' => 'dashboard',
-                        'customer' => true,
-                        'admin' => false
+                        'controller' => 'home'
                     ));
                 } elseif ($this->Auth->user('role') == 'admin') {
                     return $this->redirect(array(
@@ -66,17 +63,11 @@ class UsersController extends AppController {
 
                 if ($this->Auth->user('role') == 'customer') {
                     return $this->redirect(array(
-                        'controller' => 'users',
-                        'action' => 'dashboard',
-                        'customer' => true,
-                        'admin' => false
+                        'controller' => 'pages',
                     ));
                 } elseif ($this->Auth->user('role') == 'admin') {
                     return $this->redirect(array(
-                        'controller' => 'users',
-                        'action' => 'dashboard',
-                        'manager' => false,
-                        'admin' => true
+                        'controller' => 'pages'
                     ));
                 } else {
                     $this->Flash->danger('Login is incorrect');

@@ -8,7 +8,7 @@
         <br />
         <?php echo $this->Form->input('name', array('class' => 'form-control')); ?>
         <br />
-        <?php echo $this->Form->input('username', array('class' => 'form-control', 'name' => 'username')); ?>
+        <?php echo $this->Form->input('username', array('label' => 'SFSU E-Mail', 'class' => 'form-control', 'name' => 'username')); ?>
         <br />
         <?php echo $this->Form->input('password', array('class' => 'form-control', 'name' => 'password')); ?>
 		<br />
