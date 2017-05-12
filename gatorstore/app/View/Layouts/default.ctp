@@ -24,6 +24,11 @@
 form-inline {
     display: inline-block;
 }
+
+.footer>.container>a{
+    color:black;
+}
+
 </style>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <title><?php echo $title_for_layout; ?></title>
@@ -69,7 +74,7 @@ form-inline {
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <li style= "padding-bottom: 9px">
+                
 	        <?php echo $this->Html->link($this->Html->image('logo.png', array('alt' => 'sfsu csc648 logo', 'border' => 0)), '/', array('escape' => false)); ?>
             </div>
             <div class="collapse navbar-collapse navbar-ex1-collapse">
@@ -77,15 +82,20 @@ form-inline {
                     <li><?php echo $this->Html->link('Products', array('controller' => 'products', 'action' => 'products')); ?></li>
                     <li><?php echo $this->Html->link('Categories', array('controller' => 'categories', 'action' => 'index')); ?></li>
                     <li><?php echo $this->Html->link('Sell', array('controller' => 'products', 'action' => 'sell')); ?></li>
+                    <li><?php echo $this->Html->link('About Us', array('controller' => 'pages', 'action' => 'aboutus')); ?></li>
                     <li><?php echo $this->Html->link('Contact Us', array('controller' => 'pages', 'action' => 'contactseller')); ?></li>
                     <li><?php echo $this->Html->link('Privacy Policy', array('controller' => 'pages', 'action' => 'privacypolicy')); ?></li>		
 			<li style= "padding-top: 9px">
+					<li>
 					<?php echo $this->Form->create('Product', array('class' => 'form-inline', 'div' =>  false, 'label' => false, 'type' => 'GET', 'url' => array('controller' => 'products', 'action' => 'search'))); ?>
                         &nbsp;&nbsp;&nbsp;
-			<?php echo $this->Form->input('category_id', array('class' => 'form-control', 'label' => false)); ?>
+					<?php echo $this->Form->input('category_id', array('class' => 'form-control', 'label' => false)); ?>
                        &nbsp;
+					</li>
+					<li style = "padding-top: 20px">
                     <?php echo $this->Form->input('search', array('label' => false, 'div' => false, 'id' => 's', 'class' => 'input-sm s', 'autocomplete' => 'off')); ?>
-                    <?php echo $this->Form->button('Search', array('div' => false, 'class' => 'btn btn-sm btn-primary')); ?>
+                    
+					<?php echo $this->Form->button('Search', array('div' => false, 'class' => 'btn btn-sm btn-primary')); ?>
 					&nbsp;
 					<?php echo $this->Form->end(); ?>
 					</li>
@@ -183,10 +193,13 @@ form-inline {
     <div class="footer">
         <div class="container">
             <!-- <?php echo $this->Html->link($this->Html->image('cake.power.gif', array('alt' => 'CakePHP', 'border' => 0)), 'http://www.cakephp.org/', array('target' => '_blank', 'escape' => false)); ?> -->
+            <br />  
+               <?php echo $this->Html->link('Contact', array('controller'=>'pages', 'action'=>'contactseller', 'full_base'=>true)); ?> 
+            <?php echo '|'?> 
+               <?php echo $this->Html->link('Privacy Policy', array('controller'=>'pages', 'action'=>'privacypolicy', 'full_base'=>true)); ?>
             <br />
-            <?php echo date('Y'); ?> <?php echo env('HTTP_HOST'); ?>
+             <?php echo date('Y'); ?> <?php echo env('HTTP_HOST'); ?>
             <br />
-            <?php include_once("analyticstracking.php") ?>
             <br />
         </div>
     </div>
@@ -194,7 +207,18 @@ form-inline {
     <div class="sqldump">
         <?php echo $this->element('sql_dump'); ?>
     </div>
-	
+
+    <!--google anylitics script-->
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-98930613-1', 'auto');
+        ga('send', 'pageview');
+
+    </script>
 
 </body>
 </html>

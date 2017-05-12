@@ -2,7 +2,6 @@
 App::uses('AppController', 'Controller');
 class ProductsController extends AppController {
 
-
 ////////////////////////////////////////////////////////////
 
     public $components = array(
@@ -20,13 +19,11 @@ class ProductsController extends AppController {
     public function index() {
 
 	$categories = $this->Product->Category->generateTreeList(null, null, null, '');
-	$this->set(compact('categories'));
-
-
         $products = $this->Product->find('all', array(
             'recursive' => -1,
             'contain' => array(
-                'Brand'
+                'Brand',
+		'Category'
             ),
             'limit' => 20,
             'conditions' => array(
@@ -37,7 +34,7 @@ class ProductsController extends AppController {
                 'Product.views' => 'ASC'
             )
         ));
-        $this->set(compact('products'));
+        $this->set(compact('products','categories'));
 
         $this->Product->updateViews($products);
 
@@ -47,11 +44,6 @@ class ProductsController extends AppController {
 ////////////////////////////////////////////////////////////
 
     public function products() {
-
-	$categories = $this->Product->Category->generateTreeList(null, null, null, '--');
-	$this->set(compact('categories'));
-
-
 
         $this->Paginator = $this->Components->load('Paginator');
 
@@ -84,9 +76,6 @@ class ProductsController extends AppController {
     public function view($id = null) {
 
 	$categories = $this->Product->Category->generateTreeList(null, null, null, '--');
-	$this->set(compact('categories'));
-
-
 
         $product = $this->Product->find('first', array(
             'recursive' => -1,
@@ -106,7 +95,7 @@ class ProductsController extends AppController {
 
         $this->Product->updateViews($product);
 
-        $this->set(compact('product'));
+        $this->set(compact('product', 'categories'));
 
         $productmods = $this->Product->Productmod->getAllProductMods($product['Product']['id'], $product['Product']['price']);
         $this->set('productmodshtml', $productmods['productmodshtml']);
@@ -120,17 +109,17 @@ class ProductsController extends AppController {
     public function search() {
 
 	$categories = $this->Product->Category->generateTreeList(null, null, null, '--');
-	$this->set(compact('categories'));
+ 	$this->set(compact('categories'));
 
         $search = null;
         if(!empty($this->request->query['search']) || !empty($this->request->data['name'])) {
-            $search = empty($this->request->query['search']) ? $this->request->data['name'] : $this->request->query['search'];
+	    $search = empty($this->request->query['search']) ? $this->request->data['name'] : $this->request->query['search'];
             $search = preg_replace('/[^a-zA-Z0-9 ]/', '', $search);
             $terms = explode(' ', trim($search));
             $terms = array_diff($terms, array(''));
             $conditions = array(
                 'Brand.active' => 1,
-                'Product.active' => 1,
+                'Product.active' => 1
             );
             foreach($terms as $term) {
                 $terms1[] = preg_replace('/[^a-zA-Z0-9]/', '', $term);
@@ -166,45 +155,44 @@ class ProductsController extends AppController {
 
         $keywords = 'search';
         $this->set(compact('keywords'));
-
     }
 
 ////////////////////////////////////////////////////////////
 
-    public function searchjson() {
-
-        $term = null;
-        if(!empty($this->request->query['term'])) {
-            $term = $this->request->query['term'];
-            $terms = explode(' ', trim($term));
-            $terms = array_diff($terms, array(''));
-            $conditions = array(
-                // 'Brand.active' => 1,
-                'Product.active' => 1
-            );
-            foreach($terms as $term) {
-                $conditions[] = array('Product.name LIKE' => '%' . $term . '%');
-            }
-            $products = $this->Product->find('all', array(
-                'recursive' => -1,
-                'contain' => array(
-                    // 'Brand'
-                ),
-                'fields' => array(
-                    'Product.id',
-                    'Product.name',
-                    'Product.image'
-                ),
-                'conditions' => $conditions,
-                'limit' => 20,
-            ));
-        }
-        // $products = Hash::extract($products, '{n}.Product.name');
-        echo json_encode($products);
-        $this->autoRender = false;
-
-    }
-
+//    public function searchjson() {
+//
+//        $term = null;
+//        if(!empty($this->request->query['term'])) {
+//            $term = $this->request->query['term'];
+//            $terms = explode(' ', trim($term));
+//            $terms = array_diff($terms, array(''));
+//            $conditions = array(
+//                // 'Brand.active' => 1,
+//                'Product.active' => 1
+//            );
+//            foreach($terms as $term) {
+//                $conditions[] = array('Product.name LIKE' => '%' . $term . '%');
+//            }
+//            $products = $this->Product->find('all', array(
+//                'recursive' => -1,
+//                'contain' => array(
+//                    // 'Brand'
+//                ),
+//                'fields' => array(
+//                    'Product.id',
+//                    'Product.name',
+//                    'Product.image'
+//                ),
+//                'conditions' => $conditions,
+//                'limit' => 20,
+//            ));
+//        }
+//        // $products = Hash::extract($products, '{n}.Product.name');
+//        echo json_encode($products);
+//        $this->autoRender = false;
+//
+//    }
+//
 ////////////////////////////////////////////////////////////
 
     public function sitemap() {
@@ -539,7 +527,8 @@ class ProductsController extends AppController {
                 $this->Flash->flash('The product could not be saved. Please, try again.');
             }
         }
-
+        $categories = $this->Product->Category->generateTreeList(null, null, null, '--');
+        $this->set(compact('categories'));
 		
     }
 
