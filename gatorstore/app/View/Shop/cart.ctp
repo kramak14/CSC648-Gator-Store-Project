@@ -53,16 +53,18 @@ Shopping Cart is empty
     <div class="col col-sm-12 pull-right tr">
         Order Total: <span class="red" id="total">$<?php echo $shop['Order']['total']; ?></span>
         <br />
-        <br />
     </div>
 </div>
 
 <div class="row">
     <div class="col col-sm-12">
-        <?php echo $this->Form->create('Product'); ?>
-        <?php echo $this->Form->input('Message Seller', array('type' => 'textarea', 'class' => 'form-control', 'style' => 'Height:120px; ord-wrap:break-word; word-break:break-all;')); ?>
+        Message Seller
         <br />
-        <?php echo $this->Form->button('Send', array('class' => 'btn btn-primary')); ?>
+        <?php echo $this->Form->create('Product', array()); ?>
+        <?php echo $this->Form->button('<i class="fa fa-windows"></i>', array('formaction' => "http://mail.live.com/mail/EditMessageLight.aspx?", 'class' => 'btn btn-primary')); ?>
+        <?php echo $this->Form->button('<i class="fa fa-google"></i>', array('formaction' => "https://mail.google.com/mail/u/0/?view=cm&fs=1&&tf=1", 'class' => 'btn btn-primary')); ?>
+        <?php echo $this->Form->button('<i class="fa fa-yahoo"></i>', array('formaction' => "http://compose.mail.yahoo.com", 'class' => 'btn btn-primary')); ?>
+        <?php echo $this->Form->button('<i class="fa fa-envelope"></i>', array('formaction' => "mailto:", 'class' => 'btn btn-primary')); ?>
         <?php echo $this->Form->end(); ?>
     </div>
 </div>
