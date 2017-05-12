@@ -31,6 +31,27 @@ class CategoriesController extends AppController {
 ////////////////////////////////////////////////////////////
 
     public function view($slug = null) {
+        $this->helpers[] = 'Tree';
+        $categories = $this->Category->find('all', array(
+            'recursive' => -1,
+            'order' => array(
+                'Category.lft' => 'ASC'
+            ),
+            'conditions' => array(
+            ),
+        ));
+	$categoriestree = $this->Category->find('all', array(
+            'recursive' => -1,
+            'order' => array(
+                'Category.lft' => 'ASC'
+            ),
+            'conditions' => array(
+            ),
+        ));
+        $this->set(compact('categoriestree'));
+
+        $this->set(compact('categories'));
+ 
 	$category = $this->Category->find('first', array(
             'recursive' => -1,
             'conditions' => array(
