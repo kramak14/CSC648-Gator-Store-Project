@@ -79,8 +79,11 @@ form-inline {
             </div>
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav" style="padding-top: 70px">
-                    <li><?php echo $this->Html->link('Products', array('controller' => 'products', 'action' => 'products')); ?></li>
+		    <?php
+		    /**
+		    <li><?php echo $this->Html->link('Products', array('controller' => 'products', 'action' => 'products')); ?></li>
                     <li><?php echo $this->Html->link('Categories', array('controller' => 'categories', 'action' => 'index')); ?></li>
+ 		    **/?>
                     <li><?php echo $this->Html->link('Sell', array('controller' => 'products', 'action' => 'sell')); ?></li>
                     <li><?php echo $this->Html->link('About Us', array('controller' => 'pages', 'action' => 'aboutus')); ?></li>
                     <li><?php echo $this->Html->link('Contact Us', array('controller' => 'pages', 'action' => 'contactseller')); ?></li>
@@ -89,7 +92,12 @@ form-inline {
 					<li>
 					<?php echo $this->Form->create('Product', array('class' => 'form-inline', 'div' =>  false, 'label' => false, 'type' => 'GET', 'url' => array('controller' => 'products', 'action' => 'search'))); ?>
                         &nbsp;&nbsp;&nbsp;
-					<?php echo $this->Form->input('category_id', array('class' => 'form-control', 'label' => false)); ?>
+					
+					<?php
+					      /**
+						echo $this->Form->input('category_id', array('class' => 'form-control', 'label' => false));
+					      **/
+					?>
                        &nbsp;
 					</li>
 					<li style = "padding-top: 20px">

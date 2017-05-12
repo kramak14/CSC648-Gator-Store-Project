@@ -6,6 +6,7 @@ class ProductsController extends AppController {
 
     public $components = array(
         'RequestHandler',
+
     );
 
 ////////////////////////////////////////////////////////////
