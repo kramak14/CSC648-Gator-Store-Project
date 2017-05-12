@@ -8,12 +8,12 @@
         <br />
         <?php echo $this->Form->input('name', array('class' => 'form-control')); ?>
         <br />
-        <?php echo $this->Form->input('username', array('label' => 'SFSU E-Mail', 'class' => 'form-control', 'name' => 'username')); ?>
+        <?php echo $this->Form->input('username', array('label' => 'SFSU E-Mail', 'class' => 'form-control', 'id' => 'username')); ?>
         <br />
-        <?php echo $this->Form->input('password', array('class' => 'form-control', 'name' => 'password')); ?>
+        <?php echo $this->Form->input('password', array('class' => 'form-control', 'id' => 'password')); ?>
 		<br />
 		
-        <?php echo $this->Form->input('passwordConfirm', array('class' => 'form-control', 'name' => 'passwordConfirm', 'type' => 'password')); ?>
+        <?php echo $this->Form->input('passwordConfirm', array('class' => 'form-control', 'id' => 'passwordConfirm', 'type' => 'password')); ?>
 		<br />
         <?php echo $this->Form->input('active', array('type' => 'hidden', 'value' => '1')); ?>
         <br />
@@ -25,14 +25,15 @@
 
 		<script>
 		function validate() {
-		var x = document.forms["registrationForm"]["username"].value;
+		document.getElementById(
+		var x = document.getElementById("username").value;
 		var y = x.match(/@mail.sfsu.edu/);
 		if(!y) {
 		alert("Input a valid SFSU email");
 		return false;
 		}
-		var pass = document.forms["registrationForm"]["password"].value;
-		var passConfirm = document.forms["registrationForm"]["passwordConfirm"].value;
+		var pass = document.getElementById("password").value;
+		var passConfirm = document.getElementById("passwordConfirm").value;
 		if(pass != passConfirm) {
 		alert("Your two passwords do not match, please try again");
 		return false;

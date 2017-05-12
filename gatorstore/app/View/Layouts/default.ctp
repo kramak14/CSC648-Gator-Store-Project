@@ -148,7 +148,19 @@ function popup(mylink, windowname) {
                 <font id="customcolor">
                        <?php echo $this->Html->link('Sell', array('controller'=>'products','action'=>'sell'),['class'=>'custom-skin']); ?>
                 </font>  
-                      <?php echo $this->Form->button('login', array('class' => 'btn btn-sm btn-primary', 'id' => 'loginbutton', 'type' => 'button')); ?>
+					
+                      <?php 
+					  
+					  if($this->Session->read('Auth.User')) {
+						  $username = $this->Session->read('Auth.User.name');
+						  echo $this->Html->link('Welcome ', array('color' => 'white'));
+						  echo $this->Html->link($username, array('color' => 'white'));
+					  }
+					  else {
+						  echo $this->Form->button('login', array('class' => 'btn btn-sm btn-primary', 'id' => 'loginbutton', 'type' => 'button')); 
+					  }
+					  					  
+					  ?>
 					
                     <span id="cartbutton" style="display:none;">
                         <!--<?php echo $this->Html->link('<i class="fa fa-cart-plus"></i> &nbsp; Shopping Cart', array('controller' => 'shop', 'action' => 'cart'), array('class' => 'btn btn-sm btn-success', 'escape' => false)); ?>-->
