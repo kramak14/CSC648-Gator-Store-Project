@@ -24,12 +24,55 @@
 form-inline {
     display: inline-block;
 }
+#customcolor>a{
+   color:white;
 
-.footer>.container>a{
+}
+.custom-skin{
+  background: #eb2828;
+  background-image: -webkit-linear-gradient(top, #eb2828, #d62d2d);
+  background-image: -moz-linear-gradient(top, #eb2828, #d62d2d);
+  background-image: -ms-linear-gradient(top, #eb2828, #d62d2d);
+  background-image: -o-linear-gradient(top, #eb2828, #d62d2d);
+  background-image: linear-gradient(to bottom, #eb2828, #d62d2d);
+  -webkit-border-radius: 5;
+  -moz-border-radius: 5;
+  border-radius: 5px;
+  border-color: #b22222;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 13px;
+  padding: 6px 15px 10px 15px;
+  text-decoration: none;
+}
+
+.custom-skin:hover {
+  background: #d62439;
+  background-image: -webkit-linear-gradient(top, #d62439, #ba2323);
+  background-image: -moz-linear-gradient(top, #d62439, #ba2323);
+  background-image: -ms-linear-gradient(top, #d62439, #ba2323);
+  background-image: -o-linear-gradient(top, #d62439, #ba2323);
+  background-image: linear-gradient(to bottom, #d62439, #ba2323);
+  text-decoration: none;
+}
+footer>.container>a{
     color:black;
 }
 
+
 </style>
+<script>
+function popup(mylink, windowname) { 
+   if (! window.focus)return true; 
+
+   var href; 
+   if (typeof(mylink) == 'string') href=mylink; 
+   else href=mylink.href; window.open(href, windowname, 'width=500,height=500,scrollbars=yes'); 
+
+   return false; 
+}
+
+</script>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <title><?php echo $title_for_layout; ?></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -83,8 +126,8 @@ form-inline {
 		    /**
 		    <li><?php echo $this->Html->link('Products', array('controller' => 'products', 'action' => 'products')); ?></li>
                     <li><?php echo $this->Html->link('Categories', array('controller' => 'categories', 'action' => 'index')); ?></li>
- 		    **/?>
-                    <li><?php echo $this->Html->link('Sell', array('controller' => 'products', 'action' => 'sell')); ?></li>
+ 		                        <li><?php echo $this->Html->link('Sell', array('controller' => 'products', 'action' => 'sell')); ?></li>**/?>
+
                     <li><?php echo $this->Html->link('About Us', array('controller' => 'pages', 'action' => 'aboutus')); ?></li>
                     <li><?php echo $this->Html->link('Contact Us', array('controller' => 'pages', 'action' => 'contactseller')); ?></li>
                     <li><?php echo $this->Html->link('Privacy Policy', array('controller' => 'pages', 'action' => 'privacypolicy')); ?></li>		
@@ -110,13 +153,16 @@ form-inline {
 					
                 </ul>
                 <ul class="navbar-form form-inline navbar-right" style="padding-top:73px">
-					
-
-					<?php echo $this->Form->button('login', array('class' => 'btn btn-sm btn-primary', 'id' => 'loginbutton', 'type' => 'button')); ?>
+                <font id="customcolor">
+                       <?php echo $this->Html->link('Sell', array('controller'=>'products','action'=>'sell'),['class'=>'custom-skin']); ?>
+                </font>  
+                      <?php echo $this->Form->button('login', array('class' => 'btn btn-sm btn-primary', 'id' => 'loginbutton', 'type' => 'button')); ?>
 					
                     <span id="cartbutton" style="display:none;">
                         <!--<?php echo $this->Html->link('<i class="fa fa-cart-plus"></i> &nbsp; Shopping Cart', array('controller' => 'shop', 'action' => 'cart'), array('class' => 'btn btn-sm btn-success', 'escape' => false)); ?>-->
 					</span>
+
+q
 					
                 </ul>
             </div>
