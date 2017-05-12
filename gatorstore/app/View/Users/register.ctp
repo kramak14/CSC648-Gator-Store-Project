@@ -25,7 +25,6 @@
 
 		<script>
 		function validate() {
-		document.getElementById(
 		var x = document.getElementById("username").value;
 		var y = x.match(/@mail.sfsu.edu/);
 		if(!y) {
