@@ -28,7 +28,6 @@ form-inline {
 .footer>.container>a{
     color:black;
 }
-
 </style>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <title><?php echo $title_for_layout; ?></title>
@@ -92,12 +91,6 @@ form-inline {
 					<li>
 					<?php echo $this->Form->create('Product', array('class' => 'form-inline', 'div' =>  false, 'label' => false, 'type' => 'GET', 'url' => array('controller' => 'products', 'action' => 'search'))); ?>
                         &nbsp;&nbsp;&nbsp;
-					
-					<?php
-					      /**
-						echo $this->Form->input('category_id', array('class' => 'form-control', 'label' => false));
-					      **/
-					?>
                        &nbsp;
 					</li>
 					<li style = "padding-top: 20px">
@@ -183,6 +176,18 @@ form-inline {
 
   	    <div class="alert alert-danger">
                 <span class="glyphicon glyphicon-info-sign"></span>SFSU Software Engineering Project, Spring 2017 . For Demostration Only
+
+			<?php 
+                            foreach($categories as $category){
+                            ?>
+		<p>	<?php echo $this->Html->link($category, array('controller' => 'categories','action' => 'view',$category)); ?>
+			
+		</p>
+ 
+                            <?php
+                            }
+                        ?>
+
             </div>
 	    <br />
             <ul class="breadcrumb">

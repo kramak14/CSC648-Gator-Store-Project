@@ -5,6 +5,7 @@ class CategoriesController extends AppController {
 ////////////////////////////////////////////////////////////
 
     public function index() {
+
         $this->helpers[] = 'Tree';
         $categories = $this->Category->find('all', array(
             'recursive' => -1,
@@ -14,6 +15,16 @@ class CategoriesController extends AppController {
             'conditions' => array(
             ),
         ));
+	$categoriestree = $this->Category->find('all', array(
+            'recursive' => -1,
+            'order' => array(
+                'Category.lft' => 'ASC'
+            ),
+            'conditions' => array(
+            ),
+        ));
+        $this->set(compact('categoriestree'));
+
         $this->set(compact('categories'));
     }
 
@@ -61,6 +72,8 @@ class CategoriesController extends AppController {
         ));
         $this->set(compact('products'));
     }
+
+
 
 ////////////////////////////////////////////////////////////
 

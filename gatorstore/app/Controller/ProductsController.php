@@ -17,10 +17,14 @@ class ProductsController extends AppController {
 
 ////////////////////////////////////////////////////////////
 
-    public function index() {
 
-	$categories = $this->Product->Category->generateTreeList(null, null, null, '');
-        $products = $this->Product->find('all', array(
+
+    public function index() {
+	$categories = $this->Product->Category->generateTreeList(null, null, null, '--');
+	$this->set(compact('categories'));
+
+
+         $products = $this->Product->find('all', array(
             'recursive' => -1,
             'contain' => array(
                 'Brand',
@@ -35,7 +39,7 @@ class ProductsController extends AppController {
                 'Product.views' => 'ASC'
             )
         ));
-        $this->set(compact('products','categories'));
+        $this->set(compact('products'));
 
         $this->Product->updateViews($products);
 
@@ -45,6 +49,8 @@ class ProductsController extends AppController {
 ////////////////////////////////////////////////////////////
 
     public function products() {
+	$categories = $this->Product->Category->generateTreeList(null, null, null, '--');
+
 
         $this->Paginator = $this->Components->load('Paginator');
 
@@ -77,6 +83,7 @@ class ProductsController extends AppController {
     public function view($id = null) {
 
 	$categories = $this->Product->Category->generateTreeList(null, null, null, '--');
+	$this->set(compact('categories'));
 
         $product = $this->Product->find('first', array(
             'recursive' => -1,
@@ -96,7 +103,7 @@ class ProductsController extends AppController {
 
         $this->Product->updateViews($product);
 
-        $this->set(compact('product', 'categories'));
+        $this->set(compact('product'));
 
         $productmods = $this->Product->Productmod->getAllProductMods($product['Product']['id'], $product['Product']['price']);
         $this->set('productmodshtml', $productmods['productmodshtml']);
@@ -158,42 +165,51 @@ class ProductsController extends AppController {
         $this->set(compact('keywords'));
     }
 
+public function searchCategory(){
+
+	$categories = $this->Product->Category->generateTreeList(null, null, null, '--');
+ 	$this->set(compact('categories'));
+
+
+}
+
+
 ////////////////////////////////////////////////////////////
 
-//    public function searchjson() {
-//
-//        $term = null;
-//        if(!empty($this->request->query['term'])) {
-//            $term = $this->request->query['term'];
-//            $terms = explode(' ', trim($term));
-//            $terms = array_diff($terms, array(''));
-//            $conditions = array(
-//                // 'Brand.active' => 1,
-//                'Product.active' => 1
-//            );
-//            foreach($terms as $term) {
-//                $conditions[] = array('Product.name LIKE' => '%' . $term . '%');
-//            }
-//            $products = $this->Product->find('all', array(
-//                'recursive' => -1,
-//                'contain' => array(
-//                    // 'Brand'
-//                ),
-//                'fields' => array(
-//                    'Product.id',
-//                    'Product.name',
-//                    'Product.image'
-//                ),
-//                'conditions' => $conditions,
-//                'limit' => 20,
-//            ));
-//        }
-//        // $products = Hash::extract($products, '{n}.Product.name');
-//        echo json_encode($products);
-//        $this->autoRender = false;
-//
-//    }
-//
+    public function searchjson() {
+
+        $term = null;
+        if(!empty($this->request->query['term'])) {
+            $term = $this->request->query['term'];
+            $terms = explode(' ', trim($term));
+            $terms = array_diff($terms, array(''));
+            $conditions = array(
+                // 'Brand.active' => 1,
+                'Product.active' => 1
+            );
+            foreach($terms as $term) {
+                $conditions[] = array('Product.name LIKE' => '%' . $term . '%');
+            }
+            $products = $this->Product->find('all', array(
+                'recursive' => -1,
+                'contain' => array(
+                    // 'Brand'
+                ),
+                'fields' => array(
+                    'Product.id',
+                    'Product.name',
+                    'Product.image'
+                ),
+                'conditions' => $conditions,
+                'limit' => 20,
+            ));
+        }
+        // $products = Hash::extract($products, '{n}.Product.name');
+        echo json_encode($products);
+        $this->autoRender = false;
+
+    }
+
 ////////////////////////////////////////////////////////////
 
     public function sitemap() {
