@@ -58,11 +58,6 @@ form-inline {
 footer>.container>a{
     color:black;
 }
-<<<<<<< HEAD
-
-
-=======
->>>>>>> d924561e212010cd8002e65d8b89dd4ef86ce96f
 </style>
 <script>
 function popup(mylink, windowname) { 
@@ -226,17 +221,6 @@ q
 
   	    <div class="alert alert-danger">
                 <span class="glyphicon glyphicon-info-sign"></span>SFSU Software Engineering Project, Spring 2017 . For Demostration Only
-
-			<?php 
-                            foreach($categories as $category){
-                            ?>
-		<p>	<?php echo $this->Html->link($category, array('controller' => 'categories','action' => 'view',$category)); ?>
-			
-		</p>
- 
-                            <?php
-                            }
-                        ?>
 
             </div>
 	    <br />

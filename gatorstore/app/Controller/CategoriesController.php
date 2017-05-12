@@ -31,7 +31,7 @@ class CategoriesController extends AppController {
 ////////////////////////////////////////////////////////////
 
     public function view($slug = null) {
-        $category = $this->Category->find('first', array(
+	$category = $this->Category->find('first', array(
             'recursive' => -1,
             'conditions' => array(
                 'Category.slug' => $slug
