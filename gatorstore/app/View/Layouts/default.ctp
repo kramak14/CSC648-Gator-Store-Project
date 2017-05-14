@@ -24,6 +24,9 @@
 form-inline {
     display: inline-block;
 }
+#customfooter>.container>a{
+    color:black;
+}
 #customcolor>a{
    color:white;
 
@@ -55,22 +58,9 @@ form-inline {
   background-image: linear-gradient(to bottom, #d62439, #ba2323);
   text-decoration: none;
 }
-footer>.container>a{
-    color:black;
-}
+
 </style>
-<script>
-function popup(mylink, windowname) { 
-   if (! window.focus)return true; 
 
-   var href; 
-   if (typeof(mylink) == 'string') href=mylink; 
-   else href=mylink.href; window.open(href, windowname, 'width=500,height=500,scrollbars=yes'); 
-
-   return false; 
-}
-
-</script>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <title><?php echo $title_for_layout; ?></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -249,15 +239,17 @@ q
         </div>
     </div>
 
-    <div class="footer">
-        <div class="container">
+    <div id="customfooter" class="footer">
+        <div class="container" style="text-align: center;">
             <!-- <?php echo $this->Html->link($this->Html->image('cake.power.gif', array('alt' => 'CakePHP', 'border' => 0)), 'http://www.cakephp.org/', array('target' => '_blank', 'escape' => false)); ?> -->
             <br />  
                <?php echo $this->Html->link('Contact', array('controller'=>'pages', 'action'=>'contactseller', 'full_base'=>true)); ?> 
             <?php echo '|'?> 
                <?php echo $this->Html->link('Privacy Policy', array('controller'=>'pages', 'action'=>'privacypolicy', 'full_base'=>true)); ?>
+           <br />
+            <?php echo "Copyright © "?><?php echo date('Y'); ?> <?php echo "SFSU CSC-648." ?>
             <br />
-             <?php echo date('Y'); ?> <?php echo env('HTTP_HOST'); ?>
+            <?php echo "All Rights Reserved." ?>
             <br />
             <br />
         </div>
