@@ -143,8 +143,15 @@ form-inline {
 					  
 					  if($this->Session->read('Auth.User')) {
 						  $username = $this->Session->read('Auth.User.name');
-						  echo $this->Html->link('Welcome ', array('color' => 'white'));
-						  echo $this->Html->link($username, array('color' => 'white'));
+						  $role = $this->Session->read('Auth.User.role');
+						  if($role == 'admin') {
+							  echo $this->Html->link('Welcome ', array('controller' => 'users', 'action' => 'dashboard', 'manager' => false, 'admin' => true));
+							  echo $this->Html->link($username, array('controller' => 'users', 'action' => 'dashboard', 'manager' => false, 'admin' => true));
+						  }
+						  if($role == 'customer') {
+							  echo $this->Html->link('Welcome ', array('controller' => 'users', 'action' => 'dashboard', 'manager' => false, 'customer' => true));
+							  echo $this->Html->link($username, array('controller' => 'users', 'action' => 'dashboard', 'manager' => false, 'customer' => true));
+						  }
 					  }
 					  else {
 						  echo $this->Form->button('login', array('class' => 'btn btn-sm btn-primary', 'id' => 'loginbutton', 'type' => 'button')); 
@@ -155,8 +162,6 @@ form-inline {
                     <span id="cartbutton" style="display:none;">
                         <!--<?php echo $this->Html->link('<i class="fa fa-cart-plus"></i> &nbsp; Shopping Cart', array('controller' => 'shop', 'action' => 'cart'), array('class' => 'btn btn-sm btn-success', 'escape' => false)); ?>-->
 					</span>
-
-q
 					
                 </ul>
             </div>
