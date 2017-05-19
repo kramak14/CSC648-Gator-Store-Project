@@ -4,74 +4,17 @@
 <?php $this->Html->addCrumb('Order Review'); ?>
 
 <?php echo $this->Html->script(array('jquery.validate.js', 'additional-methods.js', 'shop_review.js'), array('inline' => false)); ?>
+<?php echo $this->Html->script(array('shop_address.js'), array('inline' => false)); ?>
+
 
 <h1>Review And Place Your Order</h1>
+
 <?php echo $this->Form->create('Order'); ?>
 
 <hr>
 
 <div class="row">
-    <div class="col col-sm-4">
 
-        <?php echo $this->Form->input('first_name', array('class' => 'form-control')); ?>
-        <br />
-        <?php echo $this->Form->input('email', array('class' => 'form-control')); ?>
-        <br />
-        <?php echo $this->Form->input('phone', array('class' => 'form-control')); ?>
-        <br />
-	    <?php echo $this->Form->input('last_name', array('label' => 'Message To Seller', 'class' => 'form-control', 'type' => 'textarea')); ?>
-	
-        <br />
-
-    </div>
-<?php $shop['Order']['first_name'] = 'test'; ?>
-<br />
-<hr>
-<?php /*
-<div class="row">
-    <div class="col col-sm-4">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h3 class="panel-title">Customer Info</h3>
-            </div>
-            <div class="panel-body">
-                <?php echo $shop['Order']['first_name'];?> <?php echo $shop['Order']['last_name'];?><br />
-                Email: <?php echo $shop['Order']['email'];?><br />
-                Phone: <?php echo $shop['Order']['phone'];?>
-            </div>
-        </div>
-    </div>
-    <div class="col col-sm-4">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h3 class="panel-title">Billing Address</h3>
-            </div>
-            <div class="panel-body">
-                <?php echo $shop['Order']['first_name'];?> <?php echo $shop['Order']['last_name'];?><br />
-                <?php echo $shop['Order']['billing_address'];?><br />
-                <?php echo $shop['Order']['billing_address2'];?><br />
-                <?php echo $shop['Order']['billing_city'];?>, <?php echo $shop['Order']['billing_state'];?> <?php echo $shop['Order']['billing_zip'];?><br />
-                <?php echo $shop['Order']['billing_country'];?>
-            </div>
-        </div>
-    </div>
-    <div class="col col-sm-4">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h3 class="panel-title">Shipping Address</h3>
-            </div>
-            <div class="panel-body">
-                <?php echo $shop['Order']['first_name'];?> <?php echo $shop['Order']['last_name'];?><br />
-                <?php echo $shop['Order']['shipping_address'];?><br />
-                <?php echo $shop['Order']['shipping_address2'];?><br />
-                <?php echo $shop['Order']['shipping_city'];?>, <?php echo $shop['Order']['shipping_state'];?> <?php echo $shop['Order']['shipping_zip'];?><br />
-                <?php echo $shop['Order']['shipping_country'];?>
-            </div>
-        </div>
-    </div>
-</div>
-<hr>
-*/ ?>
 <div class="row">
     <div class="col col-sm-1">#</div>
     <div class="col col-sm-6">ITEM</div>
@@ -115,70 +58,18 @@
 
 <br />
 <br />
-
-
-
-<?php if((Configure::read('Settings.AUTHORIZENET_ENABLED') == 0) && $shop['Order']['order_type'] == 'creditcard') : ?>
-
-<div class="row">
-    <div class="col col-sm-4">
-
-        <strong>Credit or debit card</strong>
-
+        <?php echo $this->Form->input('first_name', array('class' => 'form-control')); ?>
         <br />
-
-        <?php echo $this->Form->input('creditcard_number', array('label' => false, 'class' => 'form-control ccinput', 'type' => 'tel', 'maxLength' => 16, 'autocomplete' => 'off')); ?>
-
-    </div>
-    <div class="col col-sm-2">
-
-        <strong>Card Security Code</strong>
-
-        <a tabindex="9999" id="cscpop" role="button" data-placement="top" data-toggle="popover" data-trigger="focus" title="Card Security Code (CSC)" data-content="<small><strong>Visa, MasterCard, Discover</strong><br /><img src=<?php echo Router::url('/'); ?>img/visa.png><br / >The security code is the last three digits of the number that appears on the back of your card in the signature bar. <br /><br /><strong>American Express</strong><br /><img src=<?php echo Router::url('/'); ?>img/amex.png><br />The security code is the four digits located on the front of the card, on the right side.</small>"><span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span></a>
-
+        <?php echo $this->Form->input('email', array('class' => 'form-control')); ?>
         <br />
-
-        <?php echo $this->Form->input('creditcard_code', array('label' => false, 'class' => 'form-control', 'type' => 'tel', 'maxLength' => 4)); ?>
-
-    </div>
-</div>
-
+        <?php echo $this->Form->input('phone', array('class' => 'form-control')); ?>
+        <br />
+	<?php echo $this->Form->input('last_name', array('label' => 'Message To Seller', 'class' => 'form-control', 'type' => 'textarea')); ?>
+	
 <br />
-
-<div class="row">
-    <div class="col col-sm-3">
-        <?php echo $this->Form->input('creditcard_month', array(
-            'label' => 'Expiration Month',
-            'class' => 'form-control',
-            'options' => array(
-                '01' => '01 - January',
-                '02' => '02 - February',
-                '03' => '03 - March',
-                '04' => '04 - April',
-                '05' => '05 - May',
-                '06' => '06 - June',
-                '07' => '07 - July',
-                '08' => '08 - August',
-                '09' => '09 - September',
-                '10' => '10 - October',
-                '11' => '11 - November',
-                '12' => '12 - December'
-            )
-        )); ?>
-    </div>
-    <div class="col col-sm-3">
-        <?php echo $this->Form->input('creditcard_year', array(
-            'label' => 'Expiration Year',
-            'class' => 'form-control',
-            'options' => array_combine(range(date('y'), date('y') + 10), range(date('Y'), date('Y') + 10))
-        ));?>
-    </div>
-</div>
-
 <br />
 <br />
 
-<?php endif; ?>
 
 <?php echo $this->Form->button('<i class="fa fa-check"></i> &nbsp; Place your order', array('class' => 'btn btn-sm btn-success', 'ecape' => false)); ?>
 
