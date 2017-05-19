@@ -61,14 +61,10 @@ Shopping Cart is empty
  <?php echo $this->Html->link('<i class="fa fa-check"></i> &nbsp; Checkout', array('controller' => 'shop', 'action' => 'review'), array('class' => 'btn btn-sm btn-success', 'escape' => false)); ?>
 
  <?php echo $this->Form->create(NULL, array('url' => array('controller' => 'shop', 'action' => 'step1'))); ?>
-        Message Seller
+       Message Seller
         <br />
         <?php echo $this->Form->create('Product', array()); ?>
-        <?php echo $this->Form->button('<i class="fa fa-windows"></i>', array('formaction' => "http://mail.live.com/mail/EditMessageLight.aspx?", 'class' => 'btn btn-primary')); ?>
-        <?php echo $this->Form->button('<i class="fa fa-google"></i>', array('formaction' => "https://mail.google.com/mail/u/0/?view=cm&fs=1&&tf=1", 'class' => 'btn btn-primary')); ?>
-        <?php echo $this->Form->button('<i class="fa fa-yahoo"></i>', array('formaction' => "http://compose.mail.yahoo.com", 'class' => 'btn btn-primary')); ?>
-        <?php echo $this->Form->button('<i class="fa fa-envelope"></i>', array('formaction' => "mailto:", 'class' => 'btn btn-primary')); ?>
-        <?php echo $this->Form->end(); ?>
+       <?php echo $this->Form->end(); ?>
     </div>
 </div>
 
