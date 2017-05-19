@@ -58,6 +58,9 @@ Shopping Cart is empty
 
 <div class="row">
     <div class="col col-sm-12">
+ <?php echo $this->Html->link('<i class="fa fa-check"></i> &nbsp; Checkout', array('controller' => 'shop', 'action' => 'address'), array('class' => 'btn btn-sm btn-success', 'escape' => false)); ?>
+
+ <?php echo $this->Form->create(NULL, array('url' => array('controller' => 'shop', 'action' => 'step1'))); ?>
         Message Seller
         <br />
         <?php echo $this->Form->create('Product', array()); ?>
