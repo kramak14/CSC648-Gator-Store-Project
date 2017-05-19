@@ -124,6 +124,9 @@ form-inline {
 					<?php echo $this->Form->create('Product', array('class' => 'form-inline', 'div' =>  false, 'label' => false, 'type' => 'GET', 'url' => array('controller' => 'products', 'action' => 'search'))); ?>
                         &nbsp;&nbsp;&nbsp;
                        &nbsp;
+ -					<?php echo $this->Form->input('category_id', array('class' => 'form-control', 'label' => false)); ?> 
+
+
 					</li>
 					<li style = "padding-top: 20px">
                     <?php echo $this->Form->input('search', array('label' => false, 'div' => false, 'id' => 's', 'class' => 'input-sm s', 'autocomplete' => 'off')); ?>
