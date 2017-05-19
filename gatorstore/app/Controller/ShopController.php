@@ -209,22 +209,22 @@ class ShopController extends AppController {
                     //$order['Order']['transaction'] = $paypal['PAYMENTINFO_0_TRANSACTIONID'];
                 }
 
-                if((Configure::read('Settings.AUTHORIZENET_ENABLED') == 1) && $shop['Order']['order_type'] == 'creditcard') {
-                    $payment = array(
-                        'creditcard_number' => $this->request->data['Order']['creditcard_number'],
-                        'creditcard_month' => $this->request->data['Order']['creditcard_month'],
-                        'creditcard_year' => $this->request->data['Order']['creditcard_year'],
-                        'creditcard_code' => $this->request->data['Order']['creditcard_code'],
-                    );
-                    try {
-                        $authorizeNet = $this->AuthorizeNet->charge($shop['Order'], $payment);
-                    } catch(Exception $e) {
-                        $this->Flash->flash($e->getMessage());
-                        return $this->redirect(array('action' => 'review'));
-                    }
-                    $order['Order']['authorization'] = $authorizeNet[4];
-                    $order['Order']['transaction'] = $authorizeNet[6];
-                }
+                //if((Configure::read('Settings.AUTHORIZENET_ENABLED') == 1) && $shop['Order']['order_type'] == 'creditcard') {
+                //    $payment = array(
+                //        'creditcard_number' => $this->request->data['Order']['creditcard_number'],
+                //        'creditcard_month' => $this->request->data['Order']['creditcard_month'],
+                //        'creditcard_year' => $this->request->data['Order']['creditcard_year'],
+                //        'creditcard_code' => $this->request->data['Order']['creditcard_code'],
+                //    );
+                //    try {
+                //        $authorizeNet = $this->AuthorizeNet->charge($shop['Order'], $payment);
+                //    } catch(Exception $e) {
+                //        $this->Flash->flash($e->getMessage());
+                //        return $this->redirect(array('action' => 'review'));
+                //    }
+                //    $order['Order']['authorization'] = $authorizeNet[4];
+                //    $order['Order']['transaction'] = $authorizeNet[6];
+                //}
 
                 $save = $this->Order->saveAll($order, array('validate' => 'first'));
                 if($save) {
