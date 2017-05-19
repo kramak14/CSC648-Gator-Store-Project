@@ -96,80 +96,95 @@ form-inline {
 </head>
 <body>
 
-    <div class="navbar navbar-inverse navbar-static-top" role="navigation">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                
-	        <?php echo $this->Html->link($this->Html->image('logo.png', array('alt' => 'sfsu csc648 logo', 'border' => 0)), '/', array('escape' => false)); ?>
-            </div>
-            <div class="collapse navbar-collapse navbar-ex1-collapse">
-                <ul class="nav navbar-nav" style="padding-top: 70px">
-		    <?php
-		    /**
-		    <li><?php echo $this->Html->link('Products', array('controller' => 'products', 'action' => 'products')); ?></li>
-                    <li><?php echo $this->Html->link('Categories', array('controller' => 'categories', 'action' => 'index')); ?></li>
- 		                        <li><?php echo $this->Html->link('Sell', array('controller' => 'products', 'action' => 'sell')); ?></li>**/?>
+<div class="navbar navbar-inverse navbar-static-top" role="navigation" style="margin-bottom:0px; border-color:white; border-width:0px">
+    <div class="container" style="margin-bottom:5px">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
 
-                    <li><?php echo $this->Html->link('About Us', array('controller' => 'pages', 'action' => 'aboutus')); ?></li>
-                    <li><?php echo $this->Html->link('Contact Us', array('controller' => 'pages', 'action' => 'contactseller')); ?></li>
-                    <li><?php echo $this->Html->link('Privacy Policy', array('controller' => 'pages', 'action' => 'privacypolicy')); ?></li>		
-			<li style= "padding-top: 9px">
-					<li>
-					<?php echo $this->Form->create('Product', array('class' => 'form-inline', 'div' =>  false, 'label' => false, 'type' => 'GET', 'url' => array('controller' => 'products', 'action' => 'search'))); ?>
-                        &nbsp;&nbsp;&nbsp;
-                       &nbsp;
- -					<?php echo $this->Form->input('category_id', array('class' => 'form-control', 'label' => false)); ?> 
+            <?php echo $this->Html->link($this->Html->image('logo.png', array('alt' => 'sfsu csc648 logo', 'border' => 0)), '/', array('escape' => false)); ?>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav" style="padding-top: 89px">
+                <?php
+   /**
+   <li><?php echo $this->Html->link('Products', array('controller' => 'products', 'action' => 'products')); ?></li>
+                <li><?php echo $this->Html->link('Categories', array('controller' => 'categories', 'action' => 'index')); ?></li>
+                <li><?php echo $this->Html->link('Sell', array('controller' => 'products', 'action' => 'sell')); ?></li>**/?>
 
-
-					</li>
-					<li style = "padding-top: 20px">
+                <li style= "padding-top: 0px">
+                <li>
+                    <?php echo $this->Form->create('Product', array('class' => 'form-inline', 'div' =>  false, 'label' => false, 'type' => 'GET', 'url' => array('controller' => 'products', 'action' => 'search'))); ?>
+                    &nbsp;&nbsp;&nbsp;
+                    &nbsp;
+                </li>
+                <li style = "padding-top: 8px">
                     <?php echo $this->Form->input('search', array('label' => false, 'div' => false, 'id' => 's', 'class' => 'input-sm s', 'autocomplete' => 'off')); ?>
-                    
-					<?php echo $this->Form->button('Search', array('div' => false, 'class' => 'btn btn-sm btn-primary')); ?>
-					&nbsp;
-					<?php echo $this->Form->end(); ?>
-					</li>
-					
-                </ul>
-                <ul class="navbar-form form-inline navbar-right" style="padding-top:73px">
-                <font id="customcolor">
-                       <?php echo $this->Html->link('Sell', array('controller'=>'products','action'=>'sell'),['class'=>'custom-skin']); ?>
-                </font>  
-					
-                      <?php 
-					  
-					  if($this->Session->read('Auth.User')) {
-						  $username = $this->Session->read('Auth.User.name');
-						  $role = $this->Session->read('Auth.User.role');
-						  if($role == 'admin') {
-							  echo $this->Html->link('Welcome ', array('controller' => 'users', 'action' => 'dashboard', 'manager' => false, 'admin' => true));
-							  echo $this->Html->link($username, array('controller' => 'users', 'action' => 'dashboard', 'manager' => false, 'admin' => true));
-						  }
-						  if($role == 'customer') {
-							  echo $this->Html->link('Welcome ', array('controller' => 'users', 'action' => 'dashboard', 'manager' => false, 'customer' => true));
-							  echo $this->Html->link($username, array('controller' => 'users', 'action' => 'dashboard', 'manager' => false, 'customer' => true));
-						  }
-					  }
-					  else {
-						  echo $this->Form->button('login', array('class' => 'btn btn-sm btn-primary', 'id' => 'loginbutton', 'type' => 'button')); 
-					  }
-					  					  
-					  ?>
-					
-                    <span id="cartbutton" style="display:none;">
-                        <!--<?php echo $this->Html->link('<i class="fa fa-cart-plus"></i> &nbsp; Shopping Cart', array('controller' => 'shop', 'action' => 'cart'), array('class' => 'btn btn-sm btn-success', 'escape' => false)); ?>-->
-					</span>
-					
-                </ul>
-            </div>
+
+                    <?php echo $this->Form->button('Search', array('div' => false, 'class' => 'btn btn-sm btn-primary')); ?>
+                    &nbsp;
+                    <?php echo $this->Form->end(); ?>
+                </li>
+
+            </ul>
+
         </div>
     </div>
+    <div class="container" style="margin-bottom:5px">
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav" style="padding-top: 5px">
+                <?php
+   /**
+   <li><?php echo $this->Html->link('Products', array('controller' => 'products', 'action' => 'products')); ?></li>
+
+                <!--<li><?php echo $this->Html->link('Categories', array('controller' => 'categories', 'action' => 'index')); ?></li>-->
+                <!--<li><?php echo $this->Html->link('Sell', array('controller' => 'products', 'action' => 'sell')); ?></li>**/?>-->
+
+                <li><?php echo $this->Html->link('Textbooks', array('controller' => 'categories', 'action' => 'view','textbooks')); ?></li>
+                <li><?php echo $this->Html->link('Clothes', array('controller' => 'categories', 'action' => 'view','clothes')); ?></li>
+                <li><?php echo $this->Html->link('Electronics', array('controller' => 'categories', 'action' => 'view','electronics')); ?></li>
+                <li><?php echo $this->Html->link('Furniture', array('controller' => 'categories', 'action' => 'view','furnitures')); ?></li>
+                <li><?php echo $this->Html->link('Kitchen', array('controller' => 'categories', 'action' => 'view','kitchen')); ?></li>
+
+            </ul>
+            <ul class="navbar-form form-inline navbar-right" style="padding-top:0px">
+                <font id="customcolor">
+                    <?php echo $this->Html->link('Sell', array('controller'=>'products','action'=>'sell'),['class'=>'btn btn-sm btn-danger']); ?>
+                </font>
+
+                <?php
+
+		  if($this->Session->read('Auth.User')) {
+                $username = $this->Session->read('Auth.User.name');
+                $role = $this->Session->read('Auth.User.role');
+                if($role == 'admin') {
+                echo $this->Html->link('Welcome ', array('controller' => 'users', 'action' => 'dashboard', 'manager' => false, 'admin' => true));
+                echo $this->Html->link($username, array('controller' => 'users', 'action' => 'dashboard', 'manager' => false, 'admin' => true));
+                }
+                if($role == 'customer') {
+                echo $this->Html->link('Welcome ', array('controller' => 'users', 'action' => 'dashboard', 'manager' => false, 'customer' => true));
+                echo $this->Html->link($username, array('controller' => 'users', 'action' => 'dashboard', 'manager' => false, 'customer' => true));
+                }
+                }
+                else {
+                echo $this->Form->button('login', array('class' => 'btn btn-sm btn-primary', 'id' => 'loginbutton', 'type' => 'button'));
+                }
+
+                ?>
+
+                <span id="cartbutton" style="display:none;">
+                     <!--<?php echo $this->Html->link('<i class="fa fa-cart-plus"></i> &nbsp; Shopping Cart', array('controller' => 'shop', 'action' => 'cart'), array('class' => 'btn btn-sm btn-success', 'escape' => false)); ?>-->
+		</span>
+
+            </ul>
+        </div>
+    </div>
+</div>
+
 
     <div class="content">
         <div class="container">
@@ -250,8 +265,10 @@ form-inline {
     <div id="customfooter" class="footer">
         <div class="container" style="text-align: center;">
             <!-- <?php echo $this->Html->link($this->Html->image('cake.power.gif', array('alt' => 'CakePHP', 'border' => 0)), 'http://www.cakephp.org/', array('target' => '_blank', 'escape' => false)); ?> -->
-            <br />  
-               <?php echo $this->Html->link('Contact', array('controller'=>'pages', 'action'=>'contactseller', 'full_base'=>true)); ?> 
+            <br />
+            <?php echo $this->Html->link('About Us', array('controller' => 'pages', 'action' => 'aboutus', 'full_base'=>true)); ?>
+            <?php echo '|'?>
+            <?php echo $this->Html->link('Contact', array('controller'=>'pages', 'action'=>'contactseller', 'full_base'=>true)); ?>
             <?php echo '|'?> 
                <?php echo $this->Html->link('Privacy Policy', array('controller'=>'pages', 'action'=>'privacypolicy', 'full_base'=>true)); ?>
            <br />
