@@ -180,6 +180,7 @@ class ShopController extends AppController {
     }
 
 //////////////////////////////////////////////////
+        
 
     public function review() {
 
@@ -192,8 +193,8 @@ class ShopController extends AppController {
         if ($this->request->is('post')) {
 
             $this->loadModel('Order');
-
             $this->Order->set($this->request->data);
+
             if($this->Order->validates()) {
                 $order = $shop;
                 $order['Order']['status'] = 1;
@@ -248,9 +249,10 @@ class ShopController extends AppController {
                 }
             }
         }
+	//$this->Session->write('Shop.Order', $order + $shop['Order']);
 
         //if(($shop['Order']['order_type'] == 'paypal') && !empty($shop['Paypal']['Details'])) {
-        //    $shop['Order']['first_name'] = $shop['Paypal']['Details']['FIRSTNAME'];
+            //$shop['Order']['first_name'] = $shop['Paypal']['Details']['FIRSTNAME'];
         //    $shop['Order']['last_name'] = $shop['Paypal']['Details']['LASTNAME'];
         //    $shop['Order']['email'] = $shop['Paypal']['Details']['EMAIL'];
         //    $shop['Order']['phone'] = '888-888-8888';

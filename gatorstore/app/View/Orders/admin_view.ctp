@@ -1,15 +1,25 @@
 <h2>Order</h2>
 
 <table class="table-striped table-bordered table-condensed table-hover">
+
+    <tr>
+        <td>Order ID</td>
+        <td><?php echo h($order['Order']['id']); ?></td>
+    </tr>
+
     <tr>
         <td>Name</td>
         <td><?php echo h($order['Order']['first_name']); ?></td>
     </tr>
- 
-    <tr>
-        <td>Id</td>
-        <td><?php echo h($order['Order']['id']); ?></td>
+   <tr>
+        <td>eMail</td>
+        <td><?php echo h($order['Order']['email']); ?></td>
     </tr>
+    <tr>
+        <td>Phone Number</td>
+        <td><?php echo h($order['Order']['phone']); ?></td>
+    </tr>
+ 
    <tr>
         <td>Weight</td>
         <td><?php echo h($order['Order']['weight']); ?></td>
@@ -38,6 +48,12 @@
         <td>Modified</td>
         <td><?php echo h($order['Order']['modified']); ?></td>
     </tr>
+
+    <tr>
+        <td>Message From Buyer</td>
+        <td><?php echo h($order['Order']['last_name']); ?></td>
+    </tr>
+
 </table>
 
 <br />
