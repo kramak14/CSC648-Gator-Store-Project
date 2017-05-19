@@ -7,7 +7,7 @@
 <h1>Review And Place Your Order</h1>
 
 <hr>
-
+<?php /*
 <div class="row">
     <div class="col col-sm-4">
         <div class="panel panel-default">
@@ -50,9 +50,8 @@
         </div>
     </div>
 </div>
-
 <hr>
-
+*/ ?>
 <div class="row">
     <div class="col col-sm-1">#</div>
     <div class="col col-sm-6">ITEM</div>
