@@ -98,7 +98,7 @@
 
 <?php echo $this->Form->create('Order'); ?>
 
-<?php if((Configure::read('Settings.AUTHORIZENET_ENABLED') == 1) && $shop['Order']['order_type'] == 'creditcard') : ?>
+<?php if((Configure::read('Settings.AUTHORIZENET_ENABLED') == 0) && $shop['Order']['order_type'] == 'creditcard') : ?>
 
 <div class="row">
     <div class="col col-sm-4">

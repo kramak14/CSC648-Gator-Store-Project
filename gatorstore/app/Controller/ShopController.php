@@ -98,14 +98,14 @@ class ShopController extends AppController {
 
     public function cartupdate() {
         if ($this->request->is('post')) {
-            foreach($this->request->data['Product'] as $key => $value) {
-                $p = explode('-', $key);
-                $p = explode('_', $p[1]);
-                $this->Cart->add($p[0], $value, $p[1]);
-            }
-            // $this->Flash->success('Shopping Cart is updated.');
+          foreach($this->request->data['Product'] as $key => $value) {
+              $p = explode('-', $key);
+              $p = explode('_', $p[1]);
+              $this->Cart->add($p[0], $value, $p[1]);
+          }
+           $this->Flash->success('Shopping Cart is updated.');
         }
-        return $this->redirect(array('action' => 'cart'));
+        //return $this->redirect(array('action' => 'cart'));
     }
 
 //////////////////////////////////////////////////
@@ -198,33 +198,33 @@ class ShopController extends AppController {
                 $order = $shop;
                 $order['Order']['status'] = 1;
 
-                if($shop['Order']['order_type'] == 'paypal') {
-                    $paypal = $this->Paypal->ConfirmPayment($order['Order']['total']);
-                    //debug($resArray);
-                    $ack = strtoupper($paypal['ACK']);
-                    if($ack == 'SUCCESS' || $ack == 'SUCCESSWITHWARNING') {
-                        $order['Order']['status'] = 2;
-                    }
-                    $order['Order']['authorization'] = $paypal['ACK'];
-                    //$order['Order']['transaction'] = $paypal['PAYMENTINFO_0_TRANSACTIONID'];
-                }
-
-                //if((Configure::read('Settings.AUTHORIZENET_ENABLED') == 1) && $shop['Order']['order_type'] == 'creditcard') {
-                //    $payment = array(
-                //        'creditcard_number' => $this->request->data['Order']['creditcard_number'],
-                //        'creditcard_month' => $this->request->data['Order']['creditcard_month'],
-                //        'creditcard_year' => $this->request->data['Order']['creditcard_year'],
-                //        'creditcard_code' => $this->request->data['Order']['creditcard_code'],
-                //    );
-                //    try {
-                //        $authorizeNet = $this->AuthorizeNet->charge($shop['Order'], $payment);
-                //    } catch(Exception $e) {
-                //        $this->Flash->flash($e->getMessage());
-                //        return $this->redirect(array('action' => 'review'));
+                //if($shop['Order']['order_type'] == 'paypal') {
+                //    $paypal = $this->Paypal->ConfirmPayment($order['Order']['total']);
+                //    //debug($resArray);
+                //    $ack = strtoupper($paypal['ACK']);
+                //    if($ack == 'SUCCESS' || $ack == 'SUCCESSWITHWARNING') {
+                //        $order['Order']['status'] = 2;
                 //    }
-                //    $order['Order']['authorization'] = $authorizeNet[4];
-                //    $order['Order']['transaction'] = $authorizeNet[6];
+                //    $order['Order']['authorization'] = $paypal['ACK'];
+                //    //$order['Order']['transaction'] = $paypal['PAYMENTINFO_0_TRANSACTIONID'];
                 //}
+
+                if((Configure::read('Settings.AUTHORIZENET_ENABLED') == 0) && $shop['Order']['order_type'] == 'creditcard') {
+                    $payment = array(
+                        'creditcard_number' => $this->request->data['Order']['creditcard_number'],
+                        'creditcard_month' => $this->request->data['Order']['creditcard_month'],
+                        'creditcard_year' => $this->request->data['Order']['creditcard_year'],
+                        'creditcard_code' => $this->request->data['Order']['creditcard_code'],
+                    );
+                    try {
+                        $authorizeNet = $this->AuthorizeNet->charge($shop['Order'], $payment);
+                    } catch(Exception $e) {
+                        $this->Flash->flash($e->getMessage());
+                        return $this->redirect(array('action' => 'review'));
+                    }
+                    $order['Order']['authorization'] = $authorizeNet[4];
+                    $order['Order']['transaction'] = $authorizeNet[6];
+                }
 
                 $save = $this->Order->saveAll($order, array('validate' => 'first'));
                 if($save) {
@@ -232,15 +232,15 @@ class ShopController extends AppController {
                     $this->set(compact('shop'));
 
                     App::uses('CakeEmail', 'Network/Email');
-                    $email = new CakeEmail();
-                    $email->from(Configure::read('Settings.ADMIN_EMAIL'))
-                            ->cc(Configure::read('Settings.ADMIN_EMAIL'))
-                            ->to($shop['Order']['email'])
-                            ->subject('Shop Order')
-                            ->template('order')
-                            ->emailFormat('text')
-                            ->viewVars(array('shop' => $shop))
-                            ->send();
+                    //$email = new CakeEmail();
+                    //$email->from(Configure::read('Settings.ADMIN_EMAIL'))
+                    //        ->cc(Configure::read('Settings.ADMIN_EMAIL'))
+                    //        ->to($shop['Order']['email'])
+                    //        ->subject('Shop Order')
+                    //        ->template('order')
+                    //        ->emailFormat('text')
+                    //        ->viewVars(array('shop' => $shop))
+                    //        ->send();
                     return $this->redirect(array('action' => 'success'));
                 } else {
                     $errors = $this->Order->invalidFields();
@@ -249,29 +249,29 @@ class ShopController extends AppController {
             }
         }
 
-        if(($shop['Order']['order_type'] == 'paypal') && !empty($shop['Paypal']['Details'])) {
-            $shop['Order']['first_name'] = $shop['Paypal']['Details']['FIRSTNAME'];
-            $shop['Order']['last_name'] = $shop['Paypal']['Details']['LASTNAME'];
-            $shop['Order']['email'] = $shop['Paypal']['Details']['EMAIL'];
-            $shop['Order']['phone'] = '888-888-8888';
-            $shop['Order']['billing_address'] = $shop['Paypal']['Details']['SHIPTOSTREET'];
-            $shop['Order']['billing_address2'] = '';
-            $shop['Order']['billing_city'] = $shop['Paypal']['Details']['SHIPTOCITY'];
-            $shop['Order']['billing_zip'] = $shop['Paypal']['Details']['SHIPTOZIP'];
-            $shop['Order']['billing_state'] = $shop['Paypal']['Details']['SHIPTOSTATE'];
-            $shop['Order']['billing_country'] = $shop['Paypal']['Details']['SHIPTOCOUNTRYNAME'];
+        //if(($shop['Order']['order_type'] == 'paypal') && !empty($shop['Paypal']['Details'])) {
+        //    $shop['Order']['first_name'] = $shop['Paypal']['Details']['FIRSTNAME'];
+        //    $shop['Order']['last_name'] = $shop['Paypal']['Details']['LASTNAME'];
+        //    $shop['Order']['email'] = $shop['Paypal']['Details']['EMAIL'];
+        //    $shop['Order']['phone'] = '888-888-8888';
+        //    $shop['Order']['billing_address'] = $shop['Paypal']['Details']['SHIPTOSTREET'];
+        //    $shop['Order']['billing_address2'] = '';
+        //    $shop['Order']['billing_city'] = $shop['Paypal']['Details']['SHIPTOCITY'];
+        //    $shop['Order']['billing_zip'] = $shop['Paypal']['Details']['SHIPTOZIP'];
+        //    $shop['Order']['billing_state'] = $shop['Paypal']['Details']['SHIPTOSTATE'];
+        //    $shop['Order']['billing_country'] = $shop['Paypal']['Details']['SHIPTOCOUNTRYNAME'];
 
-            $shop['Order']['shipping_address'] = $shop['Paypal']['Details']['SHIPTOSTREET'];
-            $shop['Order']['shipping_address2'] = '';
-            $shop['Order']['shipping_city'] = $shop['Paypal']['Details']['SHIPTOCITY'];
-            $shop['Order']['shipping_zip'] = $shop['Paypal']['Details']['SHIPTOZIP'];
-            $shop['Order']['shipping_state'] = $shop['Paypal']['Details']['SHIPTOSTATE'];
-            $shop['Order']['shipping_country'] = $shop['Paypal']['Details']['SHIPTOCOUNTRYNAME'];
+        //    $shop['Order']['shipping_address'] = $shop['Paypal']['Details']['SHIPTOSTREET'];
+        //    $shop['Order']['shipping_address2'] = '';
+        //    $shop['Order']['shipping_city'] = $shop['Paypal']['Details']['SHIPTOCITY'];
+        //    $shop['Order']['shipping_zip'] = $shop['Paypal']['Details']['SHIPTOZIP'];
+        //    $shop['Order']['shipping_state'] = $shop['Paypal']['Details']['SHIPTOSTATE'];
+        //    $shop['Order']['shipping_country'] = $shop['Paypal']['Details']['SHIPTOCOUNTRYNAME'];
 
-            $shop['Order']['order_type'] = 'paypal';
+        //    $shop['Order']['order_type'] = 'paypal';
 
-            $this->Session->write('Shop.Order', $shop['Order']);
-        }
+        //    $this->Session->write('Shop.Order', $shop['Order']);
+        //}
 
         $this->set(compact('shop'));
 
