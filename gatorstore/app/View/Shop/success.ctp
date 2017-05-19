@@ -5,9 +5,13 @@
 <br />
 <br />
 
+<?php /**
 <pre>
     <?php print_r($shop); ?>
 </pre>
+
+**/
+?>
 
 <br />
 <br />
