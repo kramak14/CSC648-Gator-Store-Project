@@ -1,11 +1,31 @@
 <?php echo $this->set('title_for_layout', 'Order Review'); ?>
+<?php echo $this->set('title_for_layout', 'Order Review'); ?>
 
 <?php $this->Html->addCrumb('Order Review'); ?>
 
 <?php echo $this->Html->script(array('jquery.validate.js', 'additional-methods.js', 'shop_review.js'), array('inline' => false)); ?>
 
 <h1>Review And Place Your Order</h1>
+<?php echo $this->Form->create('Order'); ?>
 
+<hr>
+
+<div class="row">
+    <div class="col col-sm-4">
+
+        <?php echo $this->Form->input('first_name', array('class' => 'form-control')); ?>
+        <br />
+        <?php echo $this->Form->input('email', array('class' => 'form-control')); ?>
+        <br />
+        <?php echo $this->Form->input('phone', array('class' => 'form-control')); ?>
+        <br />
+	    <?php echo $this->Form->input('last_name', array('label' => 'Message To Seller', 'class' => 'form-control', 'type' => 'textarea')); ?>
+	
+        <br />
+
+    </div>
+<?php $shop['Order']['first_name'] = 'test'; ?>
+<br />
 <hr>
 <?php /*
 <div class="row">
@@ -96,7 +116,6 @@
 <br />
 <br />
 
-<?php echo $this->Form->create('Order'); ?>
 
 <?php if((Configure::read('Settings.AUTHORIZENET_ENABLED') == 0) && $shop['Order']['order_type'] == 'creditcard') : ?>
 
@@ -166,4 +185,3 @@
 
 <br />
 <br />
-
