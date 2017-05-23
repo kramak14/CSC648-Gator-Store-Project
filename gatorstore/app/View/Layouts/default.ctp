@@ -109,7 +109,7 @@ form-inline {
             <?php echo $this->Html->link($this->Html->image('logo.png', array('alt' => 'sfsu csc648 logo', 'border' => 0)), '/', array('escape' => false)); ?>
         </div>
         <div class="collapse navbar-collapse navbar-ex1-collapse">
-            <ul class="nav navbar-nav" style="padding-top: 89px">
+            <ul class="nav navbar-nav" style="padding-top: 58px">
                 <?php
    /**
    <li><?php echo $this->Html->link('Products', array('controller' => 'products', 'action' => 'products')); ?></li>
@@ -122,11 +122,13 @@ form-inline {
                     &nbsp;&nbsp;&nbsp;
                     &nbsp;
                 </li>
-                <li style = "padding-top: 8px">
+                <li style = "padding-top: 0px">
+
                     <?php echo $this->Form->input('search', array('label' => false, 'div' => false, 'id' => 's', 'class' => 'input-sm s', 'autocomplete' => 'off')); ?>
 
-                    <?php echo $this->Form->button('Search', array('div' => false, 'class' => 'btn btn-sm btn-primary')); ?>
-                    &nbsp;
+                    <?php echo $this->Form->button('Search', array('div' => false, 'class' => 'btn btn-sm btn-primary', 'style' => 'border-radius:6px')); ?>
+
+                    <?php echo $this->Form->input('category_id', array('class' => 'form-control', 'label' => false, 'style' => 'margin-top:5px')); ?>
                     <?php echo $this->Form->end(); ?>
                 </li>
 
@@ -141,8 +143,8 @@ form-inline {
    /**
    <li><?php echo $this->Html->link('Products', array('controller' => 'products', 'action' => 'products')); ?></li>
 
-                <!--<li><?php echo $this->Html->link('Categories', array('controller' => 'categories', 'action' => 'index')); ?></li>-->
-                <!--<li><?php echo $this->Html->link('Sell', array('controller' => 'products', 'action' => 'sell')); ?></li>**/?>-->
+                <li><?php echo $this->Html->link('Categories', array('controller' => 'categories', 'action' => 'index')); ?></li>
+                <li><?php echo $this->Html->link('Sell', array('controller' => 'products', 'action' => 'sell')); ?></li>**/?>
 
                 <li><?php echo $this->Html->link('Textbooks', array('controller' => 'categories', 'action' => 'view','textbooks')); ?></li>
                 <li><?php echo $this->Html->link('Clothes', array('controller' => 'categories', 'action' => 'view','clothes')); ?></li>
@@ -188,7 +190,7 @@ form-inline {
 
     <div class="content">
         <div class="container">
-			<?php 
+			<?php
 			/**
 			This is the modal content
 			**/
@@ -208,7 +210,7 @@ form-inline {
 				<?php echo $this->Form->end(); ?>
 				<br />
 				<br />
-				
+
 				<?php echo "Dont have an account? click "; ?>
 				<?php echo $this->Html->link('here', array('controller' => 'users', 'action' => 'register')); ?>
 				<?php echo " to register"; ?>
@@ -224,7 +226,7 @@ form-inline {
 			// Get the <span> element that closes the modal
 			var span = document.getElementsByClassName("closelogin")[0];
 
-			// When the user clicks the button, open the modal 
+			// When the user clicks the button, open the modal
 			btn.onclick = function() {
 				loginmodal.style.display = "block";
 			}
