@@ -32,8 +32,9 @@
                 <li><?php echo $this->Html->link('Home', array('controller' => 'users', 'action' => 'dashboard')); ?></li>
                 <li><?php echo $this->Html->link('Products', array('controller' => 'products', 'action' => 'index', 'customer' => true)); ?></li>
  
+                <li><?php echo $this->Html->link('Orders', array('controller' => 'orders', 'action' => 'index', 'customer' => true)); ?></li>
 
-<li><?php echo $this->Html->link('Logout', array('controller' => 'users', 'action' => 'logout', 'customer' => false)); ?></li>
+		<li><?php echo $this->Html->link('Logout', array('controller' => 'users', 'action' => 'logout', 'customer' => false)); ?></li>
             </ul>
         </div>
     </div>
